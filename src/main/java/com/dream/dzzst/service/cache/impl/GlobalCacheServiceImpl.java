@@ -35,7 +35,7 @@ public class GlobalCacheServiceImpl implements GlobalCacheService{
     	   put("340000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
     	   put("350000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
     	   put("360000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
-    	   put("370000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
+    	   put("370000",new String[]{"T_SD_5IN20_NUMBER","T_SD_5IN20_MISSANALYSIS_SELECT"});
     	   put("410000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
     	   put("420000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
     	   put("430000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});

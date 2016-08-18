@@ -1,12 +1,10 @@
 package com.dream.dzzst.dao.fivein20;
 
-import com.dream.dzzst.model.fast3.Fast3;
-import com.dream.dzzst.model.fast3.Fast3Analysis;
-import com.dream.dzzst.model.fivein20.FiveIn20Analysis;
-import com.dream.dzzst.model.fivein20.FiveIn20Number;
-
 import java.util.List;
 import java.util.Map;
+
+import com.dream.dzzst.model.fivein20.FiveIn20Analysis;
+import com.dream.dzzst.model.fivein20.FiveIn20Number;
 
 /** 
   * @ClassName: Fast3TMapper 

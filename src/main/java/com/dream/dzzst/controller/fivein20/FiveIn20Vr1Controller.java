@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.dream.dzzst.service.fast3.Fast3Service;
+import com.dream.dzzst.service.fivein20.FiveIn20Vr1Service;
 
 
 
@@ -21,14 +21,14 @@ import com.dream.dzzst.service.fast3.Fast3Service;
 public class FiveIn20Vr1Controller {
 	
 	@Autowired
-	private Fast3Service fast3VerticalService;
+	private FiveIn20Vr1Service fiveIn20Vr1Service;
 	
 	@RequestMapping("/getInitData")
 	public @ResponseBody Map<String,Object> getInitData(HttpServletRequest request) {
 		Map<String,Object> returnMap = new HashMap<String,Object>();
 		String pcode = request.getParameter("provinceDm");
 		String recordCount=(String)request.getParameter("count");
-		returnMap = fast3VerticalService.getInitContext(recordCount,pcode);
+		returnMap = fiveIn20Vr1Service.getInitContext(recordCount,pcode);
 		return returnMap;
 	}
 	@RequestMapping("/getLastData")
@@ -59,7 +59,7 @@ public class FiveIn20Vr1Controller {
 		paramMap.put("groupLose", groupLose);
 		paramMap.put("skipArray", skipArray);
 		paramMap.put("sumLose", sumLose);
-		returnMap = fast3VerticalService.getIntervalContext(issueID,missLastIssueId,paramMap,pcode);
+		returnMap = fiveIn20Vr1Service.getIntervalContext(issueID,missLastIssueId,paramMap,pcode);
         return returnMap;
 	}
 	/**

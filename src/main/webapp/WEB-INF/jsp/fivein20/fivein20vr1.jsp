@@ -17,7 +17,10 @@
         <meta http-equiv="expires" content="0">
         <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
         <meta http-equiv="description" content="This is my page">
+         <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+        <script type="text/javascript" src="js/fivein20/fivein20vr1.js"></script> 
         <link rel="stylesheet" type="text/css" href="css/fivein20/baseLayout.css    ">
+        
     </head>
 	<script type="text/javascript">
 		
@@ -71,7 +74,7 @@
 
             </div>
             <div class = "contentDiv">
-                 <table class = 'headTable' cellpadding="0px" cellspacing="0px"  rules="all">
+                 <table id = "dataTable" class = 'headTable' cellpadding="0px" cellspacing="0px"  rules="all">
 
                  </table>
             </div>

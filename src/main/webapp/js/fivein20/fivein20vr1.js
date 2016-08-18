@@ -29,12 +29,8 @@
 		initLayoutHeight(window.screen.height);
 		var url=lastDataUrl+"getInitData.do";
 		if(paramObj.recordCount == 0){
-			paramObj.recordCount = div($('#Content').height(),paramObj.clientPix);
+			paramObj.recordCount = div($('.contentDiv').height(),paramObj.clientPix);
 		}
-		if(paramObj.recordCount == 0){
-			paramObj.recordCount = div(window.screen.height-paramObj.clientPix*5,paramObj.clientPix);
-		}
-		$('#Content').height((paramObj.recordCount+1)*paramObj.clientPix);
 		//$('#dataTableMain').css('display','none');
 		$.ajax({
 			type:"post",
@@ -43,32 +39,18 @@
 			async:false,
 			data : {
 				//传入后台的参数列表,预计传入的查询记录条数限制，保证不同分辨率的记录数
-				count : paramObj.recordCount+paramObj.addCount
+				count : paramObj.recordCount+paramObj.addCount,
+				provinceDm : provinceDm
 			},
 			success: function(data) {
-				var jsonObj = $.parseJSON(data);
-				var dataArr = jsonObj.records;
-				lastIssueId = dataArr[dataArr.length-1].issueId*1;
-				$('#dataTable').width(paramObj.width);
+				var dataArr = data.records;
+				lastIssueId = dataArr[0].issueNumber*1;
 				$.each(dataArr,function(i,data){
 					var tr = insertTr($('#dataTable').get(0));
 					insertNumTd(tr,data);
 				});
 				$('#dataTable').css('marginTop',-paramObj.clientPix*(dataArr.length-paramObj.recordCount));
-				paramObj.addCount = dataArr.length-paramObj.recordCount;
-				//打印一个空行
-				var tr = insertTr($('#dataTable').get(0));
-				insertBlankTd(tr);
-				var tr = insertTr($('#bottomNumData').get(0));
-				todayTimes = jsonObj.todayTimes;
-				insertTodayTimes(tr,jsonObj.todayTimes);
-				var tr = insertTr($('#bottomNumData').get(0));
-				missValues = jsonObj.missValues;
-				insertMissValue(tr,jsonObj.missValues);
-				insertBottomDiv($('#Content').height()+paramObj.clientPix*6,720);
-				layoutControlDiv(['#dataTable']);
-				getInitLastData(dataArr);
-				setInterval("getLastData()",paramObj.intervalTime);//3秒一次执行
+				//setInterval("getLastData()",paramObj.intervalTime);//3秒一次执行
 			}
 		});
 		function div(exp1, exp2)
@@ -90,6 +72,14 @@
 			return rslt;
 		}
 		//testPrintTdFromLast5();
+	}
+	
+	///////////////////////////////////////////
+	function initLayoutHeight(windowHeight){
+		$('.headDiv').height(paramObj.clientPix*2);
+		$('.bottomDiv').height(paramObj.clientPix*3);
+		$('.contentDiv').height(window.screen.height-paramObj.clientPix*5);
+		
 	}
 	/*
 	 add by songj
@@ -120,14 +110,11 @@
 					var tr = insertBeforeLastTr($('#dataTable tr:last'));
 					insertNumTd(tr,data);
 					$('#dataTable tr:first').remove();
-					$('#bottomNumData tr:last').remove();
-					$('#bottomNumData tr:last').remove();
-					var tr = insertTr($('#bottomNumData').get(0));
 					todayTimes = jsonObj.todayTimes;
-					insertTodayTimes(tr,jsonObj.todayTimes);
+				//	insertTodayTimes(tr,jsonObj.todayTimes);
 					var tr = insertTr($('#bottomNumData').get(0));
 					missValues = jsonObj.missValues;
-					insertMissValue(tr,jsonObj.missValues);
+				//	insertMissValue(tr,jsonObj.missValues);
 					$('#dataTable').css('marginTop',-paramObj.clientPix*(paramObj.addCount));
 					getDataLast(data);
 				}
@@ -140,7 +127,7 @@
 	 desc 插入一大行内容（该函数分四种插入方法）insert
 	 */
 	function insertNumTd(trObj,data){
-		printIssueNum(trObj,data.issueId);
+		printIssueNum(trObj,data.issueNumber);
 		printLuckyNum(trObj,data);
 		printLuckyDist(trObj,data);
 		printBigEven(trObj,data);
