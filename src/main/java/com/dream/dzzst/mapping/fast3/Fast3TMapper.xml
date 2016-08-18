@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dream.dzzst.dao.fast3.Fast3TMapper">
+	<resultMap id="resultMap"
+		type="com.dream.dzzst.model.fast3.Fast3">
+		<result column="issue_number" property="issueNumber" jdbcType="VARCHAR" />
+		<result column="no1" property="no1" jdbcType="INTEGER" />
+		<result column="no2" property="no2" jdbcType="INTEGER" />
+		<result column="no3" property="no3" jdbcType="INTEGER" />
+		<result column="three_span" property="threeSpan" jdbcType="INTEGER" />
+		<result column="three_sum" property="threeSum" jdbcType="INTEGER" />
+		<result column="big_count" property="bigCount" jdbcType="INTEGER" />
+		<result column="small_count" property="smallCount" jdbcType="INTEGER" />
+		<result column="odd_count" property="oddCount" jdbcType="INTEGER" />
+		<result column="even_count" property="evenCount" jdbcType="INTEGER" />
+		<result column="num_status" property="numStatus" jdbcType="INTEGER" />
+	</resultMap>
+	<!-- 用来返回分析统计结果使用 -->
+	<resultMap id="resultAnalysis"
+		type="com.dream.dzzst.model.fast3.Fast3Analysis">
+		<result column="ISSUE_NUMBER" property="issueNumber" jdbcType="VARCHAR" />
+		<result column="GROUP_NUMBER" property="groupNumber" jdbcType="INTEGER" />
+		<result column="CURRENT_MISS" property="currentMiss" jdbcType="INTEGER" />
+		<result column="MAX_MISS" property="maxMiss" jdbcType="INTEGER" />
+		<result column="TYPE" property="type" jdbcType="INTEGER" />
+	</resultMap>
+	
+	
+	<sql id="selectItem">
+        main.issue_number,main.no1,main.no2,main.no3,
+        main.three_span,main.three_sum,main.big_count,main.small_count,main.odd_count,main.even_count,
+        main.num_status
+    </sql> 
+	
+	<select id="getRecordByIssueId" parameterType="Map" resultMap="resultMap">
+		SELECT 
+            <include refid="selectItem"/>
+        FROM
+            ${mainTable} main
+        <where>
+            main.issue_number = #{issueID}
+        </where>
+         LIMIT 1
+	</select>
+	
+	<select id="getLastRecord" parameterType="Map" resultMap="resultMap">
+		SELECT 
+            <include refid="selectItem"/>
+        FROM
+            ${mainTable} main
+        ORDER BY issue_number*1 DESC
+        LIMIT 1
+	</select>
+	
+	
+	<select id="getRecordsByNum" resultMap="resultMap" parameterType="java.util.Map">
+		SELECT 
+            <include refid="selectItem"/>
+        FROM
+        	 (SELECT * FROM ${mainTable} ORDER BY ISSUE_NUMBER DESC LIMIT #{count}) main
+       	ORDER BY main.issue_number*1
+	</select>
+	<select id="getAllData" resultMap="resultMap">
+		SELECT 
+            <include refid="selectItem"/>
+        FROM
+            ${mainTable} main
+        ORDER BY main.issue_number DESC
+        LIMIT 1000
+	</select>
+	<select id="getTodayDatas" parameterType="java.util.Map" resultMap="resultMap">
+		SELECT 
+            <include refid="selectItem"/>
+        FROM
+            ${mainTable} main
+        <where>
+            SUBSTRING(main.issue_number,1,6) =DATE_FORMAT(CURDATE(),'%y%m%d')
+        </where>
+	</select>
+	
+	<!-- 增加查询遗漏方法 -->
+	<select id="getMissAnalysis" parameterType="java.util.Map" resultMap="resultAnalysis">
+		SELECT 
+            main.ISSUE_NUMBER,GROUP_NUMBER,CURRENT_MISS,MAX_MISS,main.TYPE
+        FROM
+            ${mainTable} main
+        <where>  
+           <if test="issueNumber != '' ">
+        		AND ISSUE_NUMBER > #{issueNumber}
+		   </if>  
+        </where>
+        ORDER BY 
+        	`TYPE`,CURRENT_MISS DESC
+	</select>
+	
+	
+	
+</mapper>

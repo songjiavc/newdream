@@ -1,0 +1,33 @@
+	/*
+		@author songjia
+		@date   2015-2-19
+		@desc   安徽快3vr2
+	*/
+	#Container #Header #tableHead #baseTableHead  tr{
+		background-color: #E4A474;
+	}
+	#Container #Header #tableHead #adTableHead tr{
+		background-color: #E4A474;
+	}
+	#Container #Footer #missOne table{
+		table-layout: fixed; border-color: #E1DCD8;width:100%;height:100%;rules : all;
+	}
+	#Container #Footer #missOne tr{
+		background-color: #E4A474;
+	}
+	#Container #Footer #missTwo #missTable thead{
+		background-color: #A2063C;
+	}
+    #Container table{
+		table-layout: fixed;
+		border-color: #F0CEB5;
+		width:100%;
+		height:100%;
+		rules : all;
+		background-color: #fffffe;
+		text-align:center;
+		position:relative;
+        font-family:晴圆;
+        font-size:14pt;
+        text-align:center;
+	}

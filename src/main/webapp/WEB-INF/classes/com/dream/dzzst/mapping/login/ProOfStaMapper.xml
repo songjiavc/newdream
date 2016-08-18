@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dream.dzzst.dao.login.ProOfStaMapper">
+	<resultMap id="BaseResultMap" type="com.dream.dzzst.model.login.ProductDto">
+		<result column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="CREATER" property="creater" jdbcType="VARCHAR" />
+		<result column="CREATER_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="IS_DELETED" property="isDeleted" jdbcType="VARCHAR" />
+		<result column="MODIFY" property="modify" jdbcType="VARCHAR" />
+		<result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="CITY_DM" property="cityDm" jdbcType="VARCHAR" />
+		<result column="CODE" property="code" jdbcType="VARCHAR" />
+		<result column="CPDL_DM" property="cpdlDm" jdbcType="VARCHAR" />
+		<result column="CPXL_DM" property="cpxlDm" jdbcType="VARCHAR" />
+		<result column="CPZL_DM" property="cpzlDm" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="PRICE" property="price" jdbcType="VARCHAR" />
+		<result column="PRODUCT_DESPRITION" property="productDesprition" jdbcType="VARCHAR" />
+		<result column="PROVINCE_DM" property="provinceDm" jdbcType="VARCHAR" />
+		<result column="STATUS_TIME" property="statusTime" jdbcType="VARCHAR" />
+		<result column="LOTTERY_TYPE" property="lotteryType" jdbcType="VARCHAR" />
+		<result column="DURATION_OF_USER" property="durationOfuser" jdbcType="VARCHAR" />
+		<result column="PROURL" property="prourl" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMap" type="com.dream.dzzst.model.login.StationAndProduct">
+		<result column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="CREATER" property="creater" jdbcType="VARCHAR" />
+		<result column="CREATER_TIME" property="createrTime" jdbcType="TIMESTAMP" />
+		<result column="IS_DELETED" property="isDeleted" jdbcType="VARCHAR" />
+		<result column="MODIFY" property="modify" jdbcType="VARCHAR" />
+		<result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+		<result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+		<result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR" />
+		<result column="START_TIME" property="startTime" jdbcType="TIMESTAMP" />
+		<result column="STATION_ID" property="stationId" jdbcType="VARCHAR" />
+		<result column="TYPE" property="type" jdbcType="VARCHAR" />
+		<result column="ORDER_ID" property="orderId" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="DURATION_OF_USER" property="durationOfUse" jdbcType="VARCHAR" />
+		<result column="PROBATION" property="probation" jdbcType="VARCHAR" />
+		<result column="GOODS_ID" property="goodsId" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ProAndGoodsMap" type="com.dream.dzzst.model.login.ProAndGoods">
+		<result column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="PRICE" property="price" jdbcType="VARCHAR" />
+		<result column="PROBATION" property="probation" jdbcType="TIMESTAMP" />
+		<result column="GOOD_ID" property="goodId" jdbcType="VARCHAR" />
+		<result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 宋佳 修改站点获取产品列表方法 -->
+	<select id="getProducts" resultMap="ResultMap">
+		SELECT MIN(START_TIME) START_TIME,MAX(END_TIME) END_TIME,PRODUCT_ID,STATION_ID FROM
+		RELA_SDF_STATION_PRODUCT 
+		<where>
+			STATION_ID = #{stationId} 
+			AND IS_DELETED = 1
+			AND STATUS = 1
+		</where>
+		GROUP BY PRODUCT_ID
+		HAVING END_TIME > now()
+	</select>
+	
+	<select id="getDetailProduct" resultMap="BaseResultMap">
+		SELECT * FROM
+		T_SDF_PRODUCT 
+		<where>
+			ID = #{productId}
+		</where>
+	</select>
+	
+	
+	<select id="getProAndGoods" resultMap="ProAndGoodsMap">
+		SELECT * FROM
+		RELA_SDF_GOOD_PRODUCT 
+		<where>
+			ID = #{id}
+		</where>
+	</select>
+	
+</mapper>

@@ -1,0 +1,16 @@
+    .controlDiv {
+        position: absolute;
+        height : 300px;
+        width : 300px;
+        opacity: 0.0;
+        cursor: hand;
+        z-index: 100;
+    }
+    
+    .controlTable{
+    	border-style:none;
+    }
+    
+    .controlTable td{
+    	border:none;
+    }

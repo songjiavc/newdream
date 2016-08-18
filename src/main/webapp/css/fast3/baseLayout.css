@@ -1,0 +1,205 @@
+	/**
+		add by songj@sdfcp.com
+		desc 快三产品前端框架布局
+	*/
+	
+    /*body 下第一层布局，所有布局的母布局*/
+    #Container{
+        background:#CF3;
+        width : 1080px;
+        height : 100%;
+    }
+    
+    	/*头布局，其中应该放置logo和配置按钮*/
+    #Container #Header{
+    	/*height : 100; 布局基础元素的高度是初始化js中给定的*/ 
+    	background:red;
+    	width : 100%;
+    }
+    	/*头布局，其中应该放置logo和配置按钮*/
+    #Container #Header #logo{
+    	height : 50%;
+    	background:red;
+    	width : 100%;
+    }
+    #Container #Header #tableHead{
+    	height : 50%;
+    	background:blue;
+    	width : 100%;
+    }
+    
+     #Container #Header #tableHead #baseTableHead{
+    	height : 100%;
+    	background:#F0CEB5;
+    	float:left;
+    	width : 40%;
+    }
+   	/*  留着以后切换用 */
+    #Container #Header #tableHead #baseTableHead #headOne{
+    	height : 100%;
+    	background:#F0CEB5;
+    	width : 99.8%;
+    }
+    #Container #Header #tableHead #adTableHead{
+    	height : 100%;
+    	float:left;
+    	background:yellow;
+    	width : 60%;
+    }
+     #Container #Header #tableHead #adTableHead #adHeadOne{
+    	height : 100%;
+    	background:yellow;
+    	width : 100%;
+    }
+    #Container #Header #tableHead #adTableHead #adHeadTwo{
+    	height : 100%;
+    	background:yellow;
+    	width : 100%;
+    	display : none;
+    }
+    #Container #Header #logo #left{
+    	width : 30%;
+    	height : 100%;
+    	float:left;
+    	position:relative;
+    	background:yellow;
+    }
+    
+    #Container #Header #logo #center{
+    	width : 40%;
+    	height : 100%;
+    	float:left;
+    	position:relative;
+    	background:red;
+    }
+    
+    #Container #Header #logo #right{
+    	width : 30%;
+    	height : 100%;
+    	float:left;
+    	position:relative;
+    	background:black;
+    }
+    
+    
+    #Container #Content{
+        position:relative;
+        background:#F0CEB5;
+        overflow:hidden;
+        width : 100%;
+      /*  height : 100%;  */
+    }
+    
+     #Container #Content #mainDiv{
+       	position: absolute;
+       	background:#F0CEB5;
+    }
+    
+    #Container #Content #mainDiv #base{
+        position:relative;
+        background:#F0CEB5;
+        float:left;
+        height : 100%;
+        width : 40%;
+    }
+    /*
+    	主表div，可以存放one、two等主表，并可以切换，为以后留下接口
+    */
+    #Container #Content #mainDiv #base #one{
+        position:relative;
+        background:red;
+        height : 100%;
+        width : 99.8%;
+        border : 1;
+        border-color: #E1DCD8;
+    }
+    
+    #Container #Content #base #two{
+        position: absolute;
+        background:yellow;
+        height : 100%;
+        width : 100%;
+    }
+    #Container #Content #mainDiv #advance{    /*只有相对布局才能使用float 属性*/
+        position:relative;
+        background:white;
+        float:left;
+        height : 100%;
+        width : 60%;
+    }
+    
+    #Container #Content #advance #adone{
+        position:relative;
+        background:white;
+        float:left;
+        height : 100%;
+        width : 100%;
+    }
+    #Container #Content #advance #adtwo{
+        position:relative;	
+        background:white;
+        float:left;
+        display : none;
+        height : 100%;
+        width : 100%;
+    }
+    #Container #Content #advance #adthree{
+        position:absolute;
+        background:red;
+        float:left;
+        width : 100%;
+    }
+    
+    #Container #Footer {
+        position:relative;
+        background:black;
+        /*height : 100; 布局基础元素的高度是初始化js中给定的*/ 
+        width : 100%;
+    }
+    
+    #Container #Footer #missOne{
+        position:relative;
+        height : 34%;
+        background:yellow;
+        width : 100%;
+    }
+    
+    #Container #Footer #missOne #simpleMissBase{
+        position:relative;
+        background:#F0CEB5;
+        width : 40%;
+        float : left;
+        height :100%;
+    }
+    
+    #Container #Footer #missOne #simpleMissBase #simpleMissOne{
+        position:relative;
+        width : 99.8%;
+        height :100%;
+    }
+    
+    #Container #Footer #missOne #simpleMissAd{
+        position:relative;
+        width : 60%;
+        float : left;
+        height :100%;
+    }
+    
+    #Container #Footer #missOne #simpleMissAd #simpleAdMissOne{
+        position:relative;
+        width : 100%;
+        height :100%;
+    }
+    #Container #Footer #missOne #simpleMissAd #simpleAdMissTwo{
+        position:relative;
+        width : 100%;
+        height :100%;
+        display : none;
+    }
+    
+    #Container #Footer #missTwo{
+        position:relative;
+        background:red;
+        height : 66%;
+        width : 100%;
+    }
