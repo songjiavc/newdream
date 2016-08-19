@@ -6,16 +6,20 @@
 	 date : 2014-10-28
 	 */
 	var paramObj = {
-		poolNum : 11,        // 球池数量
+		poolNum : 20,        // 球池数量
 		recordCount : 0,     // 记录条数
 		width : 720,
 		clientPix : 25,
-		intervalTime : 30000,
+		intervalCycle : 1000*10,    // 每隔3秒执行一次
+		timeCycle : 1000*60*9,     // 每隔9分钟执行一次
 		adTime : 10000,  //广告停留时间
 		addCount : 160,//记录增加翻页数量
 		currentNum : 1,//上下滚屏次数
 		isFinish : true,//判断滚屏状态
-		backGroundColorFlag : false //判断是否是最后10期的背景色标识
+		////////////////////
+		getLastRecordIntervalId : 0,
+		getLastRecordTimeId : 0
+		////////////////////
 	};
 	//用来存放今日出现次数和遗漏值
 	var missValues,todayTimes;
@@ -46,11 +50,19 @@
 				var dataArr = data.records;
 				lastIssueId = dataArr[0].issueNumber*1;
 				$.each(dataArr,function(i,data){
-					var tr = insertTr($('#dataTable').get(0));
+					var tr = insertBeforeLastTr($('#dataTable tr:first'));
 					insertNumTd(tr,data);
 				});
-				$('#dataTable').css('marginTop',-paramObj.clientPix*(dataArr.length-paramObj.recordCount));
-				//setInterval("getLastData()",paramObj.intervalTime);//3秒一次执行
+				$('#dataTable').css('marginTop',-paramObj.clientPix*paramObj.addCount+($('.contentDiv').height() - paramObj.clientPix*paramObj.recordCount));
+				//更新今日出现次数
+				todayTimes = data.todayTimes;
+				updateTodayTimes(data.todayTimes);
+				//更新当前遗漏值
+				missValues = data.missTimes;
+				updateCurrentMiss(data.missTimes);
+				createIntervalFunc("getLastData('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
+				// setInterval("getLastData()",paramObj.intervalTime);//3秒一次执行
+
 			}
 		});
 		function div(exp1, exp2)
@@ -81,13 +93,35 @@
 		$('.contentDiv').height(window.screen.height-paramObj.clientPix*5);
 		
 	}
+
+	function updateTodayTimes(todayTimes){
+		var winNumTodayTimes =  $("#bottomTable tr").eq(1).find("td");
+		$.each(winNumTodayTimes,function(i,td){
+			if(i == 0 || i >= todayTimes.length){
+				return true;
+			}
+			$(td).html(todayTimes[i-1]);
+		});
+	}
+
+	function updateCurrentMiss(missValues){
+		var winNummissValues =  $("#bottomTable tr").eq(2).find("td");
+		$.each(winNummissValues,function(i,td){
+			if(i == 0 || i >= missValues.length){
+				return true;
+			}
+			$(td).html(missValues[i-1]);
+		});
+	}
+
+
+
 	/*
 	 add by songj
 	 since 2014-10-22 16:23
 	 desc 按照时间间隔后台读取最新数据
 	 */
-	function getLastData(){
-		var lastDataUrl = 'http://www.timemaple.com:80/sd5In20VerticalController/';
+	function getLastData(lastDataUrl,provinceDm){
 		var url=lastDataUrl+"getLastData.do";
 		$.ajax({
 			type:"post",
@@ -95,28 +129,33 @@
 			dataType:'JSON',
 			async:false,
 			data : {
-				//传入后台的参数列表,传入页面中显示的最后一期id
 				lastIssueId : lastIssueId,
 				todayTimes : JSON.stringify(todayTimes),
-				missValues : JSON.stringify(missValues)
+				missTimes : JSON.stringify(missValues),
+				provinceDm : provinceDm
 			},
 			success: function(data) {
 				////////////////////////////////////////
-				if(data == null){
-				}else{
-					var jsonObj = $.parseJSON(data);
-					var data = jsonObj.record;
-					lastIssueId = data.issueId*1;
-					var tr = insertBeforeLastTr($('#dataTable tr:last'));
-					insertNumTd(tr,data);
+				if(!$.isEmptyObject(data)){
+					//清除time函数并重新创建
+					if(paramObj.getLastRecordTimeId != 0){
+						clearTimeout(paramObj.getLastRecordTimeId);
+					}
+					alert(paramObj.getLastRecordIntervalId);
+					if(paramObj.getLastRecordIntervalId != 0){
+						clearInterval(paramObj.getLastRecordIntervalId);
+					}
+					//重启一个新的任务
+					createTimeFunction(lastDataUrl,provinceDm);
+					var record = data.record;
+					lastIssueId = record.issueId*1;
+					var tr = insertTr($('#dataTable').get(0));
+					insertNumTd(tr,record);
 					$('#dataTable tr:first').remove();
-					todayTimes = jsonObj.todayTimes;
-				//	insertTodayTimes(tr,jsonObj.todayTimes);
-					var tr = insertTr($('#bottomNumData').get(0));
-					missValues = jsonObj.missValues;
-				//	insertMissValue(tr,jsonObj.missValues);
-					$('#dataTable').css('marginTop',-paramObj.clientPix*(paramObj.addCount));
-					getDataLast(data);
+					todayTimes = data.todayTimes;
+					missValues = data.missTimes;
+					updateTodayTimes(todayTimes);
+					updateCurrentMiss(missValues);
 				}
 			}
 		});
@@ -129,7 +168,7 @@
 	function insertNumTd(trObj,data){
 		printIssueNum(trObj,data.issueNumber);
 		printLuckyNum(trObj,data);
-		printLuckyDist(trObj,data);
+		// printLuckyDist(trObj,data);
 		printBigEven(trObj,data);
 	}
 	/*
@@ -374,6 +413,18 @@
 		tableObj.appendChild(tr);
 		return tr;
 	}
+
+
+	function insertBeforeLastTr(lastTr){
+		var tr = document.createElement("tr");
+		if(lastTr.length == 0){
+			$('#dataTable').append(tr);
+		}else{
+			$(tr).insertBefore(lastTr);
+		}
+		return tr;
+	}
+
 	/*
 	 三数转换为数组
 	 */
@@ -403,11 +454,6 @@
 		$(div).width(720);
 		$(div).height(window.screen.height-top);
 		$(div).html("本数据仅供参考,开奖号码请以官方数据为准.");
-	}
-	function insertBeforeLastTr(lastTr){
-		var tr = document.createElement("tr");
-		$(tr).insertBefore(lastTr);
-		return tr;
 	}
 	/*
 	 desc : 插入今天次数单元格
@@ -533,69 +579,17 @@
 		trObj.appendChild(td);
 	}
 
-	/*
-	 初始化打印最后不动10期数据
-	 */
-	function getInitLastData(dataArr){
-		$('#dataTableLast').width(paramObj.width);
-		var dataArrDown = new Array();
-		for (var j = dataArr.length - 10; j < dataArr.length; j++) {
-			dataArrDown.push(dataArr[j]);
-		}
-		$.each(dataArrDown,function(i,data){
-			var tr = insertTr($('#dataTableLast').get(0));
-			insertNumTd(tr,data);
-		});
-		var tr = insertTr($('#dataTableLast').get(0));
-		insertBlankTd(tr,lastIssueId+1);
-		$('#dataTableMain').css('marginTop',
-			paramObj.clientPix * (paramObj.recordCount - 10));
-		$("#dataTableLast tr").each(function(){
-			$(this).find("td").eq(0).css("background-color","#ABB5BA");
-			for(var i=1;i<6;i++){
-				$(this).find("td").eq(i).css("background-color","#FFFF75");
-			}
-			for(var i=6;i<11;i++){
-				$(this).find("td").eq(i).css("background-color","#B5D7D7");
-			}
-			for(var i=11;i<16;i++){
-				$(this).find("td").eq(i).css("background-color","#B6DA7A");
-			}
-			for(var i=16;i<21;i++){
-				$(this).find("td").eq(i).css("background-color","#B5D7D7");
-			}
-			for(var i=21;i<26;i++){
-				$(this).find("td").eq(i).css("background-color","#B6DA7A");
-			}
-		});
+
+
+
+	/* ***********************定时任务设置区域*********************************** */
+	//设置time方法 用于间隔调用获取最新数据周期函数
+
+	function createTimeFunction(lastDataUrl,provinceDm){
+		var func = "createIntervalFunc('getLastData(\""+lastDataUrl+"\",\""+provinceDm+"\")','"+paramObj.intervalCycle+"')";
+		paramObj.getLastRecordTimeId = setTimeout(func,paramObj.timeCycle);
 	}
 
-	/*
-	 跳期打印最后10期数据
-	 */
-	function getDataLast(data){
-		var tr = insertBeforeLastTr($('#dataTableLast tr:last'));
-		insertNumTd(tr,data);
-		$('#dataTableLast tr:first').remove();
-		$('#dataTableMain').css('marginTop',
-			paramObj.clientPix * (paramObj.recordCount - 10));
-		$('#dataTableMain').css('display','none');
-		$("#dataTableLast tr").each(function(){
-			$(this).find("td").eq(0).css("background-color","#ABB5BA");
-			for(var i=1;i<6;i++){
-				$(this).find("td").eq(i).css("background-color","#FFFF75");
-			}
-			for(var i=6;i<11;i++){
-				$(this).find("td").eq(i).css("background-color","#B5D7D7");
-			}
-			for(var i=11;i<16;i++){
-				$(this).find("td").eq(i).css("background-color","#B6DA7A");
-			}
-			for(var i=16;i<21;i++){
-				$(this).find("td").eq(i).css("background-color","#B5D7D7");
-			}
-			for(var i=21;i<26;i++){
-				$(this).find("td").eq(i).css("background-color","#B6DA7A");
-			}
-		});
+	function createIntervalFunc(func,time){
+		paramObj.getLastRecordIntervalId = setInterval(func,time);
 	}

@@ -31,7 +31,7 @@
 	<body style="margin: 0 auto; padding: 0px;">
         <div id="groupOne">
             <div class = "headDiv">
-                <table class = "headTable" cellpadding="0px" width = "720px" cellspacing="0px" rules="all">
+                <table class = "headTable" cellpadding="0px" cellspacing="0px" rules="all">
                     <tr >
                         <td colspan="3" rowspan=2 align="center">期号</td>
                         <td colspan="10" align="center">开奖号码</td>
@@ -79,7 +79,7 @@
                  </table>
             </div>
             <div class = "bottomDiv">
-                <table class = 'headTable' cellpadding="0px" cellspacing="0px" rules="all">
+                <table id = "bottomTable" class = 'headTable' cellpadding="0px" cellspacing="0px" rules="all">
                     <tr >
                        <td colspan="3"  align="center"></td>
                        <td colspan="10"  align="center"></td>

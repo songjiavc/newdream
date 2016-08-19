@@ -1,6 +1,7 @@
-/target/
-/.settings
-/.project
-/.classpath
-/.metadata/
-/*.log
+.classpath
+.idea/
+.project
+.settings/
+echart_terminal.log
+target/
+.gitignore

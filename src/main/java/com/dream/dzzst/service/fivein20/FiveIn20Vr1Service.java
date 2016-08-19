@@ -74,7 +74,7 @@ public interface FiveIn20Vr1Service {
       * @param paramMap
       * @return 
       */
-    public Map<String,Object> getIntervalContext(String issueID, String missLastIssueId, Map<String, int[]> paramMap, String pcode);
+    public Map<String,Object> getIntervalContext(String issueID, Map<String, int[]> paramMap, String pcode);
     
     /** 
       * @Description: 获取前几名遗漏的统计值

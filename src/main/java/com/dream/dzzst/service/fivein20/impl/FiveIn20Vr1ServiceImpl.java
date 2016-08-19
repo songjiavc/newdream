@@ -62,28 +62,22 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
         return returnMap;
     }
     @Override
-    public Map<String, Object> getIntervalContext(String issueID,String missLastIssueId,Map<String,int[]> paramMap,String pcode) {
+    public Map<String, Object> getIntervalContext(String issueID,Map<String,int[]> paramMap,String provinceCode) {
         Map<String,Object> returnMap = new HashMap<String,Object>();
-        		//获取最后一期内容
+        //获取最后一期内容
         Map<String,Object> selMap = new HashMap<String,Object>();
-        selMap.put("mainTable",  globalCacheService.getCacheMap(pcode)[0]);
-        Map<String,String> paMap = new HashMap<String,String>();
-        paMap.put("mainTable",  globalCacheService.getCacheMap(pcode)[1]);
-        paMap.put("issueNumber", missLastIssueId);
-        List<FiveIn20Analysis> analysisList = this.getTopNMiss(3, paMap);
-        FiveIn20Number FiveIn20Number  = this.getLastRecord(selMap);
-        if(FiveIn20Number.getIssueNumber().equals(issueID)){
-        	FiveIn20Number = null;
-        	returnMap.put("record", FiveIn20Number);
-        }else{
-        	// returnMap.put("record", getOnlyOneResultExtendList(FiveIn20Number,paramMap));
-        	 Map<String,int[]> todayIntArr = getIntervalTodayTimesArr(FiveIn20Number,paramMap);
-             			//今日出现次数
-             returnMap.put("todayTimes", todayIntArr);
-             			//遗漏值
+        selMap.put("mainTable",  globalCacheService.getCacheMap(provinceCode)[0]);
+        FiveIn20Number fiveIn20Number  = this.getLastRecord(selMap);
+        if(!fiveIn20Number.getIssueNumber().equals(issueID)){
+            int[] todayIntArr = getIntervalTodayTimesArr(fiveIn20Number,paramMap.get("todayTimesArr"));
+            //今日出现次数
+            returnMap.put("todayTimes", todayIntArr);
+            //遗漏值
+            int[] missIntArr = getIntervalMissTimesArr(fiveIn20Number,paramMap.get("missTimesArr"));
+            returnMap.put("missTimes", missIntArr);
+            //返回结果记录
+            returnMap.put("record", fiveIn20Number);
         }
-        
-        returnMap.put("top3Miss", analysisList);
         return returnMap;
     };
 
@@ -92,8 +86,7 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
       * @author songj@sdfcp.com
       * @date 2014年11月17日 下午3:11:20 
       * 
-      * @param selectFiveList
-      * @return 
+      * @return
       */
     private int[] getTodayTimesArr(List<FiveIn20Number> FiveIn20NumberList){
         int[] winNumDist = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};    //开奖号码分布遗漏计算
@@ -116,16 +109,15 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
       * @author songj@sdfcp.com
       * @date 2014年11月18日 上午8:35:57 
       * 
-      * @param FiveIn20NumberList
-      * @return 
+      * @return
       */
-    private Map<String,int[]> getIntervalTodayTimesArr(FiveIn20Number fiveIn20Number,Map<String,int[]> paramMap){
-        Map<String,int[]> returnMap = new HashMap<String,int[]>();
+    private int[] getIntervalTodayTimesArr(FiveIn20Number fiveIn20Number,int[] todayTimes){
+
         int[] winNumDist;
         if("01".equals(fiveIn20Number.getIssueNumber().substring(fiveIn20Number.getIssueNumber().length()-2, fiveIn20Number.getIssueNumber().length()))){
             winNumDist = new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
         }else{
-            winNumDist = paramMap.get("winNumDist");
+            winNumDist = todayTimes;
         }
         /*
          * 取出三个值并将它转为整型
@@ -141,8 +133,7 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
         winNumDist[numThree-1] = winNumDist[numThree-1] + 1;
 		winNumDist[numFour-1] = winNumDist[numFour-1] + 1;
 		winNumDist[numFive-1] = winNumDist[numFive-1] + 1;
-        returnMap.put("winNumDist", winNumDist);
-        return returnMap;
+        return winNumDist;
     }
     
     /**   
@@ -152,17 +143,30 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
      */
     public int[] getInitMissArr(List<FiveIn20Number> numList){
     	int[] numTemp = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-    	for(FiveIn20Number num : numList){
+    	for(int j = numList.size()-1;j>=0;j--){
     		for(int i = 0;i < numTemp.length;i++){
         		numTemp[i]++;
         	}
-    		numTemp[num.getNo1()-1] = 0;
-    		numTemp[num.getNo2()-1] = 0;
-    		numTemp[num.getNo3()-1] = 0;
-    		numTemp[num.getNo4()-1] = 0;
-    		numTemp[num.getNo5()-1] = 0;
+    		numTemp[numList.get(j).getNo1()-1] = 0;
+    		numTemp[numList.get(j).getNo2()-1] = 0;
+    		numTemp[numList.get(j).getNo3()-1] = 0;
+    		numTemp[numList.get(j).getNo4()-1] = 0;
+    		numTemp[numList.get(j).getNo5()-1] = 0;
     	}
     	return numTemp;
+    }
+
+    public int[] getIntervalMissTimesArr(FiveIn20Number fiveIn20Number,int[] missTimes){
+        int[] missRtnArr = missTimes;
+        for(int i = 0;i < missRtnArr.length;i++){
+            missRtnArr[i]++;
+        }
+        missRtnArr[fiveIn20Number.getNo1()-1] = 0;
+        missRtnArr[fiveIn20Number.getNo2()-1] = 0;
+        missRtnArr[fiveIn20Number.getNo3()-1] = 0;
+        missRtnArr[fiveIn20Number.getNo4()-1] = 0;
+        missRtnArr[fiveIn20Number.getNo5()-1] = 0;
+        return missRtnArr;
     }
     
     //复制数组并计算遗漏值给数组中所有元素加'1'
