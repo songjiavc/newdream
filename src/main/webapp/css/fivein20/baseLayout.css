@@ -3,27 +3,8 @@
     /*body 下第一层布局，所有布局的母布局*/
     body {
         background:#2aabd2;
-        width : 100%;
+        width : 720px;
         height : 100%;
-
-    }
-    table
-    {
-        width:100%;
-        table-layout:fixed;  /*该属性决定了colspan是否有效 */
-    }
-
-    table tr
-    {
-        height : 25px;
-        border-color: Gray;
-    }
-    table tr td
-    {
-        font-family:Arial;
-        font-size:12pt;
-        color:Black;
-        text-align:center;
     }
     #groupOne {
         position:relative;
@@ -69,12 +50,15 @@
 
     #groupOne .headDiv .headTable td {
         color: White;
-        text-align:center;
+    }
+    
+    #groupOne .bottomDiv .headTable td {
+        color: White;
     }
 
     #groupOne .contentDiv {
         position:relative;
-        background:whitesmoke;
+        background:#F0CEB5;
         height : 85%;
     }
 

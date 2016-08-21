@@ -10,16 +10,20 @@
 		recordCount : 0,     // 记录条数
 		width : 720,
 		clientPix : 25,
-		intervalCycle : 1000*10,    // 每隔3秒执行一次
+		intervalCycle : 1000*10,    // 每隔10秒执行一次
 		timeCycle : 1000*60*9,     // 每隔9分钟执行一次
 		adTime : 10000,  //广告停留时间
 		addCount : 160,//记录增加翻页数量
 		currentNum : 1,//上下滚屏次数
+		maxTodayIssueNum : 78,    //该彩种一天一共多少期
 		isFinish : true,//判断滚屏状态
 		////////////////////
 		getLastRecordIntervalId : 0,
-		getLastRecordTimeId : 0
+		getLastRecordTimeId : 0,
 		////////////////////
+		ss : 0,
+    	mm : 10
+    	
 	};
 	//用来存放今日出现次数和遗漏值
 	var missValues,todayTimes;
@@ -53,8 +57,10 @@
 					var tr = insertBeforeLastTr($('#dataTable tr:first'));
 					insertNumTd(tr,data);
 				});
-				$('#dataTable').css('marginTop',-paramObj.clientPix*paramObj.addCount+($('.contentDiv').height() - paramObj.clientPix*paramObj.recordCount));
+				$('#dataTable').css('marginTop',-paramObj.clientPix*paramObj.addCount+($('.contentDiv').height() - paramObj.clientPix*paramObj.recordCount)-1);
 				//更新今日出现次数
+				
+				updateBlankIssue(lastIssueId);
 				todayTimes = data.todayTimes;
 				updateTodayTimes(data.todayTimes);
 				//更新当前遗漏值
@@ -62,7 +68,8 @@
 				updateCurrentMiss(data.missTimes);
 				createIntervalFunc("getLastData('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
 				// setInterval("getLastData()",paramObj.intervalTime);//3秒一次执行
-
+				  timer();
+	              setInterval("timer()",1000);//1秒一次执行
 			}
 		});
 		function div(exp1, exp2)
@@ -94,6 +101,22 @@
 		
 	}
 
+	function updateBlankIssue(lastIssueNumber){
+		var tds =  $("#bottomTable tr").eq(0).find("td");
+		var nextIssueNumber = lastIssueNumber.toString().substring(7,9)*1+1;
+		$.each(tds,function(i,td){
+			if(i == 0){
+//				$(td).css('background-color','#CCE5A3');
+				$(td).css('color' ,'black');
+				$(td).html(nextIssueNumber%100);
+			}
+			if(i == 22){
+				return true;
+			}
+			$(td).css('background-color','#EEEEEC');
+		});
+	}
+	
 	function updateTodayTimes(todayTimes){
 		var winNumTodayTimes =  $("#bottomTable tr").eq(1).find("td");
 		$.each(winNumTodayTimes,function(i,td){
@@ -146,16 +169,22 @@
 						clearInterval(paramObj.getLastRecordIntervalId);
 					}
 					//重启一个新的任务
-					createTimeFunction(lastDataUrl,provinceDm);
+					//当每天到最后一期后，则不在重新创建心的任务，等明天开机再一次正常进行
 					var record = data.record;
-					lastIssueId = record.issueId*1;
+					lastIssueId = record.issueNumber*1;
+					if(record.issueNumber.substring(7,9) != paramObj.maxTodayIssueNum){
+						createTimeFunction(lastDataUrl,provinceDm);
+					}
 					var tr = insertTr($('#dataTable').get(0));
 					insertNumTd(tr,record);
 					$('#dataTable tr:first').remove();
 					todayTimes = data.todayTimes;
 					missValues = data.missTimes;
+					updateBlankIssue(lastIssueId);
 					updateTodayTimes(todayTimes);
 					updateCurrentMiss(missValues);
+					paramObj.mm = 10;
+	           		paramObj.ss = 0;
 				}
 			}
 		});
@@ -168,7 +197,7 @@
 	function insertNumTd(trObj,data){
 		printIssueNum(trObj,data.issueNumber);
 		printLuckyNum(trObj,data);
-		// printLuckyDist(trObj,data);
+	    printLuckyDist(trObj,data);
 		printBigEven(trObj,data);
 	}
 	/*
@@ -209,50 +238,38 @@
 	 打印开奖号码
 	 */
 	function printLuckyNum(trObj,data){
-		var imgSrc,lineColor;
 		var td = document.createElement("td");
 		td.colSpan = 2;
 		if(data.issueId%5 == 0){
-			td.className = "statisticsBlackLine";
-		}else{
-			td.className = "statistics";
+			$(td).addClass('blackLine');
 		}
-		imgSrc = 'img/darkblue/';
 		td.innerHTML=addZero(data.no1);
 		trObj.appendChild(td);
 		var td = document.createElement("td");
 		td.colSpan = 2;
 		if(data.issueId%5 == 0){
-			td.className = "statisticsBlackLine";
-		}else{
-			td.className = "statistics";
+			$(td).addClass('blackLine');
 		}
 		td.innerHTML=addZero(data.no2);
 		trObj.appendChild(td);
 		var td = document.createElement("td");
 		td.colSpan = 2;
 		if(data.issueId%5 == 0){
-			td.className = "statisticsBlackLine";
-		}else{
-			td.className = "statistics";
+			$(td).addClass('blackLine');
 		}
 		td.innerHTML=addZero(data.no3);
 		trObj.appendChild(td);
 		var td = document.createElement("td");
 		td.colSpan = 2;
 		if(data.issueId%5 == 0){
-			td.className = "statisticsBlackLine";
-		}else{
-			td.className = "statistics";
+			$(td).addClass('blackLine');
 		}
 		td.innerHTML=addZero(data.no4);
 		trObj.appendChild(td);
 		var td = document.createElement("td");
 		td.colSpan = 2;
 		if(data.issueId%5 == 0){
-			td.className = "statisticsBlackLine";
-		}else{
-			td.className = "statistics";
+			$(td).addClass('blackLine');
 		}
 		td.innerHTML=addZero(data.no5);
 		trObj.appendChild(td);
@@ -281,38 +298,28 @@
 			trObj.appendChild(td);
 			td.colSpan = 2;
 			if(i < 6){
-				if(data.issueId%5 == 0){
-					td.className = "tdOddBlackLine";
-				}else{
-					td.className = "tdOddCls";
+				if(data.issueNumber%2 == 0){
+					$(td).addClass('tdOddCls');
 				}
 			}else if(i < 11){
-				if(data.issueId%5 == 0){
-					td.className = "tdEvenBlackLine";
-				}else{
-					td.className = "tdEven";
+				if(data.issueNumber%2 == 0){
+					$(td).addClass('tdEvenCls');
 				}
 			}else if(i < 16){
-				if(data.issueId%5 == 0){
-					td.className = "tdOddBlackLine";
-				}else{
-					td.className = "tdOddCls";
+				if(data.issueNumber%2 == 0){
+					$(td).addClass('tdOddCls');
 				}
 			}else{
-				if(data.issueId%5 == 0){
-					td.className = "tdEvenBlackLine";
-				}else{
-					td.className = "tdEven";
+				if(data.issueNumber%2 == 0){
+					$(td).addClass('tdEvenCls');
 				}
 			}
 
-			if(isInArr(tempArr,i)){
-				if(data.no1 == i){
-					imgSrc = 'img/darkred/';
-					td.innerHTML = '<img src="'+ imgSrc +i+'.png"  width="23px" height="23px" />';
+			if(isInArr(tempArr,i)&&i <= 18 ){
+				if(data.no1 == i ){
+					td.innerHTML='<img src="img/fivein20/red/' +i+'.png"   width="'+(paramObj.clientPix*1-1)+'" height="'+(paramObj.clientPix*1-1)+'" />';
 				}else{
-					imgSrc = 'img/darkblue/';
-					td.innerHTML = '<img src="'+ imgSrc +i+'.png"  width="23px" height="23px" />';
+					 td.innerHTML='<img src="img/fivein20/black/' +i+'.png"   width="'+(paramObj.clientPix*1-1)+'" height="'+(paramObj.clientPix*1-1)+'" />';
 				}
 			}else{
 				td.innerHTML = '';
@@ -579,7 +586,24 @@
 		trObj.appendChild(td);
 	}
 
-
+  	//倒计时方法
+   	function timer(){
+   		if(paramObj.ss == 0){
+   			paramObj.mm--;
+   			paramObj.ss = 59;
+   		}else{
+   			paramObj.ss--;
+   		}
+   		if(paramObj.mm >= 0){
+	   		if(paramObj.ss < 10){
+	   			$("#countDown").html("开奖时间:" + "0" + paramObj.mm + ":" + "0" + paramObj.ss);
+	   		}else{
+	   			$("#countDown").html("开奖时间:" + "0" + paramObj.mm + ":" + paramObj.ss);
+	   		}
+   		}else{
+   			$("#countDown").html("开奖中...");
+   		}
+   	}
 
 
 	/* ***********************定时任务设置区域*********************************** */
