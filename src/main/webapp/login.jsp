@@ -3,11 +3,19 @@
 <head>
     <link href="bootstrap3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/login/baseLayout.css" rel="stylesheet">
+	<script type="text/javascript"> 
+		var u = navigator.userAgent;
+		debugger;
+		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端 
+		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端 
+		alert('是否是Android：'+isAndroid); 
+		alert('是否是iOS：'+isiOS); 
+		</script>
 </head>
+
 
 <body >
    	<div id="Header" align="left" >
-   		<font size="12px" style="margin:30 30 30 30">辽宁彩乐宝科技有限公司</font>
     </div>
     <div id="Content" align = "center" >
     <form action="<%=request.getContextPath() %>/login.login" method="post" class="form-horizontal">
@@ -52,7 +60,6 @@
     	</form>
     </div>
     <div id = "Footer"  align = "left">
-    		<font size="12px" style="margin:30 30 30 30" >诚招代理 TEL:18740027660
     </div>
 </div>
 </form>

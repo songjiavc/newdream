@@ -30,7 +30,7 @@ public class GlobalCacheServiceImpl implements GlobalCacheService{
     	   put("220000",new String[]{"T_JILIN_KUAI3_NUMBER","T_JILIN_KUAI3_MISSANALYSIS"});
     	   put("230000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
     	   put("310000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
-    	   put("320000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
+    	   put("320000",new String[]{"T_JS_KUAI3_NUMBER","T_JS_KUAI3_MISSANALYSIS"});
     	   put("330000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
     	   put("340000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
     	   put("350000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
@@ -39,7 +39,7 @@ public class GlobalCacheServiceImpl implements GlobalCacheService{
     	   put("410000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
     	   put("420000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
     	   put("430000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
-    	   put("440000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
+    	   put("440000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"}); 
     	   put("450000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
     	   put("460000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
     	   put("500000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});

@@ -11,9 +11,9 @@
 	
 	///////////////////////////////////////////
 	function initLayoutHeight(windowHeight){
-		$('#Header').height(paramObj.clientPix*4);
-		$('#Footer').height(paramObj.clientPix*6);
-		$('#Content').height(window.screen.height-paramObj.clientPix*10);
+		$('#Header').height(paramObj.clientPix*2);
+		$('#Content').height(window.screen.height-paramObj.clientPix*8);
+		$('#Footer').height(window.screen.height - $('#Content').height() - $('#Header').height());
 		
 	}
 
@@ -173,7 +173,7 @@
 */
 	function printIssueNum(trObj,data){
 		var td = document.createElement("td");
-		td.style = "background:#FEE7EF;font-size:18pt;";
+		td.style = "background:#FEE7EF;color:black;font-size:18pt;";
 		td.innerHTML = data.numArray[0].toString().substring(7,9);
 		trObj.appendChild(td);
 		td.colSpan = '1';
@@ -186,7 +186,7 @@
 		for(var i = 0;i < luckyNumArr.length-1;i++){
 			var td = document.createElement("td");
 			td.colSpan=1;
-			td.style = "font-size:20pt;";
+			td.style = "font-size:20pt;color:black;";
 			td.innerHTML=luckyNumArr[i];
 			trObj.appendChild(td);
 		}
