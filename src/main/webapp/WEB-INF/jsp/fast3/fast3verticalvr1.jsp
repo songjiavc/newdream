@@ -28,7 +28,6 @@
         <link rel="stylesheet" type="text/css" href="css/fast3/baseLayout.css">
     </head>
 	<script type="text/javascript">
-		
 		$(function (){        //初始化内容
 	    	initData('<%=lastDataUrl%>','<%=provinceDm%>');
 	    });
@@ -36,9 +35,6 @@
 	<body style="margin: 0 auto; padding: 0px;">
 	    <div id="Container">
 	        <div id="Header">
-	        	<div id="logo">
-	        		<img src="img/fast3/head2.png" style="height:100%;width: 100%;"/>
-	        	</div>
 	        	<div id= "tableHead">
 	        		<div id="baseTableHead">
 	        			<div id="headOne">
@@ -203,13 +199,13 @@
 	        			<thead style="color:white;" >
 	        					<td >所有号码</td><td>三不同</td><td>二同</td><td>三同</td><td>组合</td><td>四码复式</td>
 	        			</thead>
-	        			<tr bgcolor = "#FEE7EF" style="color : #A2063D;font-size:20pt;">
+	        			<tr bgcolor = "#FEE7EF" style="color : #A2063D;font-size:18pt;">
 	        				<td ></td><td></td><td></td><td></td><td></td><td></td>
 	        			</tr>
-	        			<tr bgcolor = "#FEE7EF" style="color : #A2063D;font-size:20pt;">
+	        			<tr bgcolor = "#FEE7EF" style="color : #A2063D;font-size:18pt;">
 	        				<td ></td><td></td><td></td><td></td><td></td><td></td>
 	        			</tr>
-	        			<tr bgcolor = "#FEE7EF" style="color : #A2063D;font-size:20pt;">
+	        			<tr bgcolor = "#FEE7EF" style="color : #A2063D;font-size:18pt;">
 	        				<td></td><td></td><td></td><td></td><td></td><td></td>
 	        			</tr>
 	        		</table>

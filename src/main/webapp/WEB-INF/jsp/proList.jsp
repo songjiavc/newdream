@@ -77,7 +77,6 @@
     
 </head>
 <body >
-	<%--background-image:url(<%=request.getContextPath() %>/img/login/zixitongditu.png) --%>
 	<div id="context">
 		 <div class="menuDivT" onclick="location.href='<%=request.getContextPath() %>/ln5In11VerticalController/ln5in11vertical.do' ">
 	        <div class="menuDivTa">体彩11选5</div>
