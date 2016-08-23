@@ -3,5 +3,6 @@
 .project
 .settings/
 echart_terminal.log
+*.log*
 target/
 .gitignore
