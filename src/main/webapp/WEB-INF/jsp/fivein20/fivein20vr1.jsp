@@ -21,7 +21,7 @@
         <script type="text/javascript" src="js/fivein20/fivein20vr1.js"></script> 
         <link rel="stylesheet" type="text/css" href="css/fivein20/baseLayout.css">
         <link rel="stylesheet" type="text/css" href="css/fivein20/styles.css">
-         <link rel="stylesheet" type="text/css" href="css/graph.css    ">
+         <link rel="stylesheet" type="text/css" href="css/graph.css">
     </head>
 	<script type="text/javascript">
 		
@@ -83,7 +83,7 @@
                 <table id="bottomTable"  class = 'headTable' cellpadding="0px" cellspacing="0px" rules="all">
                     <tr >
                        <td colspan="3"  align="center"></td>
-                       <td id = "countDown" style="color:black;" colspan="10" width = "119px"  align="center"></td>
+                       <td id = "countDown" style="color:black;" colspan="10"  align="center"></td>
                        <td colspan="2"  align="center" ></td>
                        <td colspan="2"  align="center" ></td>
                        <td colspan="2"  align="center" ></td>

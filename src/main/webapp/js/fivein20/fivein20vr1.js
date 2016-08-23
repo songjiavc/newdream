@@ -315,7 +315,7 @@
 				}
 			}
 
-			if(isInArr(tempArr,i)&&i <= 18 ){
+			if(isInArr(tempArr,i)&&i <= 20 ){
 				if(data.no1 == i ){
 					td.innerHTML='<img src="img/fivein20/red/' +i+'.png"   width="'+(paramObj.clientPix*1-1)+'" height="'+(paramObj.clientPix*1-1)+'" />';
 				}else{
