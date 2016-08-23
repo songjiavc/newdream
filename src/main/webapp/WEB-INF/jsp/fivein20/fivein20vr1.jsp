@@ -35,8 +35,26 @@
         <div id="groupTwo">
         	<!--    所有的遗漏统计表格将在这里展示 -->
         	<div id = "type2" class="typeGroup" >
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:18pt;" >当前期号：</div>
-        		<table id="type2Table" class="missTable">
+        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+        			<tr class="tdOddCls" >
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls" >
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
         			<tr class="tdOddCls">
         				<td></td><td></td><td></td><td></td><td></td><td></td>
         			</tr>
@@ -52,8 +70,26 @@
         		</table>
         	</div>
         	<div id = "type2or3" class="typeGroup">
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:18pt;" >当前期号：</div>
-        		<table id="type2Table" class="missTable">
+        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+        			<tr class="tdOddCls" >
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
         			<tr class="tdOddCls">
         				<td></td><td></td><td></td><td></td><td></td><td></td>
         			</tr>
@@ -69,8 +105,26 @@
         		</table>
         	</div>
         	<div id = "type2or4" class="typeGroup">
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:18pt;" >当前期号：</div>
-        		<table id="type2Table" class="missTable">
+        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+        			<tr class="tdOddCls" >
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
         			<tr class="tdOddCls">
         				<td></td><td></td><td></td><td></td><td></td><td></td>
         			</tr>
@@ -86,8 +140,26 @@
         		</table>
         	</div>
         	<div id = "type2or5" class="typeGroup" >
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:18pt;" >当前期号：</div>
-        		<table id="type2Table" class="missTable">
+        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+        			<tr class="tdOddCls" >
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls" >
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
         			<tr class="tdOddCls">
         				<td></td><td></td><td></td><td></td><td></td><td></td>
         			</tr>
@@ -103,8 +175,26 @@
         		</table>
         	</div>
         	<div id = "type3" class="typeGroup">
-        	    <div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:18pt;" >当前期号：</div>
-        		<table id="type2Table" class="missTable">
+        	    <div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+        			<tr class="tdOddCls" >
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls" >
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
         			<tr class="tdOddCls">
         				<td></td><td></td><td></td><td></td><td></td><td></td>
         			</tr>
@@ -120,8 +210,26 @@
         		</table>
         	</div>
         	<div id = "type3or4" class="typeGroup">
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:18pt;" >当前期号：</div>
-        		<table id="type2Table" class="missTable">
+        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+        			<tr class="tdOddCls" >
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls" >
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
         			<tr class="tdOddCls">
         				<td></td><td></td><td></td><td></td><td></td><td></td>
         			</tr>
@@ -137,8 +245,26 @@
         		</table>
         	</div>
         	<div id = "type3or5" class="typeGroup">
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:18pt;" >当前期号：</div>
-        		<table id="type2Table" class="missTable">
+        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+        			<tr class="tdOddCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls" >
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			</tr>
         			<tr class="tdOddCls">
         				<td></td><td></td><td></td><td></td><td></td><td></td>
         			</tr>
@@ -154,19 +280,37 @@
         		</table>
         	</div>
         	<div id = "type3or6" class="typeGroup">
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:18pt;" >当前期号：</div>
-        		<table width = "100%" height="100%" style="background: yellow;position: relative;">
-	        		<tr class="tdOddCls" class="missTable">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<table border="1" class="missTable" cellpadding="0" cellspacing="0" >
+	        		<tr class="tdOddCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         			<tr class="tdEvenCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         			<tr class="tdEvenCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdOddCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdEvenCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
         	</div>
