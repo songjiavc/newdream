@@ -179,9 +179,12 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
     	}
     }
 	@Override
-	public List<FiveIn20Analysis> getTopNMiss(int n, Map<String, String> paramMap) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<FiveIn20Analysis> getTopNMiss(Map<String, String> paramMap) {
+		String pcode = paramMap.get("provinceCode");
+		String issueNumber = paramMap.get("issueNumber");
+		paramMap.put("mainTable", globalCacheService.getCacheMap(pcode)[1]);
+		paramMap.put("issueNumber", issueNumber);
+		return fiveIn20TMapper.getMissAnalysis(paramMap);
 	}
     
 }

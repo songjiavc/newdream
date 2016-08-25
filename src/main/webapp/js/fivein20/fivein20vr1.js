@@ -10,9 +10,13 @@
 		recordCount : 0,     // 记录条数
 		width : 720,
 		clientPix : 25,
+		
+		//获取数据的时间函数参数
 		intervalCycle : 1000*10,    // 每隔10秒执行一次
 		timeCycle : 1000*60*9,     // 每隔9分钟执行一次
-		adTime : 10000,  //广告停留时间
+		//获取遗漏的时间参数
+		missTimeCycle : 1000*60*3,
+		//
 		addCount : 160,//记录增加翻页数量
 		currentNum : 1,//上下滚屏次数
 		maxTodayIssueNum : 78,    //该彩种一天一共多少期
@@ -20,15 +24,21 @@
 		////////////////////
 		getLastRecordIntervalId : 0,
 		getLastRecordTimeId : 0,
+		//用于获取遗漏数据时间周期
+		getMissValuesTimeId : 0,
+		getMissValuesIntervalId : 0,
+		showMissDivTimeId : 0,
 		////////////////////
 		ss : 0,
     	mm : 10
+    	//循环展示遗漏div使用
+    	
     	
 	};
 	//用来存放今日出现次数和遗漏值
 	var missValues,todayTimes;
 	var lastIssueId;
-
+	var missDivs,i = 0;
 	/*
 	 add by songj
 	 since 2014-10-22 16:21
@@ -59,17 +69,18 @@
 				});
 				$('#dataTable').css('marginTop',-paramObj.clientPix*paramObj.addCount+($('.contentDiv').height() - paramObj.clientPix*paramObj.recordCount)-1);
 				//更新今日出现次数
-				
 				updateBlankIssue(lastIssueId);
 				todayTimes = data.todayTimes;
 				updateTodayTimes(data.todayTimes);
 				//更新当前遗漏值
 				missValues = data.missTimes;
 				updateCurrentMiss(data.missTimes);
+				//初始化获取新数据
 				createIntervalFunc("getLastData('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
-				// setInterval("getLastData()",paramObj.intervalTime);//3秒一次执行
-				  timer();
-	              setInterval("timer()",1000);//1秒一次执行
+				//初始化获取遗漏统计数据
+				createMissIntervalFunc("getLastMissValues('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
+				timer();
+	            setInterval("timer()",1000);//1秒一次执行
 			}
 		});
 		function div(exp1, exp2)
@@ -137,7 +148,23 @@
 		});
 	}
 
-
+	function updateMissLayout(missValues){
+		//获取div下面所有table
+		var tds = $('#groupTwo td');
+		var temp = 0;
+		$.each(tds,function(i,td){
+			temp = i + 1;
+			if(temp%3 == 1){
+				$(td).html(translateGroup(missValues[parseInt(i/3)].groupNumber));
+			}else if(temp%3 == 2){
+				$(td).html(missValues[parseInt(i/3)].currentMiss);
+			}else{
+				$(td).html(missValues[parseInt(i/3)].maxMiss);
+			}
+		});
+		//获取table下所有td
+		
+	}
 
 	/*
 	 add by songj
@@ -167,11 +194,13 @@
 					if(paramObj.getLastRecordIntervalId != 0){
 						clearInterval(paramObj.getLastRecordIntervalId);
 					}
+					//清楚完毕
 					//重启一个新的任务
 					//当每天到最后一期后，则不在重新创建心的任务，等明天开机再一次正常进行
 					var record = data.record;
 					lastIssueId = record.issueNumber*1;
 					if(record.issueNumber.substring(7,9) != paramObj.maxTodayIssueNum){
+						createTimeFunction(lastDataUrl,provinceDm);
 						createTimeFunction(lastDataUrl,provinceDm);
 					}
 					var tr = insertTr($('#dataTable').get(0));
@@ -184,6 +213,109 @@
 					updateCurrentMiss(missValues);
 					paramObj.mm = 10;
 	           		paramObj.ss = 0;
+				}
+			}
+		});
+	}
+	
+	
+	function translateGroup(groupNumber){
+		var rtn;
+		for(var i = 0;i < groupNumber.length;i++){
+			var char = groupNumber.charAt(i);
+			if(i == 0){
+				rtn = translate(char);
+			}else{
+				if(char < '10'){
+					rtn = rtn + ',' + char;
+				}else{
+					rtn = rtn + ',' + translate(char);
+				}
+			}
+		}
+		return rtn;
+		function translate(char){
+			switch(char)
+			{
+			case 'A':
+				return '10';
+				break;
+			case 'B':
+				return '11';
+				break;
+			case 'C':
+			  return '12';
+			  break;
+			case 'D':
+				  return '13';
+				  break;
+			case 'E':
+				  return '14';
+				  break;
+			case 'F':
+				  return '15';
+				  break;
+			case 'G':
+				  return '16';
+				  break;
+			case 'H':
+				  return '17';
+				  break;
+			case 'I':
+				  return '18';
+				  break;
+			case 'J':
+				  return '19';
+				  break;
+			case 'K':
+				  return '20';
+				  break;
+			default:
+			  return char;
+			}
+		}
+	}
+	
+	/**
+	 * 
+	 * @param trObj
+	 * @param data
+	 * @returns
+	 */
+	
+	/*
+	 add by songj
+	 since 2014-10-22 16:23
+	 desc 按照时间间隔后台读取最新数据
+	 */
+	function getLastMissValues(lastDataUrl,provinceDm){
+		var url=lastDataUrl+"getLastMissValues.do";
+		$.ajax({
+			type:"post",
+			url: url,
+			dataType:'JSON',
+			async:false,
+			data : {
+				lastIssueId : lastIssueId,
+				provinceDm : provinceDm
+			},
+			success: function(data) {
+				////////////////////////////////////////
+				if(!$.isEmptyObject(data)){
+					//清除time函数并重新创建
+					if(paramObj.getMissValuesTimeId != 0){
+						clearTimeout(paramObj.getMissValuesTimeId);
+					}
+					if(paramObj.getMissValuesIntervalId != 0){
+						clearInterval(paramObj.getMissValuesIntervalId);
+					}
+					//更新遗漏统计表数据
+					updateMissLayout(data);
+					//将遗漏层展示出来
+					$('#groupTwo').css('display','inline');
+					//循环显示遗漏内容
+					missDivs = $('.typeGroup');
+					showMissDiv(missDivs[0]);
 				}
 			}
 		});
@@ -605,6 +737,22 @@
    	}
 
 
+   	//循环显示遗漏div方法
+   	function showMissDiv(div){
+   		if(!$.isEmptyObject(paramObj.showMissDivTimeId)){
+			clearTimeout(paramObj.showMissDivTimeId);
+		}
+   		if($.isEmptyObject(div)){
+			i=0;
+			$(missDivs).css('display','none');
+			$('#groupTwo').css('display','none');
+			return false;
+		}
+   		$(div).css('display','inline');
+   		i++;
+   		paramObj.showMissDivTimeId = setTimeout('showMissDiv(missDivs[i])',15000);
+   	}
+   	
 	/* ***********************定时任务设置区域*********************************** */
 	//设置time方法 用于间隔调用获取最新数据周期函数
 
@@ -612,7 +760,18 @@
 		var func = "createIntervalFunc('getLastData(\""+lastDataUrl+"\",\""+provinceDm+"\")','"+paramObj.intervalCycle+"')";
 		paramObj.getLastRecordTimeId = setTimeout(func,paramObj.timeCycle);
 	}
-
 	function createIntervalFunc(func,time){
 		paramObj.getLastRecordIntervalId = setInterval(func,time);
 	}
+	
+	function createMissValuesTimeFunction(lastDataUrl,provinceDm){
+		var func = "createMissIntervalFunc('getLastMissValues(\""+lastDataUrl+"\",\""+provinceDm+"\")','"+paramObj.intervalCycle+"')";
+		paramObj.getMissValuesTimeId = setTimeout(func,paramObj.missTimeCycle);
+	}
+	function createMissIntervalFunc(func,time){
+		paramObj.getMissValuesIntervalId = setInterval(func,time);
+	}
+
+	
+	
+	

@@ -19,6 +19,7 @@
         height : 33.3%;
         width : 720px;
         opacity: 1;
+        display : none;
         cursor: hand;
         z-index: 2;
     }
@@ -27,9 +28,9 @@
         background : #EBEBEB;
         height : 100%;
         width : 100%;
+        display : none;
         opacity: 1;
         cursor: hand;
-        z-index: 2;
     }
     
     

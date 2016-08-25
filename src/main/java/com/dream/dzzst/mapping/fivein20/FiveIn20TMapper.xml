@@ -12,7 +12,7 @@
 	<!-- 用来返回分析统计结果使用 -->
 	<resultMap id="resultAnalysis" type="com.dream.dzzst.model.fivein20.FiveIn20Analysis">
 		<result column="ISSUE_NUMBER" property="issueNumber" jdbcType="VARCHAR" />
-		<result column="GROUP_NUMBER" property="groupNumber" jdbcType="INTEGER" />
+		<result column="GROUP_NUMBER" property="groupNumber" jdbcType="VARCHAR" />
 		<result column="CURRENT_MISS" property="currentMiss" jdbcType="INTEGER" />
 		<result column="MAX_MISS" property="maxMiss" jdbcType="INTEGER" />
 		<result column="TYPE" property="type" jdbcType="INTEGER" />
@@ -77,8 +77,9 @@
             ${mainTable} main
         <where>  
            <if test="issueNumber != '' ">
-        		AND ISSUE_NUMBER > #{issueNumber}
-		   </if>  
+        		AND ISSUE_NUMBER = #{issueNumber}
+		   </if>
+		   AND TYPE IN ('2','3','17','18','19','22','23','24')
         </where>
         ORDER BY 
         	`TYPE`,CURRENT_MISS DESC

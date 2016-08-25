@@ -12,7 +12,7 @@ public class FiveIn20Analysis implements Comparable<FiveIn20Analysis> {
 
 	private String issueNumber;
 	
-	private int groupNumber;
+	private String groupNumber;
 	 
 	private Integer currentMiss;
 	
@@ -28,11 +28,11 @@ public class FiveIn20Analysis implements Comparable<FiveIn20Analysis> {
 		this.issueNumber = issueNumber;
 	}
 
-	public int getGroupNumber() {
+	public String getGroupNumber() {
 		return groupNumber;
 	}
 
-	public void setGroupNum(int groupNumber) {
+	public void setGroupNumber(String groupNumber) {
 		this.groupNumber = groupNumber;
 	}
 

@@ -3,14 +3,6 @@
 <head>
     <link href="bootstrap3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/login/baseLayout.css" rel="stylesheet">
-	<script type="text/javascript"> 
-		var u = navigator.userAgent;
-		debugger;
-		var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端 
-		var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端 
-		alert('是否是Android：'+isAndroid); 
-		alert('是否是iOS：'+isiOS); 
-		</script>
 </head>
 
 

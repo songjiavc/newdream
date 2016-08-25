@@ -1,11 +1,11 @@
 package com.dream.dzzst.controller.fivein20;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import com.dream.dzzst.model.fivein20.FiveIn20Analysis;
 import com.dream.dzzst.service.fivein20.FiveIn20Vr1Service;
 
 
@@ -42,6 +42,14 @@ public class FiveIn20Vr1Controller {
 		Map<String,Object> returnMap = fiveIn20Vr1Service.getIntervalContext(lastIssueId,paramMap,provinceDm);
         return returnMap;
 	}
+	@RequestMapping("/getLastMissValues")
+	public @ResponseBody List<FiveIn20Analysis> getLastMissValues(@RequestParam(value="provinceDm",required=true) String provinceDm,@RequestParam(value="lastIssueId",required=true) String lastIssueId) {
+		Map<String,String> paramMap = new HashMap<String,String>();
+		paramMap.put("provinceCode", provinceDm);
+		paramMap.put("issueNumber", lastIssueId);
+        return fiveIn20Vr1Service.getTopNMiss(paramMap);
+	}
+	
 	/**
 	  * 将json数组转化为Double型
 	  * @return

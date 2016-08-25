@@ -35,7 +35,7 @@
         <div id="groupTwo">
         	<!--    所有的遗漏统计表格将在这里展示 -->
         	<div id = "type2" class="typeGroup" >
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任二</div>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<tr class="tdOddCls" >
         				<td></td><td></td><td></td><td></td><td></td><td></td>
@@ -70,7 +70,7 @@
         		</table>
         	</div>
         	<div id = "type2or3" class="typeGroup">
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任三</div>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<tr class="tdOddCls" >
         				<td></td><td></td><td></td><td></td><td></td><td></td>
@@ -105,7 +105,7 @@
         		</table>
         	</div>
         	<div id = "type2or4" class="typeGroup">
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任二三码复式</div>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<tr class="tdOddCls" >
         				<td></td><td></td><td></td><td></td><td></td><td></td>
@@ -140,7 +140,7 @@
         		</table>
         	</div>
         	<div id = "type2or5" class="typeGroup" >
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任二四码复式</div>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<tr class="tdOddCls" >
         				<td></td><td></td><td></td><td></td><td></td><td></td>
@@ -175,7 +175,7 @@
         		</table>
         	</div>
         	<div id = "type3" class="typeGroup">
-        	    <div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任二五码复试</div>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<tr class="tdOddCls" >
         				<td></td><td></td><td></td><td></td><td></td><td></td>
@@ -210,7 +210,7 @@
         		</table>
         	</div>
         	<div id = "type3or4" class="typeGroup">
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任三四码复式</div>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<tr class="tdOddCls" >
         				<td></td><td></td><td></td><td></td><td></td><td></td>
@@ -245,7 +245,7 @@
         		</table>
         	</div>
         	<div id = "type3or5" class="typeGroup">
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任三五码复式</div>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<tr class="tdOddCls">
         				<td></td><td></td><td></td><td></td><td></td><td></td>
@@ -280,7 +280,7 @@
         		</table>
         	</div>
         	<div id = "type3or6" class="typeGroup">
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;;  font-size:14pt;" >当前期号：</div>
+        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任三六码复式</div>
         		<table border="1" class="missTable" cellpadding="0" cellspacing="0" >
 	        		<tr class="tdOddCls">
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
@@ -366,7 +366,7 @@
                 <table id="bottomTable"  class = 'headTable' cellpadding="0px" cellspacing="0px" rules="all">
                     <tr >
                        <td colspan="3"  align="center"></td>
-                       <td id = "countDown" style="color:black;" colspan="10"  align="center"></td>
+                       <td id = "countDown" style="color:black;" width="119px" colspan="10"  align="center"></td>
                        <td colspan="2"  align="center" ></td>
                        <td colspan="2"  align="center" ></td>
                        <td colspan="2"  align="center" ></td>

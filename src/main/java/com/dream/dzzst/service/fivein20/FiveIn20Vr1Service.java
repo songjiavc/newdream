@@ -84,6 +84,6 @@ public interface FiveIn20Vr1Service {
       * @param analysisList
       * @return 
       */
-    public List<FiveIn20Analysis> getTopNMiss(int n, Map<String, String> paramMap);
+    public List<FiveIn20Analysis> getTopNMiss(Map<String, String> paramMap);
 } 
 
