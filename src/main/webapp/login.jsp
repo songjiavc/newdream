@@ -5,8 +5,7 @@
     <link href="css/login/baseLayout.css" rel="stylesheet">
 </head>
 
-
-<body >
+<body onload="myfunction()">
    	<div id="Header" align="left" >
     </div>
     <div id="Content" align = "center" >

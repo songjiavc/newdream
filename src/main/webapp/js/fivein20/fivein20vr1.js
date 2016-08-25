@@ -201,7 +201,7 @@
 					lastIssueId = record.issueNumber*1;
 					if(record.issueNumber.substring(7,9) != paramObj.maxTodayIssueNum){
 						createTimeFunction(lastDataUrl,provinceDm);
-						createTimeFunction(lastDataUrl,provinceDm);
+						createMissValuesTimeFunction(lastDataUrl,provinceDm);
 					}
 					var tr = insertTr($('#dataTable').get(0));
 					insertNumTd(tr,record);
