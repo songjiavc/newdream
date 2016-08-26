@@ -11,422 +11,172 @@
     <head>
         <base href="<%=basePath%>">
         <title>电子走势图</title>
-        <meta name="viewport" content="width=device-width">
         <meta http-equiv="pragma" content="no-cache">
         <meta http-equiv="cache-control" content="no-cache">
         <meta http-equiv="expires" content="0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
         <meta http-equiv="description" content="This is my page">
         <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
         <link rel="stylesheet" type="text/css" href="css/fivein20/DataInputLayout.css">
         <link rel="stylesheet" type="text/css" href="css/fivein20/DataInputStyles.css">
+        <link rel="stylesheet" type="text/css" href="css/graph.css">
     </head>
+    <script>
+    	var dataArr = [];
+    	function cicleClick(obj){
+    		//变色  点击1次是蓝色 两次取消
+    		if(!$(obj).attr('selected')){   //如果为非选中状态
+    			if(dataArr.length == 5){
+    				alert("最多只能选择五个球！");
+    				return false;
+    			}
+    			$(obj).css('background-color','red');
+        		$(obj).attr('selected',true);
+        		dataArr.push(obj.innerHTML);
+        		$(obj).attr('index',dataArr.length);
+        		var jqObj = $(obj).clone(true);
+        		$(jqObj).css('margin','5 5 5 5');
+        		$('#imgSelected').append(jqObj);
+    		}else{
+    			//当是最后一个元素的时候可以删除
+    			if($(obj).attr('index') == dataArr.length){
+    				$(obj).css('background-color','#C1C1C1');
+            		$(obj).attr('selected',false);
+            		$(obj).attr('index',-1);
+            		dataArr.splice(dataArr.length-1,1);
+            		$('#imgSelected div:last').remove();
+    			}
+    			
+    		}
+    		//插入已选列表
+    	}
+    	//清空期号内容
+    	function clearIssueNumber(){
+    		$("#issueNumber").attr("value","");
+    		$("#issueNumber").focus();
+    	}
+    	
+    	function submitDataForm(){
+    		var url="<%=lastDataUrl%>"+"dataInputSubmit.do";
+    		var issueNumber = $("#issueNumber").val();
+    		if($.isEmptyObject(issueNumber)){
+    			alert("补录期号不能为空!");
+    			return false;
+    		}else if(issueNumber.length != 9){
+    			alert("期号位数不对!");
+    			return false;
+    		}else if(dataArr.length < 5){
+    			alert("已选号码要求必须是5个!");
+    			return false;
+    		}else{
+	    		$.ajax({
+	    			type:"post",
+	    			url: url,
+	    			dataType:'JSON',
+	    			async:false,
+	    			data : {
+	    				provinceCode : '<%=provinceDm%>',
+	    				dataArr : JSON.stringify(dataArr),
+	    				issueNumber : issueNumber
+	    			},
+	    			success: function(data) {
+	    				alert(data.message);
+	    				//如果添加成功，刷新下方列表
+	    			}
+	    		});
+    		}
+    	}
+    </script>
 	<body style="margin: 0 auto; padding: 0px;">
-        <div id="groupTwo">
-        	<!--    所有的遗漏统计表格将在这里展示 -->
-        	<div id = "type2" class="typeGroup" >
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任二</div>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        		</table>
+        <div id="dataInput">
+        	<div id="issueDiv">
+        		<div style="padding: 5 5 5 5;float:left;" >期号：
+        	    	<input type="number" id="issueNumber" style="font-size:14pt;width:128px;"  max="20" />例:160825001
+        	    </div>
+        	    <div style="padding: 10 5 5 5;">
+        	    	<input type="button" name="clearIssueNumber" onclick="clearIssueNumber()" value="清除"/>
+        	    </div>
         	</div>
-        	<div id = "type2or3" class="typeGroup">
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任三</div>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        		</table>
+        	<div id="dataSelected">
+        		<div style="width:286px;height:25px;float:left;">
+	        		<div style="padding: 5 5 5 5;float:left;" >已选：</div>
+	        		<div id = "imgSelected" style="padding: 5 5 5 5;float:left;" ></div>
+        		</div>
+        		<div style="padding: 5 5 5 5;width:20%;float:left;">
+        	    	<input type="button" name="submit" onclick="submitDataForm()" value="提交"/>
+        	    </div>
         	</div>
-        	<div id = "type2or4" class="typeGroup">
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任二三码复式</div>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        		</table>
-        	</div>
-        	<div id = "type2or5" class="typeGroup" >
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任二四码复式</div>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        		</table>
-        	</div>
-        	<div id = "type3" class="typeGroup">
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任二五码复试</div>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        		</table>
-        	</div>
-        	<div id = "type3or4" class="typeGroup">
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任三四码复式</div>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        		</table>
-        	</div>
-        	<div id = "type3or5" class="typeGroup">
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任三五码复式</div>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
-        			</tr>
-        		</table>
-        	</div>
-        	<div id = "type3or6" class="typeGroup">
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任三六码复式</div>
-        		<table border="1" class="missTable" cellpadding="0" cellspacing="0" >
-	        		<tr class="tdOddCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdOddCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr  >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        		</table>
+        	<div id="dataSelect">
+        		<div class="imgGroup">
+	        		<div class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)">1</div>
+	        		</div>
+	        		<div class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)">2</div>
+	        		</div>
+	        		<div class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)">3</div>
+	        		</div>
+	        		<div class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)">4</div>
+	        		</div>
+	        		<div class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)">5</div>
+	        		</div>
+	        		<div class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)">6</div>
+	        		</div>
+	        		<div class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)">7</div>
+	        		</div>
+	        		</div>
+	        	<div class="imgGroup">
+	        		<div class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)">8</div>
+	        		</div>
+	        		<div class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)">9</div>
+	        		</div>
+	        		<div class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)" >10</div>
+	        		</div>
+        			<div width="10%" class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)">11</div>
+	        		</div>
+	        		<div width="10%" class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)">12</div>
+	        		</div>
+	        		<div width="10%" class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)">13</div>
+	        		</div>
+	        		<div width="10%" class="baseStyle">
+	        			<div class="circle imgClass"  onclick="cicleClick(this)" >14</div>
+	        		</div>
+	        	</div>
+	        	<div class="imgGroup">
+	        		<div width="10%" class="baseStyle">
+	        			<div class="circle imgClass" onclick="cicleClick(this)">15</div>
+	        		</div>
+	        		<div width="10%" class="baseStyle">
+	        			<div class="circle imgClass" onclick="cicleClick(this)">16</div>
+	        		</div>
+	        		<div width="10%" class="baseStyle">
+	        			<div class="circle imgClass" onclick="cicleClick(this)">17</div>
+	        		</div>
+	        		<div width="10%" class="baseStyle">
+	        			<div class="circle imgClass" onclick="cicleClick(this)">18</div>
+	        		</div>
+	        		<div width="10%" class="baseStyle">
+	        			<div class="circle imgClass" onclick="cicleClick(this)">19</div>
+	        		</div>
+	        		<div width="10%" class="baseStyle">
+	        			<div class="circle imgClass" onclick="cicleClick(this)">20</div>
+	        		</div>
+        		</div>
         	</div>
         </div>
-        <div id="groupOne">
-            <div class = "headDiv">
-                <table class = "headTable" cellpadding="0px" cellspacing="0px" rules="all">
-                    <tr >
-                        <td colspan="3" rowspan=2 align="center">期号</td>
-                        <td colspan="10" align="center">开奖号码</td>
-                        <td colspan="40" align="center">号码分布</td>
-                        <td colspan="6"  align="center">指标</td>
-                    </tr>
-                    <tr>
-                       <td colspan="2"  align="center" >1</td>
-                       <td colspan="2"  align="center" >2</td>
-                       <td colspan="2"  align="center" >3</td>
-                       <td colspan="2"  align="center" >4</td>
-                       <td colspan="2"  align="center" >5</td>
-                       <td colspan="2"  align="center" >1</td>
-                       <td colspan="2"  align="center" >2</td>
-                       <td colspan="2"  align="center" >3</td>
-                       <td colspan="2"  align="center" >4</td>
-                       <td colspan="2"  align="center">5</td>
-                       <td colspan="2"  align="center">6</td>
-                       <td colspan="2"  align="center">7</td>
-                       <td colspan="2"  align="center">8</td>
-                       <td colspan="2"  align="center">9</td>
-                       <td colspan="2"  align="center">10</td>
-                       <td colspan="2"  align="center">11</td>
-                       <td colspan="2"  align="center">12</td>
-                       <td colspan="2"  align="center">13</td>
-                       <td colspan="2"  align="center">14</td>
-                       <td colspan="2"  align="center">15</td>
-                       <td colspan="2"  align="center">16</td>
-                       <td colspan="2"  align="center">17</td>
-                       <td colspan="2"  align="center">18</td>
-                       <td colspan="2"  align="center">19</td>
-                       <td colspan="2"  align="center">20</td>
-                       <td colspan="3"  align="center">五行</td>
-                       <td colspan="3"  align="center">方位</td>
-
-                    </tr>
-                </table>
-
-            </div>
-            <div class = "contentDiv">
-                 <table id = "dataTable" class = 'headTable' cellpadding="0px" cellspacing="0px"  rules="all">
-
-                 </table>
-            </div>
-            <div class = "bottomDiv">
-                <table id="bottomTable"  class = 'headTable' cellpadding="0px" cellspacing="0px" rules="all">
-                    <tr >
-                       <td colspan="3"  align="center"></td>
-                       <td id = "countDown" style="color:black;" width="119px" colspan="10"  align="center"></td>
-                       <td colspan="2"  align="center" ></td>
-                       <td colspan="2"  align="center" ></td>
-                       <td colspan="2"  align="center" ></td>
-                       <td colspan="2"  align="center" ></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="2"  align="center"></td>
-                       <td colspan="6"  rowspan="3" align="center">版本<br>1.0</td>
-                   </tr>
-                   <tr >
-                      <td colspan="13"  align="center">出现次数</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                      <td colspan="2"  align="center" >0</td>
-                  </tr>
-                  <tr class="trHead">
-                        <td colspan="13"  align="center">当前遗漏</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                   </tr>
-                </table>
-            </div>
+        <div id="dataView">
         </div>
 	</body>
 

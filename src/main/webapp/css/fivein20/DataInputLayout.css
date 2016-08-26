@@ -1,0 +1,67 @@
+
+
+    /*body 下第一层布局，所有布局的母布局*/
+    body {
+        background:#2aabd2;
+        height : 100%;
+    }
+    #dataInput {
+        position:relative;
+        background:#f0ceb5;
+        width : 100%;
+        height : 50%;
+    }
+    
+    #dataInput #issueDiv {
+		width : 100%;
+        height : 20%;
+        position : relative;
+    }
+    
+    #dataInput #dataSelected {
+		width : 100%;
+        height : 20%;
+        position : relative;
+    }
+
+	#dataInput #dataSelect {
+		width : 100%;
+        height : 60%;
+        position : relative;
+    }
+    #dataInput #dataSelect #selectNumber{
+    	width : 100%;
+    	float:none;
+    	color:black;
+    }
+    
+    #dataInput #dataSelect .imgGroup{
+    	 width : 100%;
+    	 float:none;
+    	 color:black;
+    	 height : 30%;
+    }
+   
+    #dataInput .baseStyle {
+    	float : left;
+    	padding : 10 10 10 10;
+    }
+    
+    #dataInput .imgClass {
+       	color : white;
+   		text-align:center;
+   		vertical-align : middle;
+   		background:#828282;
+ 		height : 30px;
+ 		float : left;
+ 		width : 30px;
+    }
+    
+    #dataView {
+        position: relative;
+        background : #888a85;
+        height : 50%;
+        width : 100%;
+    }
+    
+    

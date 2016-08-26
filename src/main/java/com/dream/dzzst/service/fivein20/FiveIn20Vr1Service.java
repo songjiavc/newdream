@@ -45,7 +45,7 @@ public interface FiveIn20Vr1Service {
       * @param count
       * @return 
       */
-    public List<FiveIn20Number> getRecordsByNum(Map<String, Object> paramMap);
+    public List<FiveIn20Number> getRecordsByNum(String provinceCode,int count);
     
     /** 
       * @Description: 获取当天数据内容
@@ -85,5 +85,12 @@ public interface FiveIn20Vr1Service {
       * @return 
       */
     public List<FiveIn20Analysis> getTopNMiss(Map<String, String> paramMap);
+    
+    /**将补录数据插入
+     * @param issueNumber
+     * @param dataArr
+     * @return
+     */
+    public Map<String,String> insertDataInput(String provinceCode,String issueNumber,int[] dataArr);
 } 
 

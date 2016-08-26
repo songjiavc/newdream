@@ -35,7 +35,10 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
 	}
 
 	@Override
-	public List<FiveIn20Number> getRecordsByNum(Map<String,Object> paramMap) {
+	public List<FiveIn20Number> getRecordsByNum(String provinceCode,int count) {
+		Map<String,Object> paramMap = new HashMap<String,Object>();
+        paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[0]);
+        paramMap.put("count",count);
 		return fiveIn20TMapper.getRecordsByNum(paramMap);
 	}
 	@Override
@@ -185,6 +188,29 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
 		paramMap.put("mainTable", globalCacheService.getCacheMap(pcode)[1]);
 		paramMap.put("issueNumber", issueNumber);
 		return fiveIn20TMapper.getMissAnalysis(paramMap);
+	}
+	
+	public Map<String,String> insertDataInput(String provinceCode,String issueNumber,int[] dataArr){
+		Map<String,String> rtnParam = new HashMap<String,String>();
+		Map<String,Object> paramMap = new HashMap<String,Object>();
+		paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[2]);
+		paramMap.put("issueNumber", issueNumber);
+		FiveIn20Number fiveIn20Number = fiveIn20TMapper.getRecordByIssueId(paramMap);
+		if(fiveIn20Number == null){
+			FiveIn20Number newObj = new FiveIn20Number();
+			newObj.setIssueNumber(issueNumber);
+			newObj.setNo1(dataArr[0]);
+			newObj.setNo1(dataArr[1]);
+			newObj.setNo1(dataArr[2]);
+			newObj.setNo1(dataArr[3]);
+			newObj.setNo1(dataArr[4]);
+			fiveIn20TMapper.insertDataInput(newObj,globalCacheService.getCacheMap(provinceCode)[2]);
+			rtnParam.put("status", "success");
+		}else{
+			rtnParam.put("status", "failure");
+			rtnParam.put("message", "录入数据失败！");
+		}
+		return rtnParam;
 	}
     
 }

@@ -71,4 +71,6 @@ public interface FiveIn20TMapper {
       * @return 
       */
     List<FiveIn20Analysis> getMissAnalysis(Map<String, String> paramMap);
+    
+    void insertDataInput(FiveIn20Number fiveIn20Number,String mainTable);
 }

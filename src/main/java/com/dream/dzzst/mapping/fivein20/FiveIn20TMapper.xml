@@ -84,4 +84,9 @@
         ORDER BY 
         	`TYPE`,CURRENT_MISS DESC
 	</select>
+	
+	<insert id="insertDataInput" parameterType="com.dream.dzzst.model.fivein20.FiveIn20Number">
+  			insert into ${mainTable}(issue_number,no1,no2,no3,no4,no5,origin,create_time)
+          	values(#issueNumber#, #no1#, #no2#, #no3#,#no4#,#no5#,"2",CURDATE())
+ 	</insert>
 </mapper>
