@@ -2,12 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dream.dzzst.dao.fivein20.FiveIn20TMapper">
 	<resultMap id="resultMap" type="com.dream.dzzst.model.fivein20.FiveIn20Number">
+	
+		<result column="id" property="id" jdbcType="INTEGER" />
 		<result column="issue_number" property="issueNumber" jdbcType="VARCHAR" />
 		<result column="no1" property="no1" jdbcType="INTEGER" />
 		<result column="no2" property="no2" jdbcType="INTEGER" />
 		<result column="no3" property="no3" jdbcType="INTEGER" />
 		<result column="no4" property="no4" jdbcType="INTEGER" />
 		<result column="no5" property="no5" jdbcType="INTEGER" />
+		<result column="origin" property="origin" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
 	</resultMap>
 	<!-- 用来返回分析统计结果使用 -->
 	<resultMap id="resultAnalysis" type="com.dream.dzzst.model.fivein20.FiveIn20Analysis">
@@ -29,7 +33,7 @@
         FROM
             ${mainTable} main
         <where>
-            main.issue_number = #{issueID}
+            main.issue_number = #{issueNumber}
         </where>
          LIMIT 1
 	</select>
@@ -85,8 +89,12 @@
         	`TYPE`,CURRENT_MISS DESC
 	</select>
 	
-	<insert id="insertDataInput" parameterType="com.dream.dzzst.model.fivein20.FiveIn20Number">
+	<insert id="insertDataInput" parameterType="java.util.Map">
   			insert into ${mainTable}(issue_number,no1,no2,no3,no4,no5,origin,create_time)
-          	values(#issueNumber#, #no1#, #no2#, #no3#,#no4#,#no5#,"2",CURDATE())
+          	values(${issueNumber},${no1}, ${no2}, ${no3},${no4},${no5},"2",SYSDATE())
  	</insert>
+ 	
+ 	<delete id="deleteDataInput"  parameterType="java.util.Map">
+ 		delete from ${mainTable} where id = ${id}
+ 	</delete>
 </mapper>

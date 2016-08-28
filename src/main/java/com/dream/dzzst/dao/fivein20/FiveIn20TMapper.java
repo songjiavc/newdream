@@ -1,5 +1,6 @@
 package com.dream.dzzst.dao.fivein20;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +45,8 @@ public interface FiveIn20TMapper {
       */
     List<FiveIn20Number> getRecordsByNum(Map<String, Object> paramMap);
     
+    List<FiveIn20Number>  getRecordsByNumOrderById(Map<String, Object> paramMap);
+    
     /** 
       * @Description: 获取表中全部记录
       * @author songjia
@@ -72,5 +75,13 @@ public interface FiveIn20TMapper {
       */
     List<FiveIn20Analysis> getMissAnalysis(Map<String, String> paramMap);
     
-    void insertDataInput(FiveIn20Number fiveIn20Number,String mainTable);
+    /**补录数据插入
+     * @param paramMap
+     */
+    void insertDataInput(Map<String,Object> paramMap);
+    
+    /**补录数据插入
+     * @param paramMap
+     */
+    void deleteDataInput(Map<String,Object> paramMap) throws SQLException;
 }

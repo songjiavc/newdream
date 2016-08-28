@@ -18,12 +18,9 @@
         <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
         <meta http-equiv="description" content="This is my page">
          <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
-         <script type="text/javascript" src="js/echartUtil.js"></script>
-         <script type="text/javascript" src="js/fivein20/control.js"></script>
         <script type="text/javascript" src="js/fivein20/fivein20vr1.js"></script> 
         <link rel="stylesheet" type="text/css" href="css/fivein20/baseLayout.css">
-        <link rel="stylesheet" type="text/css" href="css/util/chartControl.css">
-        <link rel="stylesheet" type="text/css" href="css/fivein20/vr1styles.css">
+        <link rel="stylesheet" type="text/css" href="css/fivein20/styles.css">
          <link rel="stylesheet" type="text/css" href="css/graph.css">
     </head>
 	<script type="text/javascript">
@@ -360,7 +357,7 @@
                 </table>
 
             </div>
-            <div id="Content">
+            <div class = "contentDiv">
                  <table id = "dataTable" class = 'headTable' cellpadding="0px" cellspacing="0px"  rules="all">
 
                  </table>

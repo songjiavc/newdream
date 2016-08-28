@@ -6,6 +6,8 @@ package com.dream.dzzst.model.fivein20;
   */
 public class FiveIn20Number {
 
+	private int id;
+	
 	private String issueNumber;
 	
 	private int no1;
@@ -17,6 +19,10 @@ public class FiveIn20Number {
 	private int no4;
 
 	private int no5;
+	
+	private String origin;
+	
+	private String createTime;
 
 	public String getIssueNumber() {
 		return issueNumber;
@@ -65,4 +71,30 @@ public class FiveIn20Number {
 	public void setNo5(int no5) {
 		this.no5 = no5;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getOrigin() {
+		return origin;
+	}
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setOrigin(String origin) {
+		this.origin = origin;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+	
+	
 }

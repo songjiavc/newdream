@@ -1,6 +1,7 @@
 package com.dream.dzzst.service.fivein20.impl;
 
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,10 +38,19 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
 	@Override
 	public List<FiveIn20Number> getRecordsByNum(String provinceCode,int count) {
 		Map<String,Object> paramMap = new HashMap<String,Object>();
-        paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[0]);
+        paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[3]);
         paramMap.put("count",count);
 		return fiveIn20TMapper.getRecordsByNum(paramMap);
 	}
+	
+	@Override
+	public List<FiveIn20Number> getRecordsByNumOrderById(String provinceCode,int count) {
+		Map<String,Object> paramMap = new HashMap<String,Object>();
+        paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[2]);
+        paramMap.put("count",count);
+		return fiveIn20TMapper.getRecordsByNumOrderById(paramMap);
+	}
+	
 	@Override
 	public List<FiveIn20Number> getTodayDatas(Map<String,Object> paramMap) {
 		return fiveIn20TMapper.getTodayDatas(paramMap);
@@ -190,27 +200,42 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
 		return fiveIn20TMapper.getMissAnalysis(paramMap);
 	}
 	
-	public Map<String,String> insertDataInput(String provinceCode,String issueNumber,int[] dataArr){
-		Map<String,String> rtnParam = new HashMap<String,String>();
+	public Map<String,Object> insertDataInput(String provinceCode,String issueNumber,int[] dataArr){
+		Map<String,Object> rtnParam = new HashMap<String,Object>();
 		Map<String,Object> paramMap = new HashMap<String,Object>();
 		paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[2]);
 		paramMap.put("issueNumber", issueNumber);
 		FiveIn20Number fiveIn20Number = fiveIn20TMapper.getRecordByIssueId(paramMap);
 		if(fiveIn20Number == null){
-			FiveIn20Number newObj = new FiveIn20Number();
-			newObj.setIssueNumber(issueNumber);
-			newObj.setNo1(dataArr[0]);
-			newObj.setNo1(dataArr[1]);
-			newObj.setNo1(dataArr[2]);
-			newObj.setNo1(dataArr[3]);
-			newObj.setNo1(dataArr[4]);
-			fiveIn20TMapper.insertDataInput(newObj,globalCacheService.getCacheMap(provinceCode)[2]);
+			paramMap.put("no1",dataArr[0]);
+			paramMap.put("no2",dataArr[1]);
+			paramMap.put("no3",dataArr[2]);
+			paramMap.put("no4",dataArr[3]);
+			paramMap.put("no5",dataArr[4]);
+			fiveIn20TMapper.insertDataInput(paramMap);
+			List<FiveIn20Number> dataList = this.getRecordsByNumOrderById(provinceCode, 10);
+			rtnParam.put("dataList",dataList);
 			rtnParam.put("status", "success");
 		}else{
 			rtnParam.put("status", "failure");
-			rtnParam.put("message", "录入数据失败！");
+			rtnParam.put("message", "录入数据已经存在，不能重复录入！");
 		}
 		return rtnParam;
+	}
+	
+	public Map<String,Object> deleteDataInput(String id,String provinceCode){
+		Map<String,Object> rtnMap = new HashMap<String,Object>();
+		Map<String,Object> paramMap = new HashMap<String,Object>();
+		paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[2]);
+		paramMap.put("id",id);
+		try{
+			fiveIn20TMapper.deleteDataInput(paramMap);
+			rtnMap.put("status", "success");
+		}catch(SQLException sqlEx){
+			rtnMap.put("status", "failure");
+		}finally {
+			return 	rtnMap;
+		}
 	}
     
 }

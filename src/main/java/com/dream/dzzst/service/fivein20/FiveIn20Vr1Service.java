@@ -46,7 +46,7 @@ public interface FiveIn20Vr1Service {
       * @return 
       */
     public List<FiveIn20Number> getRecordsByNum(String provinceCode,int count);
-    
+    public List<FiveIn20Number> getRecordsByNumOrderById(String provinceCode,int count);
     /** 
       * @Description: 获取当天数据内容
       * @author songjia
@@ -76,6 +76,8 @@ public interface FiveIn20Vr1Service {
       */
     public Map<String,Object> getIntervalContext(String issueID, Map<String, int[]> paramMap, String pcode);
     
+    
+    public Map<String,Object> deleteDataInput(String id,String pcode);
     /** 
       * @Description: 获取前几名遗漏的统计值
       * @author songjia
@@ -91,6 +93,6 @@ public interface FiveIn20Vr1Service {
      * @param dataArr
      * @return
      */
-    public Map<String,String> insertDataInput(String provinceCode,String issueNumber,int[] dataArr);
+    public Map<String,Object> insertDataInput(String provinceCode,String issueNumber,int[] dataArr);
 } 
 

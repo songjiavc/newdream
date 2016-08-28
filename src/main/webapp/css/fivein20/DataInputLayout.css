@@ -15,12 +15,14 @@
     #dataInput #issueDiv {
 		width : 100%;
         height : 20%;
+        background : #9BCD9B;
         position : relative;
     }
     
     #dataInput #dataSelected {
 		width : 100%;
         height : 20%;
+        background : #9BCD9B;
         position : relative;
     }
 

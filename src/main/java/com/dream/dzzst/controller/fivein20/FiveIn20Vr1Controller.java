@@ -65,18 +65,32 @@ public class FiveIn20Vr1Controller {
 	@RequestMapping("/initStartPage")
     public String initStartPage(HttpServletRequest request) {
         request.setAttribute("provinceDm", request.getParameter("provinceDm").toString());
+		return "/fivein20/fivein20vr1";
+    }
+	
+	
+	@RequestMapping("/initStartDataInputPage")
+    public String initStartDataInputPage(HttpServletRequest request) {
+        request.setAttribute("provinceDm", request.getParameter("provinceDm").toString());
 		return "/fivein20/fivein20datainput";
     }
 	
 	@RequestMapping("/dataInputSubmit")
-	public @ResponseBody Map<String,String> dataInputSubmit(@RequestParam(value="provinceCode",required=true) String provinceCode,@RequestParam(value="issueNumber",required=true) String issueNumber,@RequestParam(value="dataArr",required=true) String dataArr){
+	public @ResponseBody Map<String,Object> dataInputSubmit(@RequestParam(value="provinceCode",required=true) String provinceCode,@RequestParam(value="issueNumber",required=true) String issueNumber,@RequestParam(value="dataArr",required=true) String dataArr){
 		JSONArray dataArr2Json = JSONArray.parseArray(dataArr);
 		int[] dataArr2Int = getJsonToIntArray(dataArr2Json);
 		return fiveIn20Vr1Service.insertDataInput(provinceCode, issueNumber, dataArr2Int);
 	}
 	
-	@RequestMapping("/getLast80Data")
-	public @ResponseBody List<FiveIn20Number> getLast80Data(@RequestParam(value="provinceCode",required=true) String provinceCode){
-		return fiveIn20Vr1Service.getRecordsByNum(provinceCode,80);
+	@RequestMapping("/getDataInputList")
+	public @ResponseBody List<FiveIn20Number> getDataInputList(@RequestParam(value="provinceCode",required=true) String provinceCode){
+		return fiveIn20Vr1Service.getRecordsByNumOrderById(provinceCode, 10);
 	}
+	
+	@RequestMapping("/deleteDataInput")
+	public @ResponseBody Map<String,Object> deleteDataInput(@RequestParam(value="provinceCode",required=true) String provinceCode,@RequestParam(value="id",required=true) String id){
+		return fiveIn20Vr1Service.deleteDataInput(id, provinceCode);
+	}
+	
+	
 }

@@ -47,7 +47,7 @@
 		initLayoutHeight(window.screen.height);
 		var url=lastDataUrl+"getInitData.do";
 		if(paramObj.recordCount == 0){
-			paramObj.recordCount = div($('.contentDiv').height(),paramObj.clientPix);
+			paramObj.recordCount = div($('#Content').height(),paramObj.clientPix);
 		}
 		//$('#dataTableMain').css('display','none');
 		$.ajax({
@@ -67,7 +67,7 @@
 					var tr = insertBeforeLastTr($('#dataTable tr:first'));
 					insertNumTd(tr,data);
 				});
-				$('#dataTable').css('marginTop',-paramObj.clientPix*paramObj.addCount+($('.contentDiv').height() - paramObj.clientPix*paramObj.recordCount)-1);
+				$('#dataTable').css('marginTop',-paramObj.clientPix*paramObj.addCount+($('#Content').height() - paramObj.clientPix*paramObj.recordCount)-1);
 				//更新今日出现次数
 				updateBlankIssue(lastIssueId);
 				todayTimes = data.todayTimes;
@@ -81,6 +81,8 @@
 				createMissIntervalFunc("getLastMissValues('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
 				timer();
 	            setInterval("timer()",1000);//1秒一次执行
+	            debugger;
+	            layoutControlDiv();
 			}
 		});
 		function div(exp1, exp2)
@@ -108,7 +110,7 @@
 	function initLayoutHeight(windowHeight){
 		$('.headDiv').height(paramObj.clientPix*2);
 		$('.bottomDiv').height(paramObj.clientPix*3);
-		$('.contentDiv').height(window.screen.height-paramObj.clientPix*5);
+		$('#Content').height(window.screen.height-paramObj.clientPix*5);
 		
 	}
 
@@ -337,11 +339,6 @@
 	function printIssueNum(trObj,issueNum){
 		var td = document.createElement("td");
 		td.colSpan = '3';
-		if(issueNum%5 == 0){
-			td.className = "issueClassOddBlackLine";
-		}else{
-			td.className = "issueClassOdd";
-		}
 		td.innerHTML = issueNum.toString().substring(7,9);
 		trObj.appendChild(td);
 		var issTemp = issueNum.toString().substring(0,issueNum.length-3);//截取期号150119
@@ -371,6 +368,8 @@
 	function printLuckyNum(trObj,data){
 		var td = document.createElement("td");
 		td.colSpan = 2;
+		$(td).css("background-color","#FFFACD");
+		
 		if(data.issueId%5 == 0){
 			$(td).addClass('blackLine');
 		}
@@ -378,6 +377,7 @@
 		trObj.appendChild(td);
 		var td = document.createElement("td");
 		td.colSpan = 2;
+		$(td).css("background-color","#FFFACD");
 		if(data.issueId%5 == 0){
 			$(td).addClass('blackLine');
 		}
@@ -385,6 +385,7 @@
 		trObj.appendChild(td);
 		var td = document.createElement("td");
 		td.colSpan = 2;
+		$(td).css("background-color","#FFFACD");
 		if(data.issueId%5 == 0){
 			$(td).addClass('blackLine');
 		}
@@ -392,6 +393,7 @@
 		trObj.appendChild(td);
 		var td = document.createElement("td");
 		td.colSpan = 2;
+		$(td).css("background-color","#FFFACD");
 		if(data.issueId%5 == 0){
 			$(td).addClass('blackLine');
 		}
@@ -399,6 +401,7 @@
 		trObj.appendChild(td);
 		var td = document.createElement("td");
 		td.colSpan = 2;
+		$(td).css("background-color","#FFFACD");
 		if(data.issueId%5 == 0){
 			$(td).addClass('blackLine');
 		}
@@ -429,28 +432,20 @@
 			trObj.appendChild(td);
 			td.colSpan = 2;
 			if(i < 6){
-				if(data.issueNumber%2 == 0){
 					$(td).addClass('tdOddCls');
-				}
 			}else if(i < 11){
-				if(data.issueNumber%2 == 0){
 					$(td).addClass('tdEvenCls');
-				}
 			}else if(i < 16){
-				if(data.issueNumber%2 == 0){
 					$(td).addClass('tdOddCls');
-				}
 			}else{
-				if(data.issueNumber%2 == 0){
 					$(td).addClass('tdEvenCls');
-				}
 			}
 
 			if(isInArr(tempArr,i)&&i <= 20 ){
 				if(data.no1 == i ){
-					td.innerHTML='<img src="img/fivein20/red/' +i+'.png"   width="'+(paramObj.clientPix*1-1)+'" height="'+(paramObj.clientPix*1-1)+'" />';
+					td.innerHTML='<img src="img/fivein20/vr1/red/' +i+'.png"   width="'+(paramObj.clientPix*1-1)+'" height="'+(paramObj.clientPix*1-1)+'" />';
 				}else{
-					 td.innerHTML='<img src="img/fivein20/black/' +i+'.png"   width="'+(paramObj.clientPix*1-1)+'" height="'+(paramObj.clientPix*1-1)+'" />';
+					 td.innerHTML='<img src="img/fivein20/vr1/blue/'+i+'.png"   width="'+(paramObj.clientPix*1-1)+'" height="'+(paramObj.clientPix*1-1)+'" />';
 				}
 			}else{
 				td.innerHTML = '';

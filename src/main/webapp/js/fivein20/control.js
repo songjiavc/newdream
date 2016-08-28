@@ -64,21 +64,7 @@
      * @param obj
      */
     function moveLeft(obj){
-    	$("div[group='"+controlParam.currentAd+"']").css('display','none');
-    	controlParam.currentAd--;
-		if(controlParam.currentAd < 1){   // 超过了附表数量则直接返回
-			controlParam.currentAd = 2;
-			$("div[group='"+(controlParam.currentAd)+"']").css('display','block');
-		}else{
-			$("div[group='"+(controlParam.currentAd)+"']").css('display','block');
-		}
-		//切换到需要划线的部分重新划线
-		if(controlParam.currentAd == 1){
-			sumDataArray = [];
-			skipDataArray = [];
-			initDownLineArray();
-			downLine();
-		}
+    
     }
     
     /**
@@ -86,14 +72,7 @@
 	* @param obj
 	*/
 	function moveRight(obj){
-		$("div[group='"+controlParam.currentAd+"']").css('display','none');
-		controlParam.currentAd++;
-		if(controlParam.currentAd > 2){   // 超过了附表数量则直接返回
-			controlParam.currentAd = 1;
-			$("div[group='"+(controlParam.currentAd)+"']").css('display','block');
-		}else{
-			$("div[group='"+(controlParam.currentAd)+"']").css('display','block');
-		}
+	
 	}
 
     /*设置一个定时返回最初状态*/

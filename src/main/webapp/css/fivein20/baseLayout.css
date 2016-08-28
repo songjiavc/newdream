@@ -42,7 +42,7 @@
     }
 
     #groupOne .headDiv .headTable {
-        background: #1b6d85;
+        background: #8B0000;
         border-top-color: Gray;
     }
 
@@ -56,7 +56,7 @@
     }
 
     #groupOne .bottomDiv .headTable {
-        background: #1b6d85;
+        background: #8B0000;
         height : 100%;
         width : 100%;
     }
@@ -69,7 +69,7 @@
         color: White;
     }
 
-    #groupOne .contentDiv {
+    #groupOne #Content {
         position:relative;
         background:#F0CEB5;
         height : 85%;

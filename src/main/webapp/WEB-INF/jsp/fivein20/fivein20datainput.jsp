@@ -15,14 +15,14 @@
         <meta http-equiv="cache-control" content="no-cache">
         <meta http-equiv="expires" content="0">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-        <meta http-equiv="description" content="This is my page">
+        <meta http-equiv="description" content="群英荟录入">
         <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
         <link rel="stylesheet" type="text/css" href="css/fivein20/DataInputLayout.css">
         <link rel="stylesheet" type="text/css" href="css/fivein20/DataInputStyles.css">
         <link rel="stylesheet" type="text/css" href="css/graph.css">
     </head>
     <script>
+
     	var dataArr = [];
     	function cicleClick(obj){
     		//变色  点击1次是蓝色 两次取消
@@ -81,14 +81,107 @@
 	    				issueNumber : issueNumber
 	    			},
 	    			success: function(data) {
-	    				alert(data.message);
-	    				//如果添加成功，刷新下方列表
+	    				if(data.status == "success"){
+		    				//如果添加成功，刷新下方列表
+	    					reflashDataList(data.dataList);
+	    				}else{
+	    					alert(data.message);
+	    				}
 	    			}
 	    		});
     		}
     	}
+    	/*
+    		获取最近10期数据防止录入错误进行删除操作
+    	*/
+    	function getDataList(){
+    		var url="<%=lastDataUrl%>"+"getDataInputList.do";
+	    		$.ajax({
+	    			type:"post",
+	    			url: url,
+	    			dataType:'JSON',
+	    			async:false,
+	    			data : {
+	    				provinceCode : '<%=provinceDm%>'
+	    			},
+	    			success: function(data) {
+	    					reflashDataList(data);
+	    			}
+	    		});
+    	}
+    	
+    	
+    	
+    	function deleteData(){
+    		if(confirm("确定要删除数据吗?")){
+    			var url="<%=lastDataUrl%>"+"deleteDataInput.do";
+        		$.ajax({
+        			type:"post",
+        			url: url,
+        			dataType:'JSON',
+        			async:false,
+        			data : {
+        				provinceCode : '<%=provinceDm%>',
+        				id : $(this).children().eq(0).html()
+        			},
+        			success: function(data) {
+        				if(data.status=="success"){
+    	    				getDataList();
+        				}else{
+        					alert(data.message);
+        					return false;
+        				}
+        			}
+        		});
+    		}else{
+    	   		return false;
+    		}
+    		
+    	}
+    	
+    	function reflashDataList(dataList){
+    		//rumove掉所有的数据
+    		$('#dataList tr').not('#dataList tr:first').remove();
+    		$.each(dataList,function(i,data){
+    			var tr = insertTr($('#dataList').get(0));
+    			 // 绑定事件
+    		    tr.onclick = deleteData;
+    			td = insertTd(tr);
+    			$(td).css("display","none");
+    			td.innerText = data.id;
+    			td = insertTd(tr);
+    			td.colSpan="3";
+    			td.innerText = data.issueNumber;
+    			td = insertTd(tr);
+    			td.colSpan="3";
+    			td.innerText = data.no1+","+data.no2+","+data.no3+","+data.no4+","+data.no5;
+    			td = insertTd(tr);
+    			if(data.origin == "1"){
+    				td.innerText= "机";
+    			}else{
+    				td.innerText= "人";
+    			}
+    			td = insertTd(tr);
+    			td.colSpan="3";
+    			td.innerText = data.createTime;
+    			
+    		});
+    	}
+    	
+    	//插入一行
+    	function insertTr(tableObj){
+			var tr = document.createElement("tr");
+			tableObj.appendChild(tr);
+			return tr;
+		}
+    	function insertTd(trObj){
+			var td = document.createElement("td");
+			trObj.appendChild(td);
+			return td;
+		}
+    	
     </script>
-	<body style="margin: 0 auto; padding: 0px;">
+	<body style="margin: 0 auto; padding: 0px;" onload="getDataList()">
         <div id="dataInput">
         	<div id="issueDiv">
         		<div style="padding: 5 5 5 5;float:left;" >期号：
@@ -105,6 +198,7 @@
         		</div>
         		<div style="padding: 5 5 5 5;width:20%;float:left;">
         	    	<input type="button" name="submit" onclick="submitDataForm()" value="提交"/>
+        	    	<input type="button" name="reflash" onclick="getDataList()" value="刷新"/>
         	    </div>
         	</div>
         	<div id="dataSelect">
@@ -177,6 +271,13 @@
         	</div>
         </div>
         <div id="dataView">
+          <table id="dataList" cellpadding="0px" cellspacing="0px" rules="all">
+        	<th style="display:none" >ID</th>
+        	<th colspan="3">期号</th>
+        	<th colspan="3">号码</th>
+        	<th>源</th>
+        	<th colspan="3">时间</th>
+        </table>
         </div>
 	</body>
 
