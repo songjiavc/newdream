@@ -18,10 +18,13 @@
         <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
         <meta http-equiv="description" content="This is my page">
          <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
-        <script type="text/javascript" src="js/fivein20/fivein20vr1.js"></script> 
+         <script type="text/javascript" src="js/echartUtil.js"></script>
+         <script type="text/javascript" src="js/fivein20/control.js"></script>
+        <script type="text/javascript" src="js/fivein20/fivein20vr2.js"></script> 
         <link rel="stylesheet" type="text/css" href="css/fivein20/baseLayout.css">
-        <link rel="stylesheet" type="text/css" href="css/fivein20/styles.css">
-         <link rel="stylesheet" type="text/css" href="css/graph.css">
+        <link rel="stylesheet" type="text/css" href="css/util/chartControl.css">
+        <link rel="stylesheet" type="text/css" href="css/fivein20/vr2styles.css">
+        <link rel="stylesheet" type="text/css" href="css/graph.css">
     </head>
 	<script type="text/javascript">
 		
@@ -309,7 +312,7 @@
         			<tr class="tdOddCls">
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
+        			<tr>
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
@@ -357,7 +360,7 @@
                 </table>
 
             </div>
-            <div class = "contentDiv">
+            <div id="Content">
                  <table id = "dataTable" class = 'headTable' cellpadding="0px" cellspacing="0px"  rules="all">
 
                  </table>
@@ -387,7 +390,7 @@
                        <td colspan="2"  align="center"></td>
                        <td colspan="2"  align="center"></td>
                        <td colspan="2"  align="center"></td>
-                       <td colspan="6"  rowspan="3" align="center">版本<br>1.0</td>
+                       <td colspan="6"  rowspan="3" align="center">版本<br>2.0</td>
                    </tr>
                    <tr >
                       <td colspan="13"  align="center">出现次数</td>

@@ -1,15 +1,10 @@
 
 
     /*body 下第一层布局，所有布局的母布局*/
-    body {
-        background:#2aabd2;
-        width : 720px;
-        height : 100%;
-    }
     #groupOne {
         position:relative;
         background:#3c763d;
-        width : 100%;
+        width : 720px;
         height : 100%;
     }
 
@@ -71,11 +66,12 @@
 
     #groupOne #Content {
         position:relative;
+        overflow:hidden;
         background:#F0CEB5;
         height : 85%;
     }
 
-    #dataTable {
+    #groupOne #Content #dataTable {
         position: absolute;
     }
 

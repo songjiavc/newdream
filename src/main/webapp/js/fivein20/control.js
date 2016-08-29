@@ -53,7 +53,7 @@
         	clearInterval(controlParam.intervalId);
         	getInterval(controlParam.timer);
         	controlParam.currentNum++;
-        	$('#mainDiv').eq(0).animate({marginTop : parseInt($('#mainDiv').eq(0).css('marginTop'))+controlParam.scrollCount*paramObj.clientPix},'slow');
+        	$('#dataTable').eq(0).animate({marginTop : parseInt($('#dataTable').css('marginTop'))+controlParam.scrollCount*paramObj.clientPix},'slow');
           //  $('#mainDiv').eq(0).css('marginTop',parseInt($('#mainDiv').eq(0).css('marginTop'))+controlParam.scrollCount*paramObj.clientPix);
             controlParam.isFinish=true;
     	}
@@ -94,7 +94,7 @@
         	}
     		controlParam.isFinish = false;
         	controlParam.currentNum--;
-        	$('#mainDiv').eq(0).animate({marginTop : parseInt($('#mainDiv').eq(0).css('marginTop'))-controlParam.scrollCount*paramObj.clientPix},'slow');
+        	$('#dataTable').animate({marginTop : parseInt($('#dataTable').css('marginTop'))-controlParam.scrollCount*paramObj.clientPix},'slow');
         	if(controlParam.currentNum == 1){
     			clearInterval(controlParam.intervalId);
     		}else{
@@ -118,7 +118,7 @@
         	   return false;
         	}
         	controlParam.isFinish = false;
-        	$('#mainDiv').eq(0).css('marginTop',-paramObj.clientPix*(controlParam.addCount));
+        	$('#dataTable').eq(0).css('marginTop',-paramObj.clientPix*(controlParam.addCount));
         	clearInterval(controlParam.intervalId);
             controlParam.isFinish=true;
             controlParam.currentNum = 1;
@@ -149,7 +149,6 @@
                 });
              }
          );
-
          var tbJo = $("<table class='controlTable'></table>");
          divJo.append(tbJo);
          var trUpJo = $("<tr></tr>");
@@ -161,5 +160,4 @@
          trUpJo.append($("<td></td>")).append($("<td><img src='img/util/up.png' id='up' onMouseOut='changeOutCss(this)'  width='80' height='80' onclick='moveUp(this)' onmouseover='changeOverCss(this)' /></td>")).append($("<td></td>"));
          trCenterJo.append($("<td><img src='img/util/left.png' id='left' onMouseOut='changeOutCss(this)' onclick='moveLeft(this)' width='80' height='80' onmouseover='changeOverCss(this)' /></td>")).append($("<td><img src='img/util/center.png' id='center' onMouseOut='changeOutCss(this)' width='80' height='80' onclick='moveLast()' onmouseover='changeOverCss(this)' /></td>")).append($("<td><img src='img/util/right.png' id='right' onMouseOut='changeOutCss(this)' width='80' height='80' onclick='moveRight()' onmouseover='changeOverCss(this)' /></td>"));
          trDownJo.append($("<td></td>")).append($("<td><img src='img/util/down.png' id='down' onMouseOut='changeOutCss(this)' width='80' height='80' onclick='moveDown()' onmouseover='changeOverCss(this)' /></td>")).append($("<td></td>"));
-         
      }

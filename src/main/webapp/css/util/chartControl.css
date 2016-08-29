@@ -1,7 +1,7 @@
     .controlDiv {
         position: absolute;
-        height : 300px;
-        width : 300px;
+        height : 260px;
+        width : 260px;
         opacity: 0.0;
         cursor: hand;
         z-index: 100;

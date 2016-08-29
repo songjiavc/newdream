@@ -78,9 +78,10 @@
 				//初始化获取新数据
 				createIntervalFunc("getLastData('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
 				//初始化获取遗漏统计数据
-				//createMissIntervalFunc("getLastMissValues('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
+				createMissIntervalFunc("getLastMissValues('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
 				timer();
 	            setInterval("timer()",1000);//1秒一次执行
+	            debugger;
 	            layoutControlDiv();
 			}
 		});
@@ -151,6 +152,7 @@
 
 	function updateMissLayout(missValues){
 		//获取div下面所有table
+		$('#dataList tr').not('#dataList tr:first').remove();
 		var tds = $('#groupTwo td');
 		var temp = 0;
 		$.each(tds,function(i,td){
@@ -164,7 +166,6 @@
 			}
 		});
 		//获取table下所有td
-		
 	}
 
 	/*
@@ -202,7 +203,7 @@
 					lastIssueId = record.issueNumber*1;
 					if(record.issueNumber.substring(7,9) != paramObj.maxTodayIssueNum){
 						createTimeFunction(lastDataUrl,provinceDm);
-					//	createMissValuesTimeFunction(lastDataUrl,provinceDm);
+						createMissValuesTimeFunction(lastDataUrl,provinceDm);
 					}
 					var tr = insertTr($('#dataTable').get(0));
 					insertNumTd(tr,record);
@@ -757,7 +758,7 @@
 	function createIntervalFunc(func,time){
 		paramObj.getLastRecordIntervalId = setInterval(func,time);
 	}
-	/*
+	
 	function createMissValuesTimeFunction(lastDataUrl,provinceDm){
 		var func = "createMissIntervalFunc('getLastMissValues(\""+lastDataUrl+"\",\""+provinceDm+"\")','"+paramObj.intervalCycle+"')";
 		paramObj.getMissValuesTimeId = setTimeout(func,paramObj.missTimeCycle);
@@ -765,7 +766,6 @@
 	function createMissIntervalFunc(func,time){
 		paramObj.getMissValuesIntervalId = setInterval(func,time);
 	}
-	*/
 
 	
 	
