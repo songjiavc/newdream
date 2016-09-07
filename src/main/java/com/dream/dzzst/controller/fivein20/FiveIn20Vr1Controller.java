@@ -32,7 +32,7 @@ public class FiveIn20Vr1Controller {
 		return returnMap;
 	}
 	@RequestMapping("/getLastData")
-	public @ResponseBody Map<String,Object> getLastData(@RequestParam(value="provinceDm",required=true) String provinceDm,@RequestParam(value="lastIssueId",required=true) String lastIssueId,@RequestParam(value="missTimes",required=true) String missTimes,@RequestParam(value="todayTimes",required=true) String todayTimes) {
+	public @ResponseBody Map<String,Object> getLastData(@RequestParam(value="provinceDm",required=true) String provinceDm,@RequestParam(value="lastIssueNumber",required=true) String lastIssueNumber,@RequestParam(value="missTimes",required=true) String missTimes,@RequestParam(value="todayTimes",required=true) String todayTimes) {
 		JSONArray jaToday = JSONArray.parseArray(todayTimes);
 		int[] todayTimesArr = getJsonToIntArray(jaToday);
 		JSONArray jaMiss = JSONArray.parseArray(missTimes);
@@ -40,14 +40,14 @@ public class FiveIn20Vr1Controller {
 		Map<String,int[]> paramMap = new HashMap<String,int[]>();
 		paramMap.put("todayTimesArr", todayTimesArr);
 		paramMap.put("missTimesArr", missTimesArr);
-		Map<String,Object> returnMap = fiveIn20Vr1Service.getIntervalContext(lastIssueId,paramMap,provinceDm);
+		Map<String,Object> returnMap = fiveIn20Vr1Service.getIntervalContext(lastIssueNumber,paramMap,provinceDm);
         return returnMap;
 	}
 	@RequestMapping("/getLastMissValues")
-	public @ResponseBody List<FiveIn20Analysis> getLastMissValues(@RequestParam(value="provinceDm",required=true) String provinceDm,@RequestParam(value="lastIssueId",required=true) String lastIssueId) {
+	public @ResponseBody List<FiveIn20Analysis> getLastMissValues(@RequestParam(value="provinceDm",required=true) String provinceDm,@RequestParam(value="lastIssueNumber",required=true) String lastIssueNumber) {
 		Map<String,String> paramMap = new HashMap<String,String>();
 		paramMap.put("provinceCode", provinceDm);
-		paramMap.put("issueNumber", lastIssueId);
+		paramMap.put("issueNumber", lastIssueNumber);
         return fiveIn20Vr1Service.getTopNMiss(paramMap);
 	}
 	
@@ -92,5 +92,10 @@ public class FiveIn20Vr1Controller {
 		return fiveIn20Vr1Service.deleteDataInput(id, provinceCode);
 	}
 	
+	@RequestMapping("/initStartPageVr2")
+    public String initStartPageVr2(HttpServletRequest request) {
+        request.setAttribute("provinceDm", request.getParameter("provinceDm").toString());
+		return "/fivein20/fivein20vr2";
+    }
 	
 }

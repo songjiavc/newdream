@@ -130,9 +130,10 @@
 	}
 	
 	function updateTodayTimes(todayTimes){
+		debugger;
 		var winNumTodayTimes =  $("#bottomTable tr").eq(1).find("td");
 		$.each(winNumTodayTimes,function(i,td){
-			if(i == 0 || i >= todayTimes.length){
+			if(i == 0 ){
 				return true;
 			}
 			$(td).html(todayTimes[i-1]);

@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dream.dzzst.dao.fivein20.FiveIn20TMapper">
 	<resultMap id="resultMap" type="com.dream.dzzst.model.fivein20.FiveIn20Number">
-	
 		<result column="id" property="id" jdbcType="INTEGER" />
 		<result column="issue_number" property="issueNumber" jdbcType="VARCHAR" />
 		<result column="no1" property="no1" jdbcType="INTEGER" />
@@ -55,6 +54,16 @@
         	 (SELECT * FROM ${mainTable} ORDER BY ISSUE_NUMBER DESC LIMIT #{count}) main
        	ORDER BY main.issue_number*1
 	</select>
+	
+	<select id="getRecordsByNumOrderById" resultMap="resultMap" parameterType="java.util.Map">
+		SELECT 
+            main.id,main.issue_number,main.no1,main.no2,main.no3,main.no4,main.no5,main.origin,main.create_time
+        FROM
+        	 ${mainTable} main
+       	ORDER BY main.id DESC
+       	LIMIT 10
+	</select>
+	
 	<select id="getAllData" resultMap="resultMap">
 		SELECT 
             <include refid="selectItem"/>

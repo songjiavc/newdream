@@ -46,7 +46,7 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
 	@Override
 	public List<FiveIn20Number> getRecordsByNumOrderById(String provinceCode,int count) {
 		Map<String,Object> paramMap = new HashMap<String,Object>();
-        paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[2]);
+        paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[0]);
         paramMap.put("count",count);
 		return fiveIn20TMapper.getRecordsByNumOrderById(paramMap);
 	}
@@ -103,17 +103,22 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
       */
     private int[] getTodayTimesArr(List<FiveIn20Number> FiveIn20NumberList){
         int[] winNumDist = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};    //开奖号码分布遗漏计算
-        for(FiveIn20Number FiveIn20Number : FiveIn20NumberList){
+        for(FiveIn20Number fiveIn20Number : FiveIn20NumberList){
             /*
              * 取出三个值并将它转为整型
              */
-            int numOne = FiveIn20Number.getNo1();
-            int numTwo = FiveIn20Number.getNo2();
-            int numThree = FiveIn20Number.getNo3();
+            int numOne = fiveIn20Number.getNo1();
+            int numTwo = fiveIn20Number.getNo2();
+            int numThree = fiveIn20Number.getNo3();
+            int numFour = fiveIn20Number.getNo4();
+            int numFive = fiveIn20Number.getNo5();
+            
             winNumDist[numOne-1] = winNumDist[numOne-1] + 1;
             winNumDist[numTwo-1] = winNumDist[numTwo-1] + 1;
             winNumDist[numThree-1] = winNumDist[numThree-1] + 1;
-		}
+            winNumDist[numFour-1] = winNumDist[numFour-1] + 1;
+            winNumDist[numFive-1] = winNumDist[numFive-1] + 1;
+        }
         return winNumDist;
     }
 
@@ -203,7 +208,7 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
 	public Map<String,Object> insertDataInput(String provinceCode,String issueNumber,int[] dataArr){
 		Map<String,Object> rtnParam = new HashMap<String,Object>();
 		Map<String,Object> paramMap = new HashMap<String,Object>();
-		paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[2]);
+		paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[0]);
 		paramMap.put("issueNumber", issueNumber);
 		FiveIn20Number fiveIn20Number = fiveIn20TMapper.getRecordByIssueId(paramMap);
 		if(fiveIn20Number == null){
@@ -226,7 +231,7 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
 	public Map<String,Object> deleteDataInput(String id,String provinceCode){
 		Map<String,Object> rtnMap = new HashMap<String,Object>();
 		Map<String,Object> paramMap = new HashMap<String,Object>();
-		paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[2]);
+		paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[0]);
 		paramMap.put("id",id);
 		try{
 			fiveIn20TMapper.deleteDataInput(paramMap);

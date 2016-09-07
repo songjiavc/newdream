@@ -77,7 +77,7 @@ public class Fast3VerticalControllerVr1 {
 	@RequestMapping("/fast3verticalvr1")
     public String showChart(HttpServletRequest request) {
         request.setAttribute("provinceDm", request.getParameter("provinceDm").toString());
-		return "/fast3/fast3verticalvr2";
+		return "/fast3/fast3verticalvr1";
     }
 	
 	@RequestMapping("/fast3verticalvr2")
