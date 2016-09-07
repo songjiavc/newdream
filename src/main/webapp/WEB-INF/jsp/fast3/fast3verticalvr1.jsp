@@ -199,13 +199,13 @@
 	        			<thead style="color:white;" >
 	        					<td >所有号码</td><td>三不同</td><td>二同</td><td>三同</td><td>组合</td><td>四码复式</td>
 	        			</thead>
-	        			<tr bgcolor = "#FEE7EF" style="color : #A2063D;font-size:18pt;">
+	        			<tr bgcolor = "#FEE7EF" style="color : #A2063D;font-size:12pt;">
 	        				<td ></td><td></td><td></td><td></td><td></td><td></td>
 	        			</tr>
-	        			<tr bgcolor = "#FEE7EF" style="color : #A2063D;font-size:18pt;">
+	        			<tr bgcolor = "#FEE7EF" style="color : #A2063D;font-size:12pt;">
 	        				<td ></td><td></td><td></td><td></td><td></td><td></td>
 	        			</tr>
-	        			<tr bgcolor = "#FEE7EF" style="color : #A2063D;font-size:18pt;">
+	        			<tr bgcolor = "#FEE7EF" style="color : #A2063D;font-size:12pt;">
 	        				<td></td><td></td><td></td><td></td><td></td><td></td>
 	        			</tr>
 	        		</table>

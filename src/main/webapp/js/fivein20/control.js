@@ -118,7 +118,7 @@
         	   return false;
         	}
         	controlParam.isFinish = false;
-        	$('#dataTable').eq(0).css('marginTop',-paramObj.clientPix*(controlParam.addCount));
+        	$('#dataTable').css('marginTop',-paramObj.clientPix*paramObj.addCount+($('#Content').height() - paramObj.clientPix*paramObj.recordCount)-1);
         	clearInterval(controlParam.intervalId);
             controlParam.isFinish=true;
             controlParam.currentNum = 1;

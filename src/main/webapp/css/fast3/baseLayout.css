@@ -6,7 +6,7 @@
     /*body 下第一层布局，所有布局的母布局*/
     #Container{
         background:#CF3;
-        width : 100%;
+        width : 720px;
         height : 100%;
     }
     

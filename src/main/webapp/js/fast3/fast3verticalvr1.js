@@ -1,7 +1,7 @@
 	///////////////////////////////////////////
     var paramObj = {
         recordCount : 0,     // 记录条数
-        clientPix : 35,		//单元格大小
+        clientPix : 25,		//单元格大小
         intervalTime : 3000
 	    };
 	var missValues,todayTimes;   //存放当前遗漏和今日出现次数内容
@@ -173,8 +173,10 @@
 */
 	function printIssueNum(trObj,data){
 		var td = document.createElement("td");
-		td.style = "background:#FEE7EF;color:black;font-size:18pt;";
 		td.innerHTML = data.numArray[0].toString().substring(7,9);
+		//debugger;
+		$(td).val(data.numArray[0].toString().substring(7,9));
+		$(td).addClass("issueNumberClass");
 		trObj.appendChild(td);
 		td.colSpan = '1';
 	}
@@ -186,9 +188,10 @@
 		for(var i = 0;i < luckyNumArr.length-1;i++){
 			var td = document.createElement("td");
 			td.colSpan=1;
-			td.style = "font-size:20pt;color:black;";
 			td.innerHTML=luckyNumArr[i];
 			trObj.appendChild(td);
+			$(td).addClass("luckyNumberClass");
+			
 		}
 	}
 	 /*

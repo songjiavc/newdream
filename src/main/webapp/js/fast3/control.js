@@ -135,11 +135,10 @@
     function moveLast(){
     	if(controlParam.isFinish){
         	if(controlParam.currentNum == 1){
-        	   //alert("已经显示为最新数据，不需要还原！");
         	   return false;
         	}
         	controlParam.isFinish = false;
-        	$('#mainDiv').eq(0).css('marginTop',-paramObj.clientPix*(controlParam.addCount));
+        	$('#mainDiv').css('marginTop',-paramObj.clientPix*(controlParam.addCount)+($('#Content').height() - paramObj.clientPix*paramObj.recordCount));
         	clearInterval(controlParam.intervalId);
             controlParam.isFinish=true;
             controlParam.currentNum = 1;

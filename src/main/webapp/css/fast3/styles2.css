@@ -30,5 +30,13 @@
 		position:relative;
         font-family:晴圆;
         font-size:12pt;
-        text-align:center;
+	}
+	.issueNumberClass{
+		background:#FEE7EF;
+		color:black;
+	}
+	
+	.luckyNumberClass{
+		font-size:14pt;
+		color:black;
 	}

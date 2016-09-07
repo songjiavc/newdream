@@ -37,6 +37,9 @@
     .tdEvenCls{
         background: #CCE5A3;
     }
+    .tdMissCls{
+    	background: #FFFACD;
+    }
     
     .missTable{
     	table-layout: fixed;
@@ -48,8 +51,14 @@
 		position:relative;
 		background-color: #ffffff;
         font-family:晴圆;
-        font-size:14pt;
     }
-
-
+   .missTable th{
+		background: #8B0000;
+		color : white;
+		font-family:晴圆;
+		font-size:14pt;
+   }
+       .missTable td {
+        	font-size:14pt;
+       }
     

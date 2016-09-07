@@ -37,7 +37,7 @@
 	};
 	//用来存放今日出现次数和遗漏值
 	var missValues,todayTimes;
-	var lastIssueId;
+	var lastIssueNumber;
 	var missDivs,i = 0;
 	/*
 	 add by songj
@@ -62,14 +62,14 @@
 			},
 			success: function(data) {
 				var dataArr = data.records;
-				lastIssueId = dataArr[0].issueNumber*1;
+				lastIssueNumber = dataArr[0].issueNumber*1;
 				$.each(dataArr,function(i,data){
 					var tr = insertBeforeLastTr($('#dataTable tr:first'));
 					insertNumTd(tr,data);
 				});
 				$('#dataTable').css('marginTop',-paramObj.clientPix*paramObj.addCount+($('#Content').height() - paramObj.clientPix*paramObj.recordCount)-1);
 				//更新今日出现次数
-				updateBlankIssue(lastIssueId);
+				updateBlankIssue(lastIssueNumber);
 				todayTimes = data.todayTimes;
 				updateTodayTimes(data.todayTimes);
 				//更新当前遗漏值
@@ -180,7 +180,7 @@
 			dataType:'JSON',
 			async:false,
 			data : {
-				lastIssueId : lastIssueId,
+				lastIssueNumber : lastIssueNumber,
 				todayTimes : JSON.stringify(todayTimes),
 				missTimes : JSON.stringify(missValues),
 				provinceDm : provinceDm
@@ -199,7 +199,7 @@
 					//重启一个新的任务
 					//当每天到最后一期后，则不在重新创建心的任务，等明天开机再一次正常进行
 					var record = data.record;
-					lastIssueId = record.issueNumber*1;
+					lastIssueNumber = record.issueNumber*1;
 					if(record.issueNumber.substring(7,9) != paramObj.maxTodayIssueNum){
 						createTimeFunction(lastDataUrl,provinceDm);
 					//	createMissValuesTimeFunction(lastDataUrl,provinceDm);
@@ -209,7 +209,7 @@
 					$('#dataTable tr:first').remove();
 					todayTimes = data.todayTimes;
 					missValues = data.missTimes;
-					updateBlankIssue(lastIssueId);
+					updateBlankIssue(lastIssueNumber);
 					updateTodayTimes(todayTimes);
 					updateCurrentMiss(missValues);
 					paramObj.mm = 10;
@@ -297,7 +297,7 @@
 			dataType:'JSON',
 			async:false,
 			data : {
-				lastIssueId : lastIssueId,
+				lastIssueNumber : lastIssueNumber,
 				provinceDm : provinceDm
 			},
 			success: function(data) {
@@ -340,6 +340,9 @@
 		td.colSpan = '3';
 		td.innerHTML = issueNum.toString().substring(7,9);
 		trObj.appendChild(td);
+		if(issueNum%5 == 0){
+			$(td).addClass('blackLine');
+		}
 		var issTemp = issueNum.toString().substring(0,issueNum.length-3);//截取期号150119
 		var now = new Date();
 
@@ -369,7 +372,7 @@
 		td.colSpan = 2;
 		$(td).css("background-color","#FFFACD");
 		
-		if(data.issueId%5 == 0){
+		if(data.issueNumber%5 == 0){
 			$(td).addClass('blackLine');
 		}
 		td.innerHTML=addZero(data.no1);
@@ -377,7 +380,7 @@
 		var td = document.createElement("td");
 		td.colSpan = 2;
 		$(td).css("background-color","#FFFACD");
-		if(data.issueId%5 == 0){
+		if(data.issueNumber%5 == 0){
 			$(td).addClass('blackLine');
 		}
 		td.innerHTML=addZero(data.no2);
@@ -385,7 +388,7 @@
 		var td = document.createElement("td");
 		td.colSpan = 2;
 		$(td).css("background-color","#FFFACD");
-		if(data.issueId%5 == 0){
+		if(data.issueNumber%5 == 0){
 			$(td).addClass('blackLine');
 		}
 		td.innerHTML=addZero(data.no3);
@@ -393,7 +396,7 @@
 		var td = document.createElement("td");
 		td.colSpan = 2;
 		$(td).css("background-color","#FFFACD");
-		if(data.issueId%5 == 0){
+		if(data.issueNumber%5 == 0){
 			$(td).addClass('blackLine');
 		}
 		td.innerHTML=addZero(data.no4);
@@ -401,7 +404,7 @@
 		var td = document.createElement("td");
 		td.colSpan = 2;
 		$(td).css("background-color","#FFFACD");
-		if(data.issueId%5 == 0){
+		if(data.issueNumber%5 == 0){
 			$(td).addClass('blackLine');
 		}
 		td.innerHTML=addZero(data.no5);
@@ -430,6 +433,9 @@
 			var td = document.createElement('td');
 			trObj.appendChild(td);
 			td.colSpan = 2;
+			if(data.issueNumber%5 == 0){
+				$(td).addClass('blackLine');
+			}
 			if(i < 6){
 					$(td).addClass('tdOddCls');
 			}else if(i < 11){
@@ -468,10 +474,8 @@
 	function printBigEven(trObj,data){
 		var td = document.createElement('td');
 		td.colSpan = 3;
-		if(data.issueId%5 == 0){
-			td.className = "statisticsBlackLine";
-		}else{
-			td.className = "statistics";
+		if(data.issueNumber%5 == 0){
+			$(td).addClass('blackLine');
 		}
 		if(data.no1==1 || data.no1==2){
 			td.innerHTML = "木";
@@ -507,10 +511,8 @@
 		trObj.appendChild(td);
 		var td = document.createElement('td');
 		td.colSpan = 3;
-		if(data.issueId%5 == 0){
-			td.className = "statisticsBlackLine";
-		}else{
-			td.className = "statistics";
+		if(data.issueNumber%5 == 0){
+			$(td).addClass('blackLine');
 		}
 		if(data.no1==1 || data.no1==2 || data.no1==11 || data.no1==12){
 			td.innerHTML = "东";

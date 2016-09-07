@@ -10,7 +10,6 @@
 
     #groupTwo {
         position: absolute;
-        background : #EEEEEC;
         height : 33.3%;
         width : 720px;
         opacity: 1;
@@ -20,7 +19,7 @@
     }
     .typeGroup {
         position: absolute;
-        background : #EBEBEB;
+        background : #E0EEEE;
         height : 100%;
         width : 100%;
         display : none;

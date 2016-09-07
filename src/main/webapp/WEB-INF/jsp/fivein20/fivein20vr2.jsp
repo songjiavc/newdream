@@ -37,282 +37,322 @@
 	<body style="margin: 0 auto; padding: 0px;">
         <div id="groupTwo">
         	<!--    所有的遗漏统计表格将在这里展示 -->
-        	<div id = "type2" class="typeGroup" >
-        		<div width = "130" height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任二</div>
+        	<div class="typeGroup" >
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<th colspan="2">任二</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<th colspan="2">任二</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
         	</div>
-        	<div id = "type2or3" class="typeGroup">
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任三</div>
+        	<div  class="typeGroup">
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<th colspan="2">任三</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<th colspan="2">任三</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
         	</div>
-        	<div id = "type2or4" class="typeGroup">
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任二三码复式</div>
+        	<div  class="typeGroup">
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<th colspan="2">任二三码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<th colspan="2">任二三码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
         	</div>
-        	<div id = "type2or5" class="typeGroup" >
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任二四码复式</div>
+        	<div class="typeGroup" >
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<th colspan="2">任二四码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<th colspan="2">任二四码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
         	</div>
-        	<div id = "type3" class="typeGroup">
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任二五码复试</div>
+        	<div  class="typeGroup">
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<th colspan="2">任二五码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<th colspan="2">任二五码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>	
+        		<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
         	</div>
-        	<div id = "type3or4" class="typeGroup">
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任三四码复式</div>
+        	<div  class="typeGroup">
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<th colspan="2">任三四码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<th colspan="2">任三四码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
         	</div>
-        	<div id = "type3or5" class="typeGroup">
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任三五码复式</div>
+        	<div class="typeGroup">
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<th colspan="2">任三五码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<th colspan="2">任三五码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls" >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
-        				<td></td><td></td><td></td><td></td><td></td><td></td>
+        			<tr class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
         	</div>
-        	<div id = "type3or6" class="typeGroup">
-        		<div height="50px" style="margin:10 10 10 10;color:black;font-family:晴圆;font-size:14pt;float:left" >类别：任三六码复式</div>
+        	<div class="typeGroup">
         		<table border="1" class="missTable" cellpadding="0" cellspacing="0" >
-	        		<tr class="tdOddCls">
+	        		<th colspan="2">任三六码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<th colspan="2">任三六码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+	        		<tr >
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
+        			<tr class="tdMissCls" >
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
+        			<tr >
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
+        			<tr  class="tdMissCls">
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
+        			<tr >
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
+        			<tr  class="tdMissCls">
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
+        			<tr >
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr  >
+        			<tr class="tdMissCls" >
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdOddCls">
+        			<tr >
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
-        			<tr>
+        			<tr class="tdMissCls">
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
