@@ -76,8 +76,6 @@
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
-        	</div>
-        	<div  class="typeGroup">
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="2">任三</th>
         			<th>当前遗漏</th>
@@ -116,8 +114,6 @@
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
-        	</div>
-        	<div  class="typeGroup">
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="2">任二三码</th>
         			<th>当前遗漏</th>
@@ -156,8 +152,8 @@
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
-        	</div>
-        	<div class="typeGroup" >
+        		</div>
+        		<div  class="typeGroup">
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="2">任二四码</th>
         			<th>当前遗漏</th>
@@ -196,8 +192,6 @@
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
-        	</div>
-        	<div  class="typeGroup">
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="2">任二五码</th>
         			<th>当前遗漏</th>
@@ -236,8 +230,6 @@
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
-        	</div>
-        	<div  class="typeGroup">
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="2">任三四码</th>
         			<th>当前遗漏</th>
@@ -316,13 +308,49 @@
         				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
         			</tr>
         		</table>
-        	</div>
-        	<div class="typeGroup">
-        		<table border="1" class="missTable" cellpadding="0" cellspacing="0" >
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
 	        		<th colspan="2">任三六码</th>
         			<th>当前遗漏</th>
         			<th>最大遗漏</th>
         			<th colspan="2">任三六码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+	        		<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr  class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdMissCls" >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr >
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdMissCls">
+        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			</tr>
+        		</table>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+	        		<th colspan="2">任四五码</th>
+        			<th>当前遗漏</th>
+        			<th>最大遗漏</th>
+        			<th colspan="2">任四五码</th>
         			<th>当前遗漏</th>
         			<th>最大遗漏</th>
 	        		<tr >
@@ -433,7 +461,7 @@
                        <td colspan="6"  rowspan="3" align="center">版本<br>2.0</td>
                    </tr>
                    <tr >
-                      <td colspan="13"  align="center">出现次数</td>
+                      <td colspan="13"  align="center">顺一遗漏</td>
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>

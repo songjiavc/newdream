@@ -92,7 +92,7 @@
            <if test="issueNumber != '' ">
         		AND ISSUE_NUMBER = #{issueNumber}
 		   </if>
-		   AND TYPE IN ('2','3','17','18','19','22','23','24')
+		   AND TYPE IN ('2','3','17','18','19','22','23','24','25')
         </where>
         ORDER BY 
         	`TYPE`,CURRENT_MISS DESC

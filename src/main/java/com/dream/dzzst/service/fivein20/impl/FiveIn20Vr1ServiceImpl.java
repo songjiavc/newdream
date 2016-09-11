@@ -60,14 +60,12 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
     	Map<String,Object> returnMap = new HashMap<String,Object>();
         Map<String,Object> paramMap = new HashMap<String,Object>();
         paramMap.put("mainTable", globalCacheService.getCacheMap(pcode)[0]);
-    		//今日出现次数
-        List<FiveIn20Number> todayTimesList = this.getTodayDatas(paramMap);
         		//遗漏值从这里取出
         List<FiveIn20Number> initMissList = this.getAllData(paramMap);
         paramMap.put("count", Integer.parseInt(recordCount));
         List<FiveIn20Number> initIssueList = initMissList.subList(0, Integer.parseInt(recordCount));
         		//今日出现次数
-        returnMap.put("todayTimes", getTodayTimesArr(todayTimesList));
+        returnMap.put("shun1Miss", getshun1MissArr(initMissList));
         //号码分布遗漏统计
         returnMap.put("missTimes", getInitMissArr(initMissList));
         		//返回结果记录
@@ -82,9 +80,9 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
         selMap.put("mainTable",  globalCacheService.getCacheMap(provinceCode)[0]);
         FiveIn20Number fiveIn20Number  = this.getLastRecord(selMap);
         if(!fiveIn20Number.getIssueNumber().equals(issueID)){
-            int[] todayIntArr = getIntervalTodayTimesArr(fiveIn20Number,paramMap.get("todayTimesArr"));
+            int[] shun1MissIntArr = getIntervalShun1MissArr(fiveIn20Number,paramMap.get("shun1MissArr"));
             //今日出现次数
-            returnMap.put("todayTimes", todayIntArr);
+            returnMap.put("shun1Miss", shun1MissIntArr);
             //遗漏值
             int[] missIntArr = getIntervalMissTimesArr(fiveIn20Number,paramMap.get("missTimesArr"));
             returnMap.put("missTimes", missIntArr);
@@ -101,25 +99,15 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
       * 
       * @return
       */
-    private int[] getTodayTimesArr(List<FiveIn20Number> FiveIn20NumberList){
-        int[] winNumDist = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};    //开奖号码分布遗漏计算
-        for(FiveIn20Number fiveIn20Number : FiveIn20NumberList){
-            /*
-             * 取出三个值并将它转为整型
-             */
-            int numOne = fiveIn20Number.getNo1();
-            int numTwo = fiveIn20Number.getNo2();
-            int numThree = fiveIn20Number.getNo3();
-            int numFour = fiveIn20Number.getNo4();
-            int numFive = fiveIn20Number.getNo5();
-            
-            winNumDist[numOne-1] = winNumDist[numOne-1] + 1;
-            winNumDist[numTwo-1] = winNumDist[numTwo-1] + 1;
-            winNumDist[numThree-1] = winNumDist[numThree-1] + 1;
-            winNumDist[numFour-1] = winNumDist[numFour-1] + 1;
-            winNumDist[numFive-1] = winNumDist[numFive-1] + 1;
-        }
-        return winNumDist;
+    private int[] getshun1MissArr(List<FiveIn20Number> fiveIn20NumberList){
+    	int[] numTemp = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    	for(int j = fiveIn20NumberList.size()-1;j>=0;j--){
+    		for(int i = 0;i < numTemp.length;i++){
+        		numTemp[i]++;
+        	}
+    		numTemp[fiveIn20NumberList.get(j).getNo1()-1] = 0;
+    	}
+    	return numTemp;
     }
 
     /** 
@@ -129,29 +117,13 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
       * 
       * @return
       */
-    private int[] getIntervalTodayTimesArr(FiveIn20Number fiveIn20Number,int[] todayTimes){
-
-        int[] winNumDist;
-        if("01".equals(fiveIn20Number.getIssueNumber().substring(fiveIn20Number.getIssueNumber().length()-2, fiveIn20Number.getIssueNumber().length()))){
-            winNumDist = new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-        }else{
-            winNumDist = todayTimes;
+    private int[] getIntervalShun1MissArr(FiveIn20Number fiveIn20Number,int[] shun1Miss){
+    	int[] missRtnArr = shun1Miss;
+        for(int i = 0;i < missRtnArr.length;i++){
+            missRtnArr[i]++;
         }
-        /*
-         * 取出三个值并将它转为整型
-         */
-        int numOne = fiveIn20Number.getNo1();
-        int numTwo = fiveIn20Number.getNo2();
-        int numThree = fiveIn20Number.getNo3();
-		int numFour = fiveIn20Number.getNo4();
-		int numFive = fiveIn20Number.getNo5();
-        //求合值
-        winNumDist[numOne-1] = winNumDist[numOne-1] + 1;
-        winNumDist[numTwo-1] = winNumDist[numTwo-1] + 1;
-        winNumDist[numThree-1] = winNumDist[numThree-1] + 1;
-		winNumDist[numFour-1] = winNumDist[numFour-1] + 1;
-		winNumDist[numFive-1] = winNumDist[numFive-1] + 1;
-        return winNumDist;
+        missRtnArr[fiveIn20Number.getNo1()-1] = 0;
+        return missRtnArr;
     }
     
     /**   

@@ -32,13 +32,13 @@ public class FiveIn20Vr1Controller {
 		return returnMap;
 	}
 	@RequestMapping("/getLastData")
-	public @ResponseBody Map<String,Object> getLastData(@RequestParam(value="provinceDm",required=true) String provinceDm,@RequestParam(value="lastIssueNumber",required=true) String lastIssueNumber,@RequestParam(value="missTimes",required=true) String missTimes,@RequestParam(value="todayTimes",required=true) String todayTimes) {
-		JSONArray jaToday = JSONArray.parseArray(todayTimes);
-		int[] todayTimesArr = getJsonToIntArray(jaToday);
+	public @ResponseBody Map<String,Object> getLastData(@RequestParam(value="provinceDm",required=true) String provinceDm,@RequestParam(value="lastIssueNumber",required=true) String lastIssueNumber,@RequestParam(value="missTimes",required=true) String missTimes,@RequestParam(value="shun1Miss",required=true) String shun1Miss) {
+		JSONArray jaShun1Miss = JSONArray.parseArray(shun1Miss);
+		int[] shun1MissArr = getJsonToIntArray(jaShun1Miss);
 		JSONArray jaMiss = JSONArray.parseArray(missTimes);
 		int[] missTimesArr = getJsonToIntArray(jaMiss);
 		Map<String,int[]> paramMap = new HashMap<String,int[]>();
-		paramMap.put("todayTimesArr", todayTimesArr);
+		paramMap.put("shun1MissArr", shun1MissArr);
 		paramMap.put("missTimesArr", missTimesArr);
 		Map<String,Object> returnMap = fiveIn20Vr1Service.getIntervalContext(lastIssueNumber,paramMap,provinceDm);
         return returnMap;

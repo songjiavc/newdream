@@ -36,7 +36,7 @@
     	
 	};
 	//用来存放今日出现次数和遗漏值
-	var missValues,todayTimes;
+	var missValues,shun1Miss;
 	var lastIssueNumber;
 	var missDivs,i = 0;
 	/*
@@ -70,8 +70,8 @@
 				$('#dataTable').css('marginTop',-paramObj.clientPix*paramObj.addCount+($('#Content').height() - paramObj.clientPix*paramObj.recordCount)-1);
 				//更新今日出现次数
 				updateBlankIssue(lastIssueNumber);
-				todayTimes = data.todayTimes;
-				updateTodayTimes(data.todayTimes);
+				shun1Miss = data.shun1Miss;
+				updateTodayTimes(data.shun1Miss);
 				//更新当前遗漏值
 				missValues = data.missTimes;
 				updateCurrentMiss(data.missTimes);
@@ -180,7 +180,7 @@
 			async:false,
 			data : {
 				lastIssueNumber : lastIssueNumber,
-				todayTimes : JSON.stringify(todayTimes),
+				shun1Miss : JSON.stringify(shun1Miss),
 				missTimes : JSON.stringify(missValues),
 				provinceDm : provinceDm
 			},
@@ -206,10 +206,10 @@
 					var tr = insertTr($('#dataTable').get(0));
 					insertNumTd(tr,record);
 					$('#dataTable tr:first').remove();
-					todayTimes = data.todayTimes;
+					shun1Miss = data.shun1Miss;
 					missValues = data.missTimes;
 					updateBlankIssue(lastIssueNumber);
-					updateTodayTimes(todayTimes);
+					updateTodayTimes(shun1Miss);
 					updateCurrentMiss(missValues);
 					paramObj.mm = 10;
 	           		paramObj.ss = 0;
@@ -588,60 +588,7 @@
 		$(div).height(window.screen.height-top);
 		$(div).html("本数据仅供参考,开奖号码请以官方数据为准.");
 	}
-	/*
-	 desc : 插入今天次数单元格
-	 since : 2014-10-29
-	 author ： songj
-	 paramType : '10,20,30....'
-	 */
-	function insertTodayTimes(trObj,data){
-		trObj.className = "trHead";
-		var td = document.createElement("td");
-		td.className = "tdHead";
-		td.height = paramObj.clientPix;
-		td.colSpan = 13;
-		$(td).width(156);
-		td.innerHTML = "出现次数";
-		trObj.appendChild(td);
-		$.each(data.winNumDist,function(i,temp){
-			td = document.createElement("td");
-			td.colSpan = 2;
-			td.className = "tdHead";
-			td.innerHTML = temp;
-			trObj.appendChild(td);
-		});
-		var td = document.createElement("td");
-		td.colSpan = 6;
-		td.rowSpan = 2;
-		td.className = "tdHead";
-		td.height = paramObj.clientPix+paramObj.linePx;
-		trObj.appendChild(td);
-	}
-	/*
-	 desc : 插入今天次数单元格
-	 since : 2014-10-29
-	 author ： songj
-	 paramType : '10,20,30....'
-	 */
-	function insertMissValue(trObj,data){
-		trObj.className = "trHead";
-		var td = document.createElement("td");
-		td.className = "select5LastTr";
-		td.height = paramObj.clientPix;
-		td.colSpan = 13;
-		td.className = "tdHead";
-		td.innerHTML = "当前遗漏";
-		trObj.appendChild(td);
-		$.each(data.winNumMiss,function(i,temp){
-			td = document.createElement("td");
-			td.colSpan = 2;
-			td.className = "tdHead";
-			td.innerHTML = temp;
-			//循环判断内容
-			trObj.appendChild(td);
-		});
-	}
-
+	
 	/*
 	 add by songj
 	 since 2014-10-22 15:09
@@ -745,7 +692,7 @@
 		}
    		$(div).css('display','inline');
    		i++;
-   		paramObj.showMissDivTimeId = setTimeout('showMissDiv(missDivs[i])',15000);
+   		paramObj.showMissDivTimeId = setTimeout('showMissDiv(missDivs[i])',10000);
    	}
    	
 	/* ***********************定时任务设置区域*********************************** */
