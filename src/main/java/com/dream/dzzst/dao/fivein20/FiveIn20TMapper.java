@@ -84,4 +84,11 @@ public interface FiveIn20TMapper {
      * @param paramMap
      */
     void deleteDataInput(Map<String,Object> paramMap) throws SQLException;
+    
+    /**
+     * 获取顺一历史最大遗漏
+     * @param paramMap
+     * @return
+     */
+    List<FiveIn20Analysis>  getShun1HistoryMaxMiss(Map<String, Object> paramMap);
 }

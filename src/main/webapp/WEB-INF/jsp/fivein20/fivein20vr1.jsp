@@ -32,7 +32,15 @@
 	    	initData('<%=lastDataUrl%>','<%=provinceDm%>');
 	    });
 		
-		
+		function changeCss(obj,event){
+			if(event == "on"){
+				$(obj).css("background-color","red");
+				$(obj).css("font-size","13pt");
+			}else{
+				$(obj).css("background-color","#8B0000");
+				$(obj).css("font-size","12pt");
+			}
+		}
 	</script>
 	<body style="margin: 0 auto; padding: 0px;">
         <div id="groupOne">
@@ -42,7 +50,7 @@
                         <td colspan="3" rowspan=2 align="center">期号</td>
                         <td colspan="10" align="center">开奖号码</td>
                         <td colspan="40" align="center">号码分布</td>
-                        <td colspan="6"  align="center">指标</td>
+                        <td colspan="4"  align="center">指标</td>
                     </tr>
                     <tr>
                        <td colspan="2"  align="center" >1</td>
@@ -70,8 +78,8 @@
                        <td colspan="2"  align="center">18</td>
                        <td colspan="2"  align="center">19</td>
                        <td colspan="2"  align="center">20</td>
-                       <td colspan="3"  align="center">五行</td>
-                       <td colspan="3"  align="center">方位</td>
+                       <td colspan="2"  align="center">行</td>
+                       <td colspan="2"  align="center">位</td>
 
                     </tr>
                 </table>
@@ -86,7 +94,7 @@
                 <table id="bottomTable"  class = 'headTable' cellpadding="0px" cellspacing="0px" rules="all">
                     <tr >
                        <td colspan="3"  align="center"></td>
-                       <td id = "countDown" style="color:black;" width="119px" colspan="10"  align="center"></td>
+                       <td id = "countDown" style="color:black;" width="124px" colspan="10"  align="center"></td>
                        <td colspan="2"  align="center" ></td>
                        <td colspan="2"  align="center" ></td>
                        <td colspan="2"  align="center" ></td>
@@ -107,7 +115,8 @@
                        <td colspan="2"  align="center"></td>
                        <td colspan="2"  align="center"></td>
                        <td colspan="2"  align="center"></td>
-                       <td colspan="6"  rowspan="3" align="center">版本<br>1.0</td>
+                        <td colspan="2"  align="center"></td>
+                        <td colspan="2"  align="center"></td>
                    </tr>
                    <tr >
                       <td colspan="13"  align="center">出现次数</td>
@@ -131,9 +140,61 @@
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>
+                      <td colspan="4"  rowspan="2" align="center" onclick="location.href='<%=lastDataUrl %>/initStartPageVr2.do?provinceDm=<%=provinceDm%>' "  onMouseOut="changeCss(this,'move')" onmouseover="changeCss(this,'on')">
+                      	遗漏<br>弹出
+                      </td>
                   </tr>
                   <tr class="trHead">
-                        <td colspan="13"  align="center">当前遗漏</td>
+                        <td colspan="13"  align="center">任一遗漏</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                   </tr>
+                   <tr class="trHead">
+                        <td colspan="13"  align="center">顺一遗漏</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center" >0</td>
+                  		 <td colspan="4"  rowspan="2" align="center" onclick="location.href='<%=lastDataUrl %>/initStartPageVr3.do?provinceDm=<%=provinceDm%>' "  onMouseOut="changeCss(this,'move')" onmouseover="changeCss(this,'on')">
+                      	整版<br>遗漏
+                      </td>
+                   </tr>
+                   <tr class="trHead">
+                        <td colspan="13"  align="center">顺一最大遗漏</td>
                         <td colspan="2"  align="center" >0</td>
                         <td colspan="2"  align="center" >0</td>
                         <td colspan="2"  align="center" >0</td>

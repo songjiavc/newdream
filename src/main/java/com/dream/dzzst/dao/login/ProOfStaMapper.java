@@ -5,6 +5,7 @@ import java.util.List;
 import com.dream.dzzst.model.login.ProAndGoods;
 import com.dream.dzzst.model.login.ProductDto;
 import com.dream.dzzst.model.login.StationAndProduct;
+import com.dream.dzzst.model.util.DictDto;
 
 public interface ProOfStaMapper {
 
@@ -28,4 +29,9 @@ public interface ProOfStaMapper {
 	 * @return
 	 */
 	public ProAndGoods getProAndGoods(String id);
+	/**
+	 * 加载本地代码表到内存中
+	 * @return
+	 */
+	public List<DictDto> getCPZLnameList();
 }

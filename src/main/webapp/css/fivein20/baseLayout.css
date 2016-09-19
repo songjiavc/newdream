@@ -65,8 +65,7 @@
     #groupOne #Content {
         position:relative;
         overflow:hidden;
-        background:#F0CEB5;
-        height : 85%;
+        background:Gray;
     }
 
     #groupOne #Content #dataTable {
@@ -76,5 +75,4 @@
     #groupOne .bottomDiv {
         z-index: 1;
         background:black;
-        height : 10%;
     }

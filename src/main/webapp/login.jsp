@@ -1,36 +1,27 @@
 <%@ page pageEncoding="UTF-8"%>
 <html>
 <head>
-    <link href="bootstrap3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/login/baseLayout.css" rel="stylesheet">
+    
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
+<script type="text/javascript">
+ 
+  
+  </script>
+<body background="/img/login/EL-background.png">
 
-<body onload="myfunction()">
-   	<div id="Header" align="left" >
+<div style="height:429px; width:447px; background:url(/img/login/EL-login.png);position:absolute;top:50%;left:50%;margin:-220px 0 0 -220px;">
+     <form action="<%=request.getContextPath() %>/login.login" method="post">
+    <div style="position:absolute;left:165px;top:123px">
+    <input type="text" name="username" />
     </div>
-    <div id="Content" align = "center" >
-    <form action="<%=request.getContextPath() %>/login.login" method="post" class="form-horizontal">
-    	<div id = "login">
-    		<div id = "head" align = "center">
-    				<font color="white" size = "6px">登&nbsp;&nbsp;录</font>
-    		</div>
-    		<div id = "center">
-  				<div class="form-group layout" style="margin:40 0 0 0;">
-	    			<label for="inputPassword" class="col-sm-2 control-label">用户名:</label>
-	    			<div class="col-sm-8">
-	      				<input type="input" class="form-control" name="username" placeholder="用户名">
-	    			</div>
-  				</div>
-  				
-  				<div class="form-group layout" style="margin:40 0 0 0;">
-	    			<label for="inputPassword" class="col-sm-2 control-label">密码:</label>
-	    			<div class="col-sm-8">
-	      				<input type="password" class="form-control" name="password" placeholder="密码">
-	    			</div>
-  				</div>
-    		</div>
-    		<div id = "warning">
-    		<%
+    <div style="position:absolute;left:165px;top:197px">
+    <input type="password" name="password" />
+    </div>
+    <div style="position:absolute;left:135px;top:237px" align="center">
+    			<%
 				String loginFail=(String)request.getAttribute("loginFail");
 				if("noUsername".equals(loginFail)){
 				%>
@@ -43,16 +34,11 @@
 				<%  
 				}
 				%>
-  			</div>
-    		<div id = "bottom">
-    			<button type="button" class="btn btn-primary btn-lg btn-block" style="height: 100%;" onclick="document.forms[0].submit()">确&nbsp;&nbsp;定</button>
-    		</div>
-    	</div>
-    	</form>
     </div>
-    <div id = "Footer"  align = "left">
+    
+    <div style="position:absolute;left:115px;top:312px;width:230px;height:50px;cursor:hand" onclick="document.forms[0].submit()">
     </div>
+    </form>
 </div>
-</form>
 </body>
 </html>

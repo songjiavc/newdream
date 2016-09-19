@@ -92,10 +92,26 @@
            <if test="issueNumber != '' ">
         		AND ISSUE_NUMBER = #{issueNumber}
 		   </if>
-		   AND TYPE IN ('2','3','17','18','19','22','23','24','25')
+		   AND TYPE IN ('2','3','10','17','18','19','22','23','24','25','26','27')
         </where>
         ORDER BY 
         	`TYPE`,CURRENT_MISS DESC
+	</select>
+	
+	<!-- 增加查询遗漏方法 -->
+	<select id="getShun1HistoryMaxMiss" parameterType="java.util.Map" resultMap="resultAnalysis">
+		SELECT 
+            main.ISSUE_NUMBER,GROUP_NUMBER,CURRENT_MISS,MAX_MISS,main.TYPE
+        FROM
+            ${mainTable} main
+        <where>  
+           <if test="issueNumber != '' ">
+        		AND ISSUE_NUMBER = #{issueNumber}
+		   </if>
+		   AND TYPE = '11'
+        </where>
+        ORDER BY 
+        	CURRENT_MISS DESC
 	</select>
 	
 	<insert id="insertDataInput" parameterType="java.util.Map">

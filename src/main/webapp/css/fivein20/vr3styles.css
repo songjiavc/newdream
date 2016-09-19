@@ -2,17 +2,13 @@
    table
     {
         table-layout: fixed;
-		border-color: #e7acac;
+		border-color: Gray;;
 		width:100%;
 		height:100%;
-		color : white;
-		rules : all;
-		background-color: #fffffe;
 		text-align:center;
 		position:relative;
         font-family:晴圆;
-        font-size:12pt;
-        text-align:center;
+        font-size:14pt;
     }
 
     table tr
@@ -36,10 +32,13 @@
     }
 
     .tdOddCls{
-        background-color:#FEE7EF;
+        background-color:#E0EEEE;
     }
     .tdEvenCls{
-        background: #EEEEEC	;
+        background: #CCE5A3;
+    }
+    .tdMissCls{
+    	background: #FFFACD;
     }
     
     .missTable{
@@ -47,13 +46,19 @@
 		border-color: #888a85;
 		border : 1;
 		width:100%;
-		height:100%;
+		height: 33.33%;
 		text-align:center;
 		position:relative;
 		background-color: #ffffff;
         font-family:晴圆;
-        font-size:14pt;
     }
-
-
+   .missTable th{
+		background: #8B0000;
+		color : white;
+		font-family:晴圆;
+		font-size:14pt;
+   }
+       .missTable td {
+        	font-size:14pt;
+       }
     

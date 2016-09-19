@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dream.dzzst.model.login.ProductDto;
 import com.dream.dzzst.model.login.StationAndProduct;
+import com.dream.dzzst.service.cache.GlobalCacheService;
 import com.dream.dzzst.service.login.LoginService;
 import com.dream.dzzst.util.login.LoginUtils;
 
@@ -27,6 +28,9 @@ public class LoginController {
 
 	@Autowired
 	private LoginService loginservice;
+	
+	@Autowired
+	private GlobalCacheService globalCacheService;
 	
 	private static final String CPDL_DM = "02";//产品大类--软件的code
 	
@@ -64,6 +68,7 @@ public class LoginController {
 				
 				if(LoginController.CPDL_DM.equals(dto.getCpdlDm()))//前台显示只显示软件产品
 				{
+					dto.setCpzlName(globalCacheService.getCpzlMap(dto.getCpzlDm()));
 					productDtos.add(dto);
 				}
 				

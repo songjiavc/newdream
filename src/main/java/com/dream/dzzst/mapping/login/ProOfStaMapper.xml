@@ -47,6 +47,11 @@
 		<result column="GOOD_ID" property="goodId" jdbcType="VARCHAR" />
 		<result column="PRODUCT_ID" property="productId" jdbcType="VARCHAR" />
 	</resultMap>
+	
+	<resultMap id="DictDto" type="com.dream.dzzst.model.util.DictDto">
+		<result column="CODE" property="code" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+	</resultMap>
 
 	<!-- 宋佳 修改站点获取产品列表方法 -->
 	<select id="getProducts" resultMap="ResultMap">
@@ -70,6 +75,7 @@
 	</select>
 	
 	
+	
 	<select id="getProAndGoods" resultMap="ProAndGoodsMap">
 		SELECT * FROM
 		RELA_SDF_GOOD_PRODUCT 
@@ -77,5 +83,15 @@
 			ID = #{id}
 		</where>
 	</select>
+	
+	<select id="getCPZLnameList" resultMap="DictDto">
+		SELECT CODE,NAME FROM
+		T_SDF_CODE_ZL_PRODUCT
+		<where>
+			IS_DELETED = 0
+		</where>
+	</select>
+	
+
 	
 </mapper>

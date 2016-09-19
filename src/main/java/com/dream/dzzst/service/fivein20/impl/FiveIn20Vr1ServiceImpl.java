@@ -2,10 +2,12 @@ package com.dream.dzzst.service.fivein20.impl;
 
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,15 +62,20 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
     	Map<String,Object> returnMap = new HashMap<String,Object>();
         Map<String,Object> paramMap = new HashMap<String,Object>();
         paramMap.put("mainTable", globalCacheService.getCacheMap(pcode)[0]);
-        		//遗漏值从这里取出
+        //获取今日出现数据
+        List<FiveIn20Number> initTodayDataList = this.getTodayDatas(paramMap);
+        returnMap.put("todayTimes",getTodayTimesArr(initTodayDataList));
+        //遗漏值从这里取出
         List<FiveIn20Number> initMissList = this.getAllData(paramMap);
         paramMap.put("count", Integer.parseInt(recordCount));
         List<FiveIn20Number> initIssueList = initMissList.subList(0, Integer.parseInt(recordCount));
-        		//今日出现次数
-        returnMap.put("shun1Miss", getshun1MissArr(initMissList));
-        //号码分布遗漏统计
+        //顺一遗漏统计
+        Map<String,int[]> shun1Miss = getshun1MissArr(initMissList);
+        returnMap.put("shun1Miss", shun1Miss.get("shun1Miss"));
+        returnMap.put("shun1MaxMiss", shun1Miss.get("shun1MaxMiss"));
+        //顺一maxMiss统计
         returnMap.put("missTimes", getInitMissArr(initMissList));
-        		//返回结果记录
+        //返回结果记录
         returnMap.put("records", initIssueList);
         return returnMap;
     }
@@ -80,9 +87,14 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
         selMap.put("mainTable",  globalCacheService.getCacheMap(provinceCode)[0]);
         FiveIn20Number fiveIn20Number  = this.getLastRecord(selMap);
         if(!fiveIn20Number.getIssueNumber().equals(issueID)){
-            int[] shun1MissIntArr = getIntervalShun1MissArr(fiveIn20Number,paramMap.get("shun1MissArr"));
-            //今日出现次数
+        	int[] todayIntArr = getIntervalTodayTimesArr(fiveIn20Number,paramMap.get("todayTimesArr"));
+               //今日出现次数
+             returnMap.put("todayTimes", todayIntArr);
+        	int[] shun1MissIntArr = getIntervalShun1MissArr(fiveIn20Number,paramMap.get("shun1MissArr"));
+            //顺一遗漏
             returnMap.put("shun1Miss", shun1MissIntArr);
+            //顺一历史最大遗漏
+            returnMap.put("shun1MaxMiss", getIntervalMaxShun1MissArr(shun1MissIntArr,paramMap.get("shun1MaxMissArr")));
             //遗漏值
             int[] missIntArr = getIntervalMissTimesArr(fiveIn20Number,paramMap.get("missTimesArr"));
             returnMap.put("missTimes", missIntArr);
@@ -99,16 +111,37 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
       * 
       * @return
       */
-    private int[] getshun1MissArr(List<FiveIn20Number> fiveIn20NumberList){
-    	int[] numTemp = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    private Map<String,int[]> getshun1MissArr(List<FiveIn20Number> fiveIn20NumberList){
+    	Map<String,int[]> rtnMap = new HashMap<String,int[]>();
+    	int[] tempShun1Miss = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    	int[] tempShun1MaxMiss = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     	for(int j = fiveIn20NumberList.size()-1;j>=0;j--){
-    		for(int i = 0;i < numTemp.length;i++){
-        		numTemp[i]++;
+    		for(int i = 0;i < tempShun1Miss.length;i++){
+    			tempShun1Miss[i]++;
+    			if(tempShun1Miss[i] > tempShun1MaxMiss[i]){
+    				tempShun1MaxMiss[i] = tempShun1Miss[i];
+    			}
         	}
-    		numTemp[fiveIn20NumberList.get(j).getNo1()-1] = 0;
+    		tempShun1Miss[fiveIn20NumberList.get(j).getNo1()-1] = 0;
     	}
-    	return numTemp;
+    	rtnMap.put("shun1Miss",tempShun1Miss);
+    	rtnMap.put("shun1MaxMiss",tempShun1MaxMiss);
+    	return rtnMap;
     }
+    /** 
+     * @Description: 获取顺一的历史最大遗漏
+     * @author songjiavc@126.com
+     * @date 2014年11月17日 下午3:11:20 
+     * 
+     * @return
+     */
+   private int[] getshun1MaxMissArr(List<FiveIn20Analysis> fiveIn20NumberList){
+   	int[] numTemp = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+   	for(int i = 0;i < numTemp.length;i++){
+   		numTemp[i] = fiveIn20NumberList.get(i).getMaxMiss();
+   	}
+   	return numTemp;
+   }
 
     /** 
       * @Description: 根据周期函数获取今日出现次数 
@@ -125,6 +158,24 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
         missRtnArr[fiveIn20Number.getNo1()-1] = 0;
         return missRtnArr;
     }
+    
+    
+    /** 
+     * @Description: 根据周期函数获取今日出现次数 
+     * @author songj@sdfcp.com
+     * @date 2014年11月18日 上午8:35:57 
+     * 
+     * @return
+     */
+   private int[] getIntervalMaxShun1MissArr(int[] shun1Miss,int[] shun1MaxMiss){
+   	int[] missRtnArr = shun1MaxMiss;
+       for(int i = 0;i < missRtnArr.length;i++){
+           if(shun1Miss[i] > shun1MaxMiss[i]){
+        	   shun1MaxMiss[i] = shun1Miss[i];
+           }
+       }
+       return missRtnArr;
+   }
     
     /**   
      * @Description: 每条记录都要记录一下这些扩展属性 
@@ -159,23 +210,113 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
         return missRtnArr;
     }
     
-    //复制数组并计算遗漏值给数组中所有元素加'1'
-    private void addLoseForAllArray(int[] numArray,int[] numTemp){
-    	if(numArray.length>0){
-    		for(int i=0;i<numArray.length;i++){
-    			numTemp[i] = numArray[i];
-    			numTemp[i]++;
-    		}
-    	}
-    }
+    
+    /** 
+     * @Description: 获取初始化遗漏值结果
+     * @author songj@sdfcp.com
+     * @date 2014年11月17日 下午3:11:20 
+     * 
+     * @return
+     */
+   private int[] getTodayTimesArr(List<FiveIn20Number> fiveIn20NumberList){
+       int[] winNumDist = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};    //开奖号码分布遗漏计算
+       for(FiveIn20Number fiveIn20Number : fiveIn20NumberList){
+           /*
+            * 取出三个值并将它转为整型
+            */
+           int numOne = fiveIn20Number.getNo1();
+           int numTwo = fiveIn20Number.getNo2();
+           int numThree = fiveIn20Number.getNo3();
+           int numFour = fiveIn20Number.getNo4();
+           int numFive = fiveIn20Number.getNo5();
+           
+           winNumDist[numOne-1] = winNumDist[numOne-1] + 1;
+           winNumDist[numTwo-1] = winNumDist[numTwo-1] + 1;
+           winNumDist[numThree-1] = winNumDist[numThree-1] + 1;
+           winNumDist[numFour-1] = winNumDist[numFour-1] + 1;
+           winNumDist[numFive-1] = winNumDist[numFive-1] + 1;
+       }
+       return winNumDist;
+   }
+
+   /** 
+     * @Description: 根据周期函数获取今日出现次数 
+     * @author songj@sdfcp.com
+     * @date 2014年11月18日 上午8:35:57 
+     * 
+     * @return
+     */
+   private int[] getIntervalTodayTimesArr(FiveIn20Number fiveIn20Number,int[] todayTimes){
+
+       int[] winNumDist;
+       if("01".equals(fiveIn20Number.getIssueNumber().substring(fiveIn20Number.getIssueNumber().length()-2, fiveIn20Number.getIssueNumber().length()))){
+           winNumDist = new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+       }else{
+           winNumDist = todayTimes;
+       }
+       /*
+        * 取出三个值并将它转为整型
+        */
+       int numOne = fiveIn20Number.getNo1();
+       int numTwo = fiveIn20Number.getNo2();
+       int numThree = fiveIn20Number.getNo3();
+		int numFour = fiveIn20Number.getNo4();
+		int numFive = fiveIn20Number.getNo5();
+       //求合值
+       winNumDist[numOne-1] = winNumDist[numOne-1] + 1;
+       winNumDist[numTwo-1] = winNumDist[numTwo-1] + 1;
+       winNumDist[numThree-1] = winNumDist[numThree-1] + 1;
+		winNumDist[numFour-1] = winNumDist[numFour-1] + 1;
+		winNumDist[numFive-1] = winNumDist[numFive-1] + 1;
+       return winNumDist;
+   }
+   
+    
+  
 	@Override
-	public List<FiveIn20Analysis> getTopNMiss(Map<String, String> paramMap) {
+	public List<FiveIn20Analysis> getAllMiss(Map<String, String> paramMap) {
 		String pcode = paramMap.get("provinceCode");
 		String issueNumber = paramMap.get("issueNumber");
 		paramMap.put("mainTable", globalCacheService.getCacheMap(pcode)[1]);
 		paramMap.put("issueNumber", issueNumber);
 		return fiveIn20TMapper.getMissAnalysis(paramMap);
 	}
+	
+	@Override
+	public List<FiveIn20Analysis> getTopNMiss(Map<String, String> paramMap,int n) {
+		List<FiveIn20Analysis> rtnList = new ArrayList<FiveIn20Analysis>();
+		String pcode = paramMap.get("provinceCode");
+		String issueNumber = paramMap.get("issueNumber");
+		paramMap.put("mainTable", globalCacheService.getCacheMap(pcode)[1]);
+		paramMap.put("issueNumber", issueNumber);
+		List<FiveIn20Analysis> allMissList = fiveIn20TMapper.getMissAnalysis(paramMap);
+		int j = 0;
+		int tempType = 0;
+		for(FiveIn20Analysis temp : allMissList){
+			if(tempType == 0 ||tempType !=  temp.getType() ){
+				tempType = temp.getType();
+				j = 0;
+			}
+			if(j < n){
+				j++;
+				rtnList.add(temp);
+			}else{
+				continue;
+			}
+		}
+		return rtnList;
+	}
+	
+	
+	@Override
+	public List<FiveIn20Analysis> getShun1HistoryMaxMiss(Map<String, Object> paramMap) {
+		String pcode = (String) paramMap.get("provinceCode");
+		String issueNumber = (String) paramMap.get("issueNumber");
+		paramMap.put("mainTable", globalCacheService.getCacheMap(pcode)[1]);
+		paramMap.put("issueNumber", issueNumber);
+		return fiveIn20TMapper.getShun1HistoryMaxMiss(paramMap);
+	}
+
 	
 	public Map<String,Object> insertDataInput(String provinceCode,String issueNumber,int[] dataArr){
 		Map<String,Object> rtnParam = new HashMap<String,Object>();

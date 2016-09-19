@@ -1,7 +1,5 @@
 package com.dream.dzzst.service.cache;
 
-import java.util.Map;
-
 /** 
   * @ClassName: GlobalCacheService 
   * @Description: 全局缓存内容,目前缓存map 
@@ -20,6 +18,12 @@ public interface GlobalCacheService{
       */
     public String[] getCacheMap(String key);
     
+    /**
+     * @param key
+     * @return
+     */
+    public String getCpzlMap(String key);
+    
     /** 
       * @Description: 增加内存map
       * @author songj@sdfcp.com
@@ -28,5 +32,11 @@ public interface GlobalCacheService{
       */
     public void setCacheMap(String key,String value[]);
    
+    
+    /**
+     * @param key
+     * @param value
+     */
+    public void setCpzlMap(String key,String value) ;
 } 
 

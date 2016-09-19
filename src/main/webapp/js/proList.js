@@ -34,10 +34,11 @@ function getProductList()
         			proName = product.name;
         			provinceDm = product.provinceDm;//产品所属省份编码	
         			cityDm = product.cityDm;//产品所属城市编码
+        			cpzlName = product.cpzlName;
         			
         			html += ' <div class="menuDivT" ' +
         					'	onclick="location.href=&quot;'+contextPath+prourl+'?provinceDm='+provinceDm+'&cityDm='+cityDm+'&quot;">'+
-	        				'   <div class="menuDivTa">走势图</div>' +
+	        				'   <div class="menuDivTa">'+cpzlName+'</div>' +
 	        				' 	<div class="menuDivTb">'+proName+'</div>' +
 //	        				' 	<div class="menuDivTc">'+proName+'</div>' +
 	        				' 	</div>';

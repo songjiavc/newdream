@@ -86,7 +86,16 @@ public interface FiveIn20Vr1Service {
       * @param analysisList
       * @return 
       */
-    public List<FiveIn20Analysis> getTopNMiss(Map<String, String> paramMap);
+    public List<FiveIn20Analysis> getTopNMiss(Map<String, String> paramMap,int n);
+    
+    public List<FiveIn20Analysis> getAllMiss(Map<String, String> paramMap);
+    
+    /**
+     * @param paramMap
+     * 获取顺一历史最大遗漏统计
+     * @return
+     */
+    public List<FiveIn20Analysis> getShun1HistoryMaxMiss(Map<String, Object> paramMap);
     
     /**将补录数据插入
      * @param issueNumber

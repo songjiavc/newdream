@@ -25,6 +25,7 @@ public class LoginServiceImpl implements LoginService {
 	@Autowired
 	private ProOfStaMapper proOfStaMapper;
 
+	
 	@Override
 	public boolean userLogin(HttpServletRequest request) {
 		String username = (String) request.getParameter("username");
@@ -64,5 +65,5 @@ public class LoginServiceImpl implements LoginService {
 	public ProAndGoods getProAndGoods(String id) {
 		return proOfStaMapper.getProAndGoods(id);
 	}
-
+	
 }

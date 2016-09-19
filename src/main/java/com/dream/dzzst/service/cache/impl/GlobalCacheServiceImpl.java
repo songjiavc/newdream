@@ -1,16 +1,22 @@
 package com.dream.dzzst.service.cache.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dream.dzzst.dao.login.ProOfStaMapper;
+import com.dream.dzzst.model.util.DictDto;
 import com.dream.dzzst.service.cache.GlobalCacheService;
 
 @Service("globalCacheService")
 public class GlobalCacheServiceImpl implements GlobalCacheService{
     
-    private Map<String,String[]> cacheMap = new HashMap<String,String[]>(){
+	private Map<String,String> cpzlMap = new HashMap<String,String>();
+	
+	private Map<String,String[]> cacheMap = new HashMap<String,String[]>(){
         /** 
 		  * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么) 
 		  */ 
@@ -20,7 +26,6 @@ public class GlobalCacheServiceImpl implements GlobalCacheService{
          * @Fields serialVersionUID : 唯一标示
          */ 
        {
-    	   System.out.println("实例化缓存内容!");
     	   put("110000",new String[]{"T_BEIJING_KUAI3_NUMBER","T_BEIJING_KUAI3_MISSANALYSIS"});
     	   put("120000",new String[]{"T_ANHUI_KUAI3_NUMBER","T_ANHUI_KUAI3_MISSANALYSIS"});
     	   put("130000",new String[]{"T_HEBEI_KUAI3_NUMBER","T_HEBEI_KUAI3_MISSANALYSIS"});
@@ -66,4 +71,14 @@ public class GlobalCacheServiceImpl implements GlobalCacheService{
     public void setCacheMap(String key,String[] value) {
         cacheMap.put(key, value);
     }
+    @Override
+    public void setCpzlMap(String key,String value) {
+    	cpzlMap.put(key, value);
+    }
+
+	@Override
+    public String getCpzlMap(String key) {
+        return this.cpzlMap.get(key);
+    }
+    
 }

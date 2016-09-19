@@ -36,7 +36,7 @@
     	
 	};
 	//用来存放今日出现次数和遗漏值
-	var missValues,todayTimes;
+	var missValues,todayTimes,shun1Miss,shun1MaxMiss;
 	var lastIssueNumber;
 	var missDivs,i = 0;
 	/*
@@ -67,14 +67,18 @@
 					var tr = insertBeforeLastTr($('#dataTable tr:first'));
 					insertNumTd(tr,data);
 				});
-				$('#dataTable').css('marginTop',-paramObj.clientPix*paramObj.addCount+($('#Content').height() - paramObj.clientPix*paramObj.recordCount)-1);
+				$('#dataTable').css('marginTop',-paramObj.clientPix*paramObj.addCount+($('#Content').height() - paramObj.clientPix*paramObj.recordCount-1));
 				//更新今日出现次数
 				updateBlankIssue(lastIssueNumber);
 				todayTimes = data.todayTimes;
+				missValues = data.missTimes;
+				shun1Miss = data.shun1Miss;
+				shun1MaxMiss = data.shun1MaxMiss;
 				updateTodayTimes(data.todayTimes);
 				//更新当前遗漏值
-				missValues = data.missTimes;
 				updateCurrentMiss(data.missTimes);
+				updateShun1Miss(data.shun1Miss);
+				updateShun1MaxMiss(data.shun1MaxMiss);
 				//初始化获取新数据
 				createIntervalFunc("getLastData('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
 				//初始化获取遗漏统计数据
@@ -108,29 +112,41 @@
 	///////////////////////////////////////////
 	function initLayoutHeight(windowHeight){
 		$('.headDiv').height(paramObj.clientPix*2);
-		$('.bottomDiv').height(paramObj.clientPix*3);
-		$('#Content').height(window.screen.height-paramObj.clientPix*5);
+		$('.bottomDiv').height(paramObj.clientPix*5);
+		$('#Content').height(window.screen.height-paramObj.clientPix*7);
 		
 	}
 
 	function updateBlankIssue(lastIssueNumber){
 		var tds =  $("#bottomTable tr").eq(0).find("td");
 		var nextIssueNumber = lastIssueNumber.toString().substring(7,9)*1+1;
+		if(nextIssueNumber == 79){
+			nextIssueNumber = "01";
+		}else if(nextIssueNumber<10){
+			nextIssueNumber = "0" + nextIssueNumber;
+		}
 		$.each(tds,function(i,td){
 			if(i == 0){
-//				$(td).css('background-color','#CCE5A3');
 				$(td).css('color' ,'black');
-				$(td).html(nextIssueNumber%100);
+				$(td).css('background-color','#d0d5d8');	
+				$(td).html(nextIssueNumber);
+			}else if(i == 1){
+				$(td).css('background-color','#fffacd');
+			}else if(i < 7){
+				$(td).css('background-color','#E0EEEE');
+			}else if(i < 12){
+				$(td).css('background-color','#CCE5A3');
+			}else if(i < 17){
+				$(td).css('background-color','#E0EEEE');
+			}else if(i < 22){
+				$(td).css('background-color','#CCE5A3');
+			}else if(i < 24){
+				$(td).css('background-color','white');
 			}
-			if(i == 22){
-				return true;
-			}
-			$(td).css('background-color','#EEEEEC');
 		});
 	}
 	
 	function updateTodayTimes(todayTimes){
-		debugger;
 		var winNumTodayTimes =  $("#bottomTable tr").eq(1).find("td");
 		$.each(winNumTodayTimes,function(i,td){
 			if(i == 0 ){
@@ -139,14 +155,34 @@
 			$(td).html(todayTimes[i-1]);
 		});
 	}
-
+    //更新任一遗漏值
 	function updateCurrentMiss(missValues){
 		var winNummissValues =  $("#bottomTable tr").eq(2).find("td");
 		$.each(winNummissValues,function(i,td){
-			if(i == 0 || i >= missValues.length){
+			if(i == 0 || i > missValues.length){
 				return true;
 			}
 			$(td).html(missValues[i-1]);
+		});
+	}
+	//更新顺一遗漏
+	function updateShun1Miss(shun1Miss){
+		var winNummissValues =  $("#bottomTable tr").eq(3).find("td");
+		$.each(winNummissValues,function(i,td){
+			if(i == 0 || i > shun1Miss.length){
+				return true;
+			}
+			$(td).html(shun1Miss[i-1]);
+		});
+	}
+	//更新顺一最大遗漏
+	function updateShun1MaxMiss(shun1MaxMiss){
+		var winNummissValues =  $("#bottomTable tr").eq(4).find("td");
+		$.each(winNummissValues,function(i,td){
+			if(i == 0 || i > shun1MaxMiss.length){
+				return true;
+			}
+			$(td).html(shun1MaxMiss[i-1]);
 		});
 	}
 
@@ -184,6 +220,8 @@
 				lastIssueNumber : lastIssueNumber,
 				todayTimes : JSON.stringify(todayTimes),
 				missTimes : JSON.stringify(missValues),
+				shun1Miss :  JSON.stringify(shun1Miss),
+				shun1MaxMiss : JSON.stringify(shun1MaxMiss),
 				provinceDm : provinceDm
 			},
 			success: function(data) {
@@ -210,9 +248,14 @@
 					$('#dataTable tr:first').remove();
 					todayTimes = data.todayTimes;
 					missValues = data.missTimes;
+					shun1Miss = data.shun1Miss;
+					shun1MaxMiss = data.shun1MaxMiss;
+					updateTodayTimes(data.todayTimes);
+					//更新当前遗漏值
+					updateCurrentMiss(data.missTimes);
+					updateShun1Miss(data.shun1Miss);
+					updateShun1MaxMiss(data.shun1MaxMiss);
 					updateBlankIssue(lastIssueNumber);
-					updateTodayTimes(todayTimes);
-					updateCurrentMiss(missValues);
 					paramObj.mm = 10;
 	           		paramObj.ss = 0;
 				}
@@ -328,7 +371,7 @@
 	 desc 插入一大行内容（该函数分四种插入方法）insert
 	 */
 	function insertNumTd(trObj,data){
-		printIssueNum(trObj,data.issueNumber);
+		printIssueNum(trObj,data);
 		printLuckyNum(trObj,data);
 	    printLuckyDist(trObj,data);
 		printBigEven(trObj,data);
@@ -336,10 +379,17 @@
 	/*
 	 打印期号
 	 */
-	function printIssueNum(trObj,issueNum){
+	function printIssueNum(trObj,data){
 		var td = document.createElement("td");
+		var issueNum = data.issueNumber;
 		td.colSpan = '3';
-		td.innerHTML = issueNum.toString().substring(7,9);
+		if(isAllOdd(data) == "common"){
+			td.innerHTML = issueNum.toString().substring(7,9);
+		}else if(isAllOdd(data) == "AllOdd"){
+			td.innerHTML = "全奇";
+		}else{
+			td.innerHTML = "全偶";
+		}
 		trObj.appendChild(td);
 		if(issueNum%5 == 0){
 			$(td).addClass('blackLine');
@@ -356,6 +406,7 @@
 		var adnT = allDateNameT.toString().substring(allDateNameT.length-6,allDateNameT.length);
 		var adnZ = allDateNameZ.toString().substring(allDateNameZ.length-6,allDateNameZ.length);
 		var adnQ = allDateNameQ.toString().substring(allDateNameQ.length-6,allDateNameQ.length);
+		$(td).css('background-color','#D0D5D8');
 		if(issTemp==adnZ){
 			$(td).css('background-color','#CCE5A3');
 		}
@@ -365,6 +416,17 @@
 
 	}
 
+	
+	function isAllOdd(data){
+		if(data.no1%2==1&&data.no2%2==1&&data.no3%2==1&&data.no4%2==1&&data.no5%2==1){
+			return "AllOdd";
+		}else if(data.no1%2==1&&data.no2%2==1&&data.no3%2==1&&data.no4%2==1&&data.no5%2==1){
+			return "AllEven";
+		}else{
+			return "common";
+		}
+		
+	}
 	/*
 	 打印开奖号码
 	 */
@@ -474,7 +536,7 @@
 	 */
 	function printBigEven(trObj,data){
 		var td = document.createElement('td');
-		td.colSpan = 3;
+		td.colSpan = 2;
 		if(data.issueNumber%5 == 0){
 			$(td).addClass('blackLine');
 		}
@@ -511,7 +573,7 @@
 		}
 		trObj.appendChild(td);
 		var td = document.createElement('td');
-		td.colSpan = 3;
+		td.colSpan = 2;
 		if(data.issueNumber%5 == 0){
 			$(td).addClass('blackLine');
 		}
@@ -590,129 +652,8 @@
 		$(div).height(window.screen.height-top);
 		$(div).html("本数据仅供参考,开奖号码请以官方数据为准.");
 	}
-	/*
-	 desc : 插入今天次数单元格
-	 since : 2014-10-29
-	 author ： songj
-	 paramType : '10,20,30....'
-	 */
-	function insertTodayTimes(trObj,data){
-		trObj.className = "trHead";
-		var td = document.createElement("td");
-		td.className = "tdHead";
-		td.height = paramObj.clientPix;
-		td.colSpan = 13;
-		$(td).width(156);
-		td.innerHTML = "出现次数";
-		trObj.appendChild(td);
-		$.each(data.winNumDist,function(i,temp){
-			td = document.createElement("td");
-			td.colSpan = 2;
-			td.className = "tdHead";
-			td.innerHTML = temp;
-			trObj.appendChild(td);
-		});
-		var td = document.createElement("td");
-		td.colSpan = 6;
-		td.rowSpan = 2;
-		td.className = "tdHead";
-		td.height = paramObj.clientPix+paramObj.linePx;
-		trObj.appendChild(td);
-	}
-	/*
-	 desc : 插入今天次数单元格
-	 since : 2014-10-29
-	 author ： songj
-	 paramType : '10,20,30....'
-	 */
-	function insertMissValue(trObj,data){
-		trObj.className = "trHead";
-		var td = document.createElement("td");
-		td.className = "select5LastTr";
-		td.height = paramObj.clientPix;
-		td.colSpan = 13;
-		td.className = "tdHead";
-		td.innerHTML = "当前遗漏";
-		trObj.appendChild(td);
-		$.each(data.winNumMiss,function(i,temp){
-			td = document.createElement("td");
-			td.colSpan = 2;
-			td.className = "tdHead";
-			td.innerHTML = temp;
-			//循环判断内容
-			trObj.appendChild(td);
-		});
-	}
-
-	/*
-	 add by songj
-	 since 2014-10-22 15:09
-	 desc 插入一大行内容（该函数分四种插入方法）insert
-	 */
-	function insertBlankTd(trObj){
-		printBlankIssue(trObj);
-		printBlankNum(trObj);
-		printLuckyBlankDist(trObj);
-		printBigEvenBlank(trObj);
-	}
-	/*
-	 打印期号
-	 */
-	function printBlankIssue(trObj){
-		var td = document.createElement("td");
-		td.id = "lastIssue";
-		td.colSpan = '3';
-		td.height = paramObj.clientPix;
-		td.className = "issueClassOddBlackLine";
-		trObj.appendChild(td);
-	}
-	/*
-	 打印开奖号码
-	 */
-	function printBlankNum(trObj){
-		for(var i=0;i<5;i++){
-			var td = document.createElement('td');
-			td.colSpan = 2;
-			td.className = "statistics";
-			trObj.appendChild(td);
-		}
-	}
-	/*
-	 add  by songj
-	 since 2014-10-22 16:04
-	 desc 打印lucky分布
-	 */
-	function printLuckyBlankDist(trObj){
-		for(var i = 1;i<=20;i++){
-			var td = document.createElement('td');
-			td.colSpan = 2;
-			if(i < 6){
-				td.className = "tdOddCls";
-			}else if(i < 11){
-				td.className = "tdEven";
-			}else if(i < 16){
-				td.className = "tdOddCls";
-			}else{
-				td.className = "tdEven";
-			}
-			trObj.appendChild(td);
-		}
-	}
-	/*
-	 add  by songj
-	 since 2014-10-22 16:04
-	 desc print skip
-	 */
-	function printBigEvenBlank(trObj){
-		var td = document.createElement('td');
-		td.colSpan = 3;
-		td.className = "statistics";
-		trObj.appendChild(td);
-		var td = document.createElement('td');
-		td.colSpan = 3;
-		td.className = "statistics";
-		trObj.appendChild(td);
-	}
+	
+	
 
   	//倒计时方法
    	function timer(){

@@ -20,10 +20,10 @@
          <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
          <script type="text/javascript" src="js/echartUtil.js"></script>
          <script type="text/javascript" src="js/fivein20/control.js"></script>
-        <script type="text/javascript" src="js/fivein20/fivein20vr2.js"></script> 
+        <script type="text/javascript" src="js/fivein20/fivein20vr3.js"></script> 
         <link rel="stylesheet" type="text/css" href="css/fivein20/baseLayout.css">
         <link rel="stylesheet" type="text/css" href="css/util/chartControl.css">
-        <link rel="stylesheet" type="text/css" href="css/fivein20/vr2styles.css">
+        <link rel="stylesheet" type="text/css" href="css/fivein20/vr3styles.css">
         <link rel="stylesheet" type="text/css" href="css/graph.css">
     </head>
 	<script type="text/javascript">
@@ -394,7 +394,7 @@
         		</table>
         	</div>
         </div>
-         <div id="groupOne">
+        <div id="groupOne">
             <div class = "headDiv">
                 <table class = "headTable" cellpadding="0px" cellspacing="0px" rules="all">
                     <tr >
