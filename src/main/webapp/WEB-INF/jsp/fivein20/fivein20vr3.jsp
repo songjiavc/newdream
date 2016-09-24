@@ -21,7 +21,6 @@
          <script type="text/javascript" src="js/echartUtil.js"></script>
          <script type="text/javascript" src="js/fivein20/control.js"></script>
         <script type="text/javascript" src="js/fivein20/fivein20vr3.js"></script> 
-        <link rel="stylesheet" type="text/css" href="css/fivein20/baseLayout.css">
         <link rel="stylesheet" type="text/css" href="css/util/chartControl.css">
         <link rel="stylesheet" type="text/css" href="css/fivein20/vr3styles.css">
         <link rel="stylesheet" type="text/css" href="css/graph.css">
@@ -470,7 +469,7 @@
                         <td colspan="2"  align="center"></td>
                    </tr>
                    <tr >
-                      <td colspan="13"  align="center">出现次数</td>
+                      <td colspan="13"  align="center">出现次数(100期内)</td>
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>
@@ -540,7 +539,7 @@
                         <td colspan="2"  align="center" >0</td>
                         <td colspan="2"  align="center" >0</td>
                         <td colspan="2"  align="center" >0</td>
-                  		 <td colspan="4"  rowspan="2" align="center" onclick="location.href='<%=lastDataUrl %>/initStartPageVr3.do?provinceDm=<%=provinceDm%>' "  onMouseOut="changeCss(this,'move')" onmouseover="changeCss(this,'on')">
+                  		 <td colspan="4"  rowspan="2" align="center" onclick="startMissDiv()"  onMouseOut="changeCss(this,'move')" onmouseover="changeCss(this,'on')">
                       	整版<br>遗漏
                       </td>
                    </tr>

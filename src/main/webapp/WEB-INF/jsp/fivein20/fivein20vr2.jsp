@@ -21,7 +21,6 @@
          <script type="text/javascript" src="js/echartUtil.js"></script>
          <script type="text/javascript" src="js/fivein20/control.js"></script>
         <script type="text/javascript" src="js/fivein20/fivein20vr2.js"></script> 
-        <link rel="stylesheet" type="text/css" href="css/fivein20/baseLayout.css">
         <link rel="stylesheet" type="text/css" href="css/util/chartControl.css">
         <link rel="stylesheet" type="text/css" href="css/fivein20/vr2styles.css">
         <link rel="stylesheet" type="text/css" href="css/graph.css">
@@ -46,357 +45,253 @@
         <div id="groupTwo">
         	<!--    所有的遗漏统计表格将在这里展示 -->
         	<div class="typeGroup" >
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<th colspan="2">任二</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
-        			<th colspan="2">任二</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        			<th colspan="4">任二</th>
+        			<th>当前</th>
+        			<th>最大</th>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
-        			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
+        		</table>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        			<th colspan="4">任三</th>
+        			<th>当前</th>
+        			<th>最大</th>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<th colspan="2">任三</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
-        			<th colspan="2">任三</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
+        			<th colspan="4">任十</th>
+        			<th>当前</th>
+        			<th>最大</th>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<th colspan="2">任二三码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
-        			<th colspan="2">任二三码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
+        			<th colspan="4">任二三码</th>
+        			<th>当前</th>
+        			<th>最大</th>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        		</table>
-        		</div>
-        		<div  class="typeGroup">
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<th colspan="2">任二四码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
-        			<th colspan="2">任二四码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<th colspan="2">任二五码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
-        			<th colspan="2">任二五码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>	
-        		<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			<th colspan="4">任二四码</th>
+        			<th>当前</th>
+        			<th>最大</th>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<th colspan="2">任三四码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
-        			<th colspan="2">任三四码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
+        	  <table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+        			<th colspan="4">任二五码</th>
+        			<th>当前</th>
+        			<th>最大</th>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
         	</div>
-        	<div class="typeGroup">
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<th colspan="2">任三五码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
-        			<th colspan="2">任三五码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        	<div class="typeGroup" >
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        			<th colspan="4">任三四码</th>
+        			<th>当前</th>
+        			<th>最大</th>
+        		<tr >
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-	        		<th colspan="2">任三六码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
-        			<th colspan="2">任三六码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
-	        		<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        			<th colspan="4">任三五码</th>
+        			<th>当前</th>
+        			<th>最大</th>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-	        		<th colspan="2">任四五码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
-        			<th colspan="2">任四五码</th>
-        			<th>当前遗漏</th>
-        			<th>最大遗漏</th>
-	        		<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all" >
+        			<th colspan="4">任三六码</th>
+        			<th>当前</th>
+        			<th>最大</th>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
-        			<tr  class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        		</table>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        			<th colspan="4">任四五码</th>
+        			<th>当前</th>
+        			<th>最大</th>
+        		    <tr >
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr class="tdMissCls" >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         			<tr >
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
-        			<tr class="tdMissCls">
-        				<td colspan="2"></td><td></td><td></td><td colspan="2"></td><td></td><td></td>
+        			<tr  class="tdMissCls">
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        		</table>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        			<th colspan="4">任四六码</th>
+        			<th>当前</th>
+        			<th>最大</th>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdMissCls" >
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr  class="tdMissCls">
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        		</table>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        			<th colspan="4">任四七码</th>
+        			<th>当前</th>
+        			<th>最大</th>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdMissCls" >
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr  class="tdMissCls">
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
         	</div>
         </div>
          <div id="groupOne">
             <div class = "headDiv">
-                <table class = "headTable" cellpadding="0px" cellspacing="0px" rules="all">
+                <table class = "headTable" cellpadding="0px" cellspacing="0px"  rules="all">
                     <tr >
                         <td colspan="3" rowspan=2 align="center">期号</td>
                         <td colspan="10" align="center">开奖号码</td>
@@ -470,7 +365,7 @@
                         <td colspan="2"  align="center"></td>
                    </tr>
                    <tr >
-                      <td colspan="13"  align="center">出现次数</td>
+                      <td colspan="13"  align="center">出现次数(100期内)</td>
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>
@@ -491,8 +386,8 @@
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>
-                      <td colspan="4"  rowspan="2" align="center" onclick="location.href='<%=lastDataUrl %>/initStartPageVr2.do?provinceDm=<%=provinceDm%>' "  onMouseOut="changeCss(this,'move')" onmouseover="changeCss(this,'on')">
-                      	遗漏<br>弹出
+                      <td colspan="4"  rowspan="2" align="center" onclick="location.href='<%=lastDataUrl %>/initStartPageVr1.do?provinceDm=<%=provinceDm%>' "  onMouseOut="changeCss(this,'move')" onmouseover="changeCss(this,'on')">
+                      	基础<br>版本
                       </td>
                   </tr>
                   <tr class="trHead">

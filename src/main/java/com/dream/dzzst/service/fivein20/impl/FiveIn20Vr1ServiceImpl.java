@@ -57,13 +57,14 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
 	public List<FiveIn20Number> getTodayDatas(Map<String,Object> paramMap) {
 		return fiveIn20TMapper.getTodayDatas(paramMap);
 	}
-    @Override
+	
+	@Override
     public Map<String, Object> getInitContext(String recordCount,String pcode) {
     	Map<String,Object> returnMap = new HashMap<String,Object>();
         Map<String,Object> paramMap = new HashMap<String,Object>();
         paramMap.put("mainTable", globalCacheService.getCacheMap(pcode)[0]);
         //获取今日出现数据
-        List<FiveIn20Number> initTodayDataList = this.getTodayDatas(paramMap);
+        List<FiveIn20Number> initTodayDataList = this.getRecordsByNum(pcode, 100);
         returnMap.put("todayTimes",getTodayTimesArr(initTodayDataList));
         //遗漏值从这里取出
         List<FiveIn20Number> initMissList = this.getAllData(paramMap);
@@ -87,6 +88,8 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
         selMap.put("mainTable",  globalCacheService.getCacheMap(provinceCode)[0]);
         FiveIn20Number fiveIn20Number  = this.getLastRecord(selMap);
         if(!fiveIn20Number.getIssueNumber().equals(issueID)){
+        	//获取上一百期开奖号码
+        	
         	int[] todayIntArr = getIntervalTodayTimesArr(fiveIn20Number,paramMap.get("todayTimesArr"));
                //今日出现次数
              returnMap.put("todayTimes", todayIntArr);
@@ -104,6 +107,12 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
         return returnMap;
     };
 
+    private String getLastNIssueNumber(String currentIssueNumber){
+    	String rtn = null;
+    	
+    	return rtn;
+    }
+    
     /** 
       * @Description: 获取初始化遗漏值结果
       * @author songj@sdfcp.com

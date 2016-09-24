@@ -15,7 +15,7 @@
 		intervalCycle : 1000*10,    // 每隔10秒执行一次
 		timeCycle : 1000*60*9,     // 每隔9分钟执行一次
 		//获取遗漏的时间参数
-		missTimeCycle : 1000*60*3,
+		missTimeCycle : 1000*60*2,
 		//
 		addCount : 160,//记录增加翻页数量
 		currentNum : 1,//上下滚屏次数
@@ -82,7 +82,7 @@
 				//初始化获取新数据
 				createIntervalFunc("getLastData('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
 				//初始化获取遗漏统计数据
-				createMissIntervalFunc("getLastMissValues('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
+				createMissIntervalFunc("getLastTopNMissValues('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
 				timer();
 	            setInterval("timer()",1000);//1秒一次执行
 	            layoutControlDiv();
@@ -332,8 +332,8 @@
 	 since 2014-10-22 16:23
 	 desc 按照时间间隔后台读取最新数据
 	 */
-	function getLastMissValues(lastDataUrl,provinceDm){
-		var url=lastDataUrl+"getLastMissValues.do";
+	function getLastTopNMissValues(lastDataUrl,provinceDm){
+		var url=lastDataUrl+"getLastTopNMissValues.do";
 		$.ajax({
 			type:"post",
 			url: url,
@@ -698,7 +698,7 @@
 	}
 	
 	function createMissValuesTimeFunction(lastDataUrl,provinceDm){
-		var func = "createMissIntervalFunc('getLastMissValues(\""+lastDataUrl+"\",\""+provinceDm+"\")','"+paramObj.intervalCycle+"')";
+		var func = "createMissIntervalFunc('getLastTopNMissValues(\""+lastDataUrl+"\",\""+provinceDm+"\")','"+paramObj.intervalCycle+"')";
 		paramObj.getMissValuesTimeId = setTimeout(func,paramObj.missTimeCycle);
 	}
 	function createMissIntervalFunc(func,time){

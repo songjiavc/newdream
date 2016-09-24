@@ -49,12 +49,20 @@ public class FiveIn20Vr1Controller {
 		Map<String,Object> returnMap = fiveIn20Vr1Service.getIntervalContext(lastIssueNumber,paramMap,provinceDm);
         return returnMap;
 	}
+	@RequestMapping("/getLastTopNMissValues")
+	public @ResponseBody List<FiveIn20Analysis> getLastTopNMissValues(@RequestParam(value="provinceDm",required=true) String provinceDm,@RequestParam(value="lastIssueNumber",required=true) String lastIssueNumber) {
+		Map<String,String> paramMap = new HashMap<String,String>();
+		paramMap.put("provinceCode", provinceDm);
+		paramMap.put("issueNumber", lastIssueNumber);
+        return fiveIn20Vr1Service.getTopNMiss(paramMap,5);
+	}
+	
 	@RequestMapping("/getLastMissValues")
 	public @ResponseBody List<FiveIn20Analysis> getLastMissValues(@RequestParam(value="provinceDm",required=true) String provinceDm,@RequestParam(value="lastIssueNumber",required=true) String lastIssueNumber) {
 		Map<String,String> paramMap = new HashMap<String,String>();
 		paramMap.put("provinceCode", provinceDm);
 		paramMap.put("issueNumber", lastIssueNumber);
-        return fiveIn20Vr1Service.getTopNMiss(paramMap,5);
+        return fiveIn20Vr1Service.getAllMiss(paramMap);
 	}
 	
 	/**

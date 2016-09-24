@@ -1,7 +1,7 @@
-<%@ page pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
-    
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -10,9 +10,9 @@
  
   
   </script>
-<body background="/img/login/EL-background.png">
+<body background="<%=request.getContextPath() %>/img/login/EL-background.png">
 
-<div style="height:429px; width:447px; background:url(/img/login/EL-login.png);position:absolute;top:50%;left:50%;margin:-220px 0 0 -220px;">
+<div style="height:429px; width:447px; background:url(<%=request.getContextPath() %>/img/login/EL-login.png);position:absolute;top:50%;left:50%;margin:-220px 0 0 -220px;">
      <form action="<%=request.getContextPath() %>/login.login" method="post">
     <div style="position:absolute;left:165px;top:123px">
     <input type="text" name="username" />

@@ -1,4 +1,79 @@
-   
+   /*body 下第一层布局，所有布局的母布局*/
+    #groupOne {
+        position:relative;
+        background:#3c763d;
+        width : 720px;
+        height : 100%;
+    }
+
+    #groupTwo {
+        position: absolute;
+        height : 36%;
+        width : 720px;
+        opacity: 1;
+        display : none;
+        z-index: 2;
+    }
+    .typeGroup {
+        position: absolute;
+        background : Gray;
+        height : 100%;
+        width : 100%;
+        opacity: 1;
+        display : none;
+        cursor: hand;
+    }
+    
+    
+    #groupOne .headDiv {
+        position: relative;
+        z-index: 1;
+        background:yellow;
+        width : 100%;
+    }
+
+    #groupOne .headDiv .headTable {
+        background: #8B0000;
+        border-top-color: Gray;
+    }
+
+    #groupOne .headDiv .headTable .trHead
+    {
+        font-weight:800;
+        font-size : 12px;
+        color: #FFFFFF;
+        text-align:center;
+        height : 25px;
+    }
+
+    #groupOne .bottomDiv .headTable {
+        background: #8B0000;
+        height : 100%;
+        width : 100%;
+    }
+
+    #groupOne .headDiv .headTable td {
+        color: White;
+    }
+    
+    #groupOne .bottomDiv .headTable td {
+        color: White;
+    }
+
+    #groupOne #Content {
+        position:relative;
+        overflow:hidden;
+        background:Gray;
+    }
+
+    #groupOne #Content #dataTable {
+        position: absolute;
+    }
+
+    #groupOne .bottomDiv {
+        z-index: 1;
+        background:black;
+    }
    table
     {
         table-layout: fixed;
@@ -43,14 +118,14 @@
     
     .missTable{
     	table-layout: fixed;
-		border-color: #888a85;
-		border : 1;
-		width:100%;
-		height: 33.33%;
+		width:50%;
+		height: 12%;
 		text-align:center;
+		float : left;
 		position:relative;
 		background-color: #ffffff;
         font-family:晴圆;
+        border-right : Gray 1px solid; 
     }
    .missTable th{
 		background: #8B0000;

@@ -355,14 +355,27 @@
 					}
 					//更新遗漏统计表数据
 					updateMissLayout(data);
-					//将遗漏层展示出来
-					$('#groupTwo').css('display','inline');
-					//循环显示遗漏内容
-					missDivs = $('.typeGroup');
-					showMissDiv(missDivs[0]);
 				}
 			}
 		});
+	}
+	
+	function startMissDiv(){
+		//将遗漏层展示出来
+		if($('#groupTwo').css('display')=='inline'){
+			//如果是显示状态则隐藏，并且将切换timer清空
+			if(!$.isEmptyObject(paramObj.showMissDivTimeId)){
+				clearTimeout(paramObj.showMissDivTimeId);
+			}
+			//将分组div隐藏
+			$(missDivs).css('display','none');
+			$('#groupTwo').css('display','none');
+		}else{
+			$('#groupTwo').css('display','inline');
+			//循环显示遗漏内容
+			missDivs = $('.typeGroup');
+			showMissDiv(missDivs[0]);
+		}
 	}
 	/*
 	 add by songj
@@ -672,14 +685,9 @@
 
    	//循环显示遗漏div方法
    	function showMissDiv(div){
-   		if(!$.isEmptyObject(paramObj.showMissDivTimeId)){
-			clearTimeout(paramObj.showMissDivTimeId);
-		}
    		if($.isEmptyObject(div)){
 			i=0;
-			$(missDivs).css('display','none');
-			$('#groupTwo').css('display','none');
-			return false;
+			div = missDivs[0];
 		}
    		$(div).css('display','inline');
    		i++;
