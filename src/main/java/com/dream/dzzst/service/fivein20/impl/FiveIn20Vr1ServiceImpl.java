@@ -16,6 +16,8 @@ import com.dream.dzzst.model.fivein20.FiveIn20Analysis;
 import com.dream.dzzst.model.fivein20.FiveIn20Number;
 import com.dream.dzzst.service.cache.GlobalCacheService;
 import com.dream.dzzst.service.fivein20.FiveIn20Vr1Service;
+import com.dream.dzzst.util.Constants;
+import com.dream.dzzst.util.LotteryUtil;
 
 /**
  * Created by Administrator on 2014/8/8.
@@ -40,7 +42,7 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
 	@Override
 	public List<FiveIn20Number> getRecordsByNum(String provinceCode,int count) {
 		Map<String,Object> paramMap = new HashMap<String,Object>();
-        paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[3]);
+        paramMap.put("mainTable", globalCacheService.getCacheMap(provinceCode)[0]);
         paramMap.put("count",count);
 		return fiveIn20TMapper.getRecordsByNum(paramMap);
 	}
@@ -89,8 +91,10 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
         FiveIn20Number fiveIn20Number  = this.getLastRecord(selMap);
         if(!fiveIn20Number.getIssueNumber().equals(issueID)){
         	//获取上一百期开奖号码
+        	String last100IssueNumber = LotteryUtil.getLastNIssueNumber(fiveIn20Number.getIssueNumber(), 100, Constants.QYH_DAY_COUNT);
         	
-        	int[] todayIntArr = getIntervalTodayTimesArr(fiveIn20Number,paramMap.get("todayTimesArr"));
+        	FiveIn20Number last101Record = this.getRecordByIssueNumber(selMap,last100IssueNumber);
+        	int[] todayIntArr = getIntervalTodayTimesArr(fiveIn20Number,last101Record,paramMap.get("todayTimesArr"));
                //今日出现次数
              returnMap.put("todayTimes", todayIntArr);
         	int[] shun1MissIntArr = getIntervalShun1MissArr(fiveIn20Number,paramMap.get("shun1MissArr"));
@@ -109,6 +113,8 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
 
     private String getLastNIssueNumber(String currentIssueNumber){
     	String rtn = null;
+    	String issueCode = currentIssueNumber.substring(currentIssueNumber.length()-2,currentIssueNumber.length()-2);
+    	int code = Integer.parseInt(issueCode);
     	
     	return rtn;
     }
@@ -255,14 +261,10 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
      * 
      * @return
      */
-   private int[] getIntervalTodayTimesArr(FiveIn20Number fiveIn20Number,int[] todayTimes){
-
+   private int[] getIntervalTodayTimesArr(FiveIn20Number fiveIn20Number,FiveIn20Number last101Record,int[] todayTimes){
+	   //正向加一
        int[] winNumDist;
-       if("01".equals(fiveIn20Number.getIssueNumber().substring(fiveIn20Number.getIssueNumber().length()-2, fiveIn20Number.getIssueNumber().length()))){
-           winNumDist = new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-       }else{
-           winNumDist = todayTimes;
-       }
+       winNumDist = todayTimes;
        /*
         * 取出三个值并将它转为整型
         */
@@ -277,46 +279,77 @@ public class FiveIn20Vr1ServiceImpl implements FiveIn20Vr1Service {
        winNumDist[numThree-1] = winNumDist[numThree-1] + 1;
 		winNumDist[numFour-1] = winNumDist[numFour-1] + 1;
 		winNumDist[numFive-1] = winNumDist[numFive-1] + 1;
+		//逆向减一
+		if(StringUtils.isNotEmpty(last101Record.getIssueNumber())){
+			int lastOne = last101Record.getNo1();
+		    int lastTwo = last101Record.getNo2();
+		    int lastThree = last101Record.getNo3();
+	        int lastFour = last101Record.getNo4();
+		    int lastFive = last101Record.getNo5();
+		       //求合值
+	        winNumDist[lastOne-1] = winNumDist[lastOne-1] - 1;
+	        winNumDist[lastTwo-1] = winNumDist[lastTwo-1] - 1;
+	        winNumDist[lastThree-1] = winNumDist[lastThree-1] - 1;
+			winNumDist[lastFour-1] = winNumDist[lastFour-1] - 1;
+		 	winNumDist[lastFive-1] = winNumDist[lastFive-1] - 1;
+		}
        return winNumDist;
    }
    
-    
-  
-	@Override
-	public List<FiveIn20Analysis> getAllMiss(Map<String, String> paramMap) {
-		String pcode = paramMap.get("provinceCode");
-		String issueNumber = paramMap.get("issueNumber");
-		paramMap.put("mainTable", globalCacheService.getCacheMap(pcode)[1]);
-		paramMap.put("issueNumber", issueNumber);
-		return fiveIn20TMapper.getMissAnalysis(paramMap);
-	}
+   
+	
 	
 	@Override
+	public FiveIn20Number getRecordByIssueNumber(Map<String,Object> paramMap,String issueNumber) {
+		paramMap.put("issueNumber", issueNumber);
+		return fiveIn20TMapper.getRecordByIssueId(paramMap);
+	}
+	@Override
 	public List<FiveIn20Analysis> getTopNMiss(Map<String, String> paramMap,int n) {
-		List<FiveIn20Analysis> rtnList = new ArrayList<FiveIn20Analysis>();
+		//遗漏统计展示顺序
+		int[] missSort = {2,3,17,22,18,23,4,5,25,15,26,10};
+		List<FiveIn20Analysis> rtnList = null;
 		String pcode = paramMap.get("provinceCode");
 		String issueNumber = paramMap.get("issueNumber");
 		paramMap.put("mainTable", globalCacheService.getCacheMap(pcode)[1]);
 		paramMap.put("issueNumber", issueNumber);
 		List<FiveIn20Analysis> allMissList = fiveIn20TMapper.getMissAnalysis(paramMap);
-		int j = 0;
-		int tempType = 0;
-		for(FiveIn20Analysis temp : allMissList){
-			if(tempType == 0 ||tempType !=  temp.getType() ){
-				tempType = temp.getType();
-				j = 0;
+		if(allMissList != null && allMissList.size() >0){
+			rtnList = new ArrayList<FiveIn20Analysis>();
+			for(int i = 0;i < missSort.length*n;i++){
+				rtnList.add(new FiveIn20Analysis());
 			}
-			if(j < n){
-				j++;
-				rtnList.add(temp);
-			}else{
-				continue;
+			int j = 0;
+			int tempType = 0;
+			for(FiveIn20Analysis temp : allMissList){
+				if(tempType == 0 ||tempType !=  temp.getType() ){
+					tempType = temp.getType();
+					j = 0;
+				}
+				if(j < n){
+					rtnList.set(this.getElementInArrayIndex(tempType, missSort)*n+j,temp);
+					j++;
+				}else{
+					continue;
+				}
 			}
 		}
 		return rtnList;
 	}
 	
-	
+	private int getElementInArrayIndex(int element,int[] arr){
+		if(arr == null || arr.length == 0){
+			return -1;
+		}else{
+			for(int i=0;i<arr.length;i++){
+				if(arr[i] == element){
+					return i;
+				}
+			}
+			return -1;
+		}
+	}
+
 	@Override
 	public List<FiveIn20Analysis> getShun1HistoryMaxMiss(Map<String, Object> paramMap) {
 		String pcode = (String) paramMap.get("provinceCode");

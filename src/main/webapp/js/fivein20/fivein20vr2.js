@@ -15,7 +15,7 @@
 		intervalCycle : 1000*10,    // 每隔10秒执行一次
 		timeCycle : 1000*60*9,     // 每隔9分钟执行一次
 		//获取遗漏的时间参数
-		missTimeCycle : 1000*60*2,
+		missTimeCycle : 1000*60*1,
 		//
 		addCount : 160,//记录增加翻页数量
 		currentNum : 1,//上下滚屏次数
@@ -195,9 +195,9 @@
 			if(temp%3 == 1){
 				$(td).html(translateGroup(missValues[parseInt(i/3)].groupNumber));
 			}else if(temp%3 == 2){
-				$(td).html(missValues[parseInt(i/3)].currentMiss);
-			}else{
 				$(td).html(missValues[parseInt(i/3)].maxMiss);
+			}else{
+				$(td).html(missValues[parseInt(i/3)].currentMiss);
 			}
 		});
 		//获取table下所有td
@@ -271,9 +271,9 @@
 				rtn = translate(char);
 			}else{
 				if(char < '10'){
-					rtn = rtn + ',' + char;
+					rtn = rtn + ' ' + char;
 				}else{
-					rtn = rtn + ',' + translate(char);
+					rtn = rtn + ' ' + translate(char);
 				}
 			}
 		}
@@ -683,7 +683,7 @@
 		}
    		$(div).css('display','inline');
    		i++;
-   		paramObj.showMissDivTimeId = setTimeout('showMissDiv(missDivs[i])',10000);
+   		paramObj.showMissDivTimeId = setTimeout('showMissDiv(missDivs[i])',20000);
    	}
    	
 	/* ***********************定时任务设置区域*********************************** */
@@ -696,7 +696,7 @@
 	function createIntervalFunc(func,time){
 		paramObj.getLastRecordIntervalId = setInterval(func,time);
 	}
-	
+	//获取最新数据后 1分钟后调用获取遗漏统计方法，如果获取不到每隔10m获取一次，直到成功，成功后清除任务
 	function createMissValuesTimeFunction(lastDataUrl,provinceDm){
 		var func = "createMissIntervalFunc('getLastTopNMissValues(\""+lastDataUrl+"\",\""+provinceDm+"\")','"+paramObj.intervalCycle+"')";
 		paramObj.getMissValuesTimeId = setTimeout(func,paramObj.missTimeCycle);

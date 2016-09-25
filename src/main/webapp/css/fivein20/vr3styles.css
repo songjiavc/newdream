@@ -1,79 +1,65 @@
 /*body 下第一层布局，所有布局的母布局*/
-    #groupOne {
+    #header {
         position:relative;
         background:#3c763d;
         width : 720px;
-        height : 100%;
+        height : 10%;
     }
-
-    #groupTwo {
+    
+    #header .top{
+    	height : 50%;
+    	position:relative;
+    	text-align:center;
+    	color : white;
+    	 font-family:晴圆;
+    	 font-size:18pt;
+    	 align : center;
+    	 background: #8B0000;
+    }
+     #header .bottom{
+     	background: white;
+     	height : 50%;
+     	width : 100%;
+     }
+    #header .bottom .left{
+    	width : 40%;
+    	float : left;
+    	height : 100%;
+    	line-height:30px;
+    	 font-family:晴圆;
+    	 font-size:15pt;
+    }
+    
+    #header .center{
+    	width : 40%;
+    	float : left;
+    	height : 100%;
+    	line-height:30px;
+    	font-family:晴圆;
+    	font-size:15pt;
+    }
+    
+    #header .right{
+    	width : 20%;
+    	float : left;
+    	height : 100%;
+    	text-align:center;
+    }
+    #content {
         position: absolute;
-        height : 100%;
+        background:#3c444d;
         width : 720px;
-        opacity: 1;
-        display : none;
-        z-index: 2;
     }
+    
     .typeGroup {
         position: absolute;
         background : Gray;
         height : 100%;
         width : 100%;
-        opacity: 1;
-        display : none;
-        cursor: hand;
     }
     
     
-    #groupOne .headDiv {
-        position: relative;
-        z-index: 1;
-        background:yellow;
-        width : 100%;
-    }
-
-    #groupOne .headDiv .headTable {
-        background: #8B0000;
-        border-top-color: Gray;
-    }
-
-    #groupOne .headDiv .headTable .trHead
-    {
-        font-weight:800;
-        font-size : 12px;
-        color: #FFFFFF;
-        text-align:center;
-        height : 25px;
-    }
-
-    #groupOne .bottomDiv .headTable {
-        background: #8B0000;
-        height : 100%;
-        width : 100%;
-    }
-
-    #groupOne .headDiv .headTable td {
-        color: White;
-    }
-    
-    #groupOne .bottomDiv .headTable td {
-        color: White;
-    }
-
-    #groupOne #Content {
-        position:relative;
-        overflow:hidden;
-        background:Gray;
-    }
-
-    #groupOne #Content #dataTable {
-        position: absolute;
-    }
-
-    #groupOne .bottomDiv {
-        z-index: 1;
-        background:black;
-    }   
+ 
    table
     {
         table-layout: fixed;
@@ -88,11 +74,10 @@
 
     table tr
     {
-        height : 25px;
+        height : 26px;
     }
     table tr td
     {
-        font-family:Arial;
         font-size:12pt;
         color:Black;
         text-align:center;
@@ -100,41 +85,35 @@
         border-top : Gray 0px solid; 
         border-left : Gray 0px solid; 
     }
-   
-   
-    .blackLine{
-        border-bottom: #006600 1px solid;
-    }
 
-    .tdOddCls{
-        background-color:#E0EEEE;
-    }
-    .tdEvenCls{
-        background: #CCE5A3;
-    }
-    .tdMissCls{
-    	background: #FFFACD;
-    }
-    
     .missTable{
     	table-layout: fixed;
 		border-color: #888a85;
-		width:100%;
-		height: 33.3%;
+		height : 75px;
+		width : 50%;
+		float : left;
 		text-align:center;
 		position:relative;
 		background-color: #ffffff;
         font-family:晴圆;
+        border-right : Gray 1px solid;
     }
+    .centerwidth{
+    	width : 33%;
+    }
+    .rightwidth{
+    	width : 34%;
+    }
+    
    .missTable th{
-		background: #8B0000;
+		background: #FA8072	;
 		color : white;
 		font-family:晴圆;
-		font-size:14pt;
+		font-size:12pt;
    }
      .missTable tr
     {
-        height : 22px;
+        height : 26px;
     }
        .missTable td {
         	font-size:14pt;

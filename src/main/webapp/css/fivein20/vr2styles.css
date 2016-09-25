@@ -125,13 +125,13 @@
 		position:relative;
 		background-color: #ffffff;
         font-family:晴圆;
-        border-right : Gray 1px solid; 
+        border-right : Gray 1px solid;
     }
    .missTable th{
 		background: #8B0000;
 		color : white;
 		font-family:晴圆;
-		font-size:14pt;
+		font-size:12pt;
    }
        .missTable td {
         	font-size:14pt;

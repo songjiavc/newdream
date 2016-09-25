@@ -46,6 +46,8 @@ public interface FiveIn20Vr1Service {
       * @return 
       */
     public List<FiveIn20Number> getRecordsByNum(String provinceCode,int count);
+    
+    
     public List<FiveIn20Number> getRecordsByNumOrderById(String provinceCode,int count);
     /** 
       * @Description: 获取当天数据内容
@@ -65,6 +67,8 @@ public interface FiveIn20Vr1Service {
       * @return 
       */
     public Map<String,Object> getInitContext(String recordCount, String pcode);
+    
+    public FiveIn20Number getRecordByIssueNumber(Map<String,Object> paramMap,String issueNumber);
     
     /** 
       * @Description: 根据指定周期计算函数
@@ -87,8 +91,6 @@ public interface FiveIn20Vr1Service {
       * @return 
       */
     public List<FiveIn20Analysis> getTopNMiss(Map<String, String> paramMap,int n);
-    
-    public List<FiveIn20Analysis> getAllMiss(Map<String, String> paramMap);
     
     /**
      * @param paramMap

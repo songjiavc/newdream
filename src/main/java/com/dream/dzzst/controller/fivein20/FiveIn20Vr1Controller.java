@@ -56,14 +56,7 @@ public class FiveIn20Vr1Controller {
 		paramMap.put("issueNumber", lastIssueNumber);
         return fiveIn20Vr1Service.getTopNMiss(paramMap,5);
 	}
-	
-	@RequestMapping("/getLastMissValues")
-	public @ResponseBody List<FiveIn20Analysis> getLastMissValues(@RequestParam(value="provinceDm",required=true) String provinceDm,@RequestParam(value="lastIssueNumber",required=true) String lastIssueNumber) {
-		Map<String,String> paramMap = new HashMap<String,String>();
-		paramMap.put("provinceCode", provinceDm);
-		paramMap.put("issueNumber", lastIssueNumber);
-        return fiveIn20Vr1Service.getAllMiss(paramMap);
-	}
+
 	
 	/**
 	  * 将json数组转化为Double型

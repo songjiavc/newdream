@@ -47,8 +47,8 @@
         	<div class="typeGroup" >
         		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="4">任二</th>
-        			<th>当前</th>
         			<th>最大</th>
+        			<th>当前</th>
         			<tr >
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
@@ -67,28 +67,8 @@
         		</table>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="4">任三</th>
-        			<th>当前</th>
         			<th>最大</th>
-        			<tr >
-        				<td colspan="4"></td><td></td><td></td>
-        			</tr>
-        			<tr class="tdMissCls" >
-        				<td colspan="4"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="4"></td><td></td><td></td>
-        			</tr>
-        			<tr  class="tdMissCls">
-        				<td colspan="4"></td><td></td><td></td>
-        			</tr>
-        			<tr >
-        				<td colspan="4"></td><td></td><td></td>
-        			</tr>
-        		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<th colspan="4">任十</th>
         			<th>当前</th>
-        			<th>最大</th>
         			<tr >
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
@@ -107,8 +87,28 @@
         		</table>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="4">任二三码</th>
-        			<th>当前</th>
         			<th>最大</th>
+        			<th>当前</th>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr class="tdMissCls" >
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr  class="tdMissCls">
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        			<tr >
+        				<td colspan="4"></td><td></td><td></td>
+        			</tr>
+        		</table>
+        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+        			<th colspan="4">任三四码</th>
+        			<th>最大</th>
+        			<th>当前</th>
         			<tr >
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
@@ -127,8 +127,8 @@
         		</table>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="4">任二四码</th>
-        			<th>当前</th>
         			<th>最大</th>
+        			<th>当前</th>
         			<tr >
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
@@ -146,9 +146,9 @@
         			</tr>
         		</table>
         	  <table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
-        			<th colspan="4">任二五码</th>
+        			<th colspan="4">任三五码</th>
+        				<th>最大</th>
         			<th>当前</th>
-        			<th>最大</th>
         			<tr >
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
@@ -168,9 +168,9 @@
         	</div>
         	<div class="typeGroup" >
         		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
-        			<th colspan="4">任三四码</th>
+        			<th colspan="4">任四</th>
+        				<th>最大</th>
         			<th>当前</th>
-        			<th>最大</th>
         		<tr >
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
@@ -188,9 +188,9 @@
         			</tr>
         		</table>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
-        			<th colspan="4">任三五码</th>
+        			<th colspan="4">任五</th>
+        				<th>最大</th>
         			<th>当前</th>
-        			<th>最大</th>
         			<tr >
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
@@ -208,9 +208,9 @@
         			</tr>
         		</table>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all" >
-        			<th colspan="4">任三六码</th>
-        			<th>当前</th>
+        			<th colspan="4">任四五码</th>
         			<th>最大</th>
+        			<th>当前</th>
         			<tr >
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
@@ -228,9 +228,9 @@
         			</tr>
         		</table>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
-        			<th colspan="4">任四五码</th>
-        			<th>当前</th>
+        			<th colspan="4">围二</th>
         			<th>最大</th>
+        			<th>当前</th>
         		    <tr >
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
@@ -249,8 +249,8 @@
         		</table>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="4">任四六码</th>
-        			<th>当前</th>
         			<th>最大</th>
+        			<th>当前</th>
         			<tr >
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
@@ -268,9 +268,9 @@
         			</tr>
         		</table>
         		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
-        			<th colspan="4">任四七码</th>
-        			<th>当前</th>
+        			<th colspan="4">任十</th>
         			<th>最大</th>
+        			<th>当前</th>
         			<tr >
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
@@ -386,7 +386,7 @@
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>
-                      <td colspan="4"  rowspan="2" align="center" onclick="location.href='<%=lastDataUrl %>/initStartPageVr1.do?provinceDm=<%=provinceDm%>' "  onMouseOut="changeCss(this,'move')" onmouseover="changeCss(this,'on')">
+                      <td colspan="4"  rowspan="2" align="center" onclick="location.href='<%=lastDataUrl %>initStartPage.do?provinceDm=<%=provinceDm%>' "  onMouseOut="changeCss(this,'move')" onmouseover="changeCss(this,'on')">
                       	基础<br>版本
                       </td>
                   </tr>
@@ -435,7 +435,7 @@
                         <td colspan="2"  align="center" >0</td>
                         <td colspan="2"  align="center" >0</td>
                         <td colspan="2"  align="center" >0</td>
-                  		 <td colspan="4"  rowspan="2" align="center" onclick="location.href='<%=lastDataUrl %>/initStartPageVr3.do?provinceDm=<%=provinceDm%>' "  onMouseOut="changeCss(this,'move')" onmouseover="changeCss(this,'on')">
+                  		 <td colspan="4"  rowspan="2" align="center" onclick="location.href='<%=lastDataUrl %>initStartPageVr3.do?provinceDm=<%=provinceDm%>' "  onMouseOut="changeCss(this,'move')" onmouseover="changeCss(this,'on')">
                       	整版<br>遗漏
                       </td>
                    </tr>

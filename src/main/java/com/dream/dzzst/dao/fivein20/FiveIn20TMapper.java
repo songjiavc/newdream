@@ -75,6 +75,18 @@ public interface FiveIn20TMapper {
       */
     List<FiveIn20Analysis> getMissAnalysis(Map<String, String> paramMap);
     
+    /**
+     * 获取所有遗漏统计维度
+     * @param paramMap
+     * @return
+     */
+    List<FiveIn20Analysis> getAllMissAnalysis(Map<String, String> paramMap);
+    
+    /**
+     * @return 最新的遗漏统计期号
+     */
+    String getMaxIssueNumberFromMiss(Map<String, String> paramMap);
+    
     /**补录数据插入
      * @param paramMap
      */
