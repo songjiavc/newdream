@@ -15,6 +15,7 @@
         <meta http-equiv="pragma" content="no-cache">
         <meta http-equiv="cache-control" content="no-cache">
         <meta http-equiv="expires" content="0">
+        <meta name="format-detection" content="telephone=no">
         <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
         <meta http-equiv="description" content="This is my page">
          <script type="text/javascript" src="js/jquery-1.7.2.js"></script>

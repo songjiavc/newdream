@@ -3,7 +3,6 @@
         position:relative;
         background:#3c763d;
         width : 720px;
-        height : 10%;
     }
     
     #header .top{
@@ -72,10 +71,6 @@
         font-size:14pt;
     }
 
-    table tr
-    {
-        height : 26px;
-    }
     table tr td
     {
         font-size:12pt;
@@ -89,7 +84,7 @@
     .missTable{
     	table-layout: fixed;
 		border-color: #888a85;
-		height : 75px;
+		height : 108px;
 		width : 50%;
 		float : left;
 		text-align:center;
@@ -113,9 +108,9 @@
    }
      .missTable tr
     {
-        height : 26px;
+     /* height : 28px;    所有高度和宽度都为自适应方式*/
     }
-       .missTable td {
-        	font-size:14pt;
-       }
+    .missTable td {
+       	font-size:15pt;    所有字体大小都为自适应大小
+    }
     

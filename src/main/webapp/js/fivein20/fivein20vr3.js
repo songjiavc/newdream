@@ -9,7 +9,7 @@
 		poolNum : 20,        // 球池数量
 		recordCount : 0,     // 记录条数
 		width : 720,
-		clientPix : 26,
+		clientPix : 28,
 		
 		//获取数据的时间函数参数
 		intervalCycle : 1000*10,    // 每隔10秒执行一次
@@ -37,10 +37,26 @@
 	var lastMissIssueNumber;
 	///////////////////////////////////////////
 	function initLayoutHeight(windowHeight){
-		$('#header').height(window.screen.height-paramObj.clientPix*27);
-		$('#Content').height(paramObj.clientPix*27);
+		paramObj.clientPix = div(windowHeight,38);
+		debugger;
+		$('.missTable tr').height(paramObj.clientPix);
+		$('#header').height(windowHeight-paramObj.clientPix*36);
+		$('#Content').height(paramObj.clientPix*36);
 	}
-	
+	function div(exp1, exp2)
+	{
+		var n1 = Math.round(exp1); //四舍五入
+		var n2 = Math.round(exp2); //四舍五入
+
+		var rslt = n1 / n2; //除
+
+		if (rslt >= 0)
+		{
+			rslt = Math.floor(rslt); //返回值为小于等于其数值参数的最大整数值。
+		}
+
+		return rslt;
+	}
 	/*
 	 add by songj
 	 since 2014-10-22 16:21
@@ -169,10 +185,9 @@
 					updateMissLayout(data);
 					paramObj.mm = 10;
 	           		paramObj.ss = 0;
-	           		if(lastMissIssueNumber.substring(7,9) != paramObj.maxTodayIssueNum){
+	           		if(lastMissIssueNumber.toString().substring(7,9) != paramObj.maxTodayIssueNum){
 	           			createMissValuesTimeFunction(lastDataUrl,provinceDm);
 					}
-	           		
 				}
 			}
 		});
@@ -190,9 +205,9 @@
 			if(temp%3 == 1){
 				$(td).html(translateGroup(missValues[parseInt(i/3)].groupNumber));
 			}else if(temp%3 == 2){
-				$(td).html(missValues[parseInt(i/3)].currentMiss);
-			}else{
 				$(td).html(missValues[parseInt(i/3)].maxMiss);
+			}else{
+				$(td).html(missValues[parseInt(i/3)].currentMiss);
 			}
 		});
 		//获取table下所有td

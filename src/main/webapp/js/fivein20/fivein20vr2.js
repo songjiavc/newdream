@@ -375,10 +375,20 @@
 	    printLuckyDist(trObj,data);
 		printBigEven(trObj,data);
 	}
+	function GetDateStr(AddDayCount) {
+		var dd = new Date();
+		dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期
+		var y = dd.getFullYear();
+		var m = ((dd.getMonth()+1)<10?"0":"")+(dd.getMonth()+1);//获取当前月份的日期
+		var d = ((dd.getDate())<10?"0":"")+(dd.getDate());//dd.getDate();
+		return y+m+d;
+	}
+
 	/*
 	 打印期号
 	 */
 	function printIssueNum(trObj,data){
+        
 		var td = document.createElement("td");
 		var issueNum = data.issueNumber;
 		td.colSpan = '3';
@@ -397,11 +407,13 @@
 		var now = new Date();
 
 		//取得当天日期
-		var allDateNameT = now.getFullYear()+((now.getMonth()+1)<10?"0":"")+(now.getMonth()+1)+(now.getDate()<10?"0":"")+now.getDate();
+		//取得当天日期
+		var allDateNameT = GetDateStr(0);
 		//取得昨天日期
-		var allDateNameZ = now.getFullYear()+((now.getMonth()+1)<10?"0":"")+(now.getMonth()+1)+((now.getDate()-1)<10?"0":"")+(now.getDate()-1);
+		var allDateNameZ =GetDateStr(-1);
 		//取得前天日期
-		var allDateNameQ = now.getFullYear()+((now.getMonth()+1)<10?"0":"")+(now.getMonth()+1)+((now.getDate()-2)<10?"0":"")+(now.getDate()-2);
+		var allDateNameQ = GetDateStr(-2);
+
 		var adnT = allDateNameT.toString().substring(allDateNameT.length-6,allDateNameT.length);
 		var adnZ = allDateNameZ.toString().substring(allDateNameZ.length-6,allDateNameZ.length);
 		var adnQ = allDateNameQ.toString().substring(allDateNameQ.length-6,allDateNameQ.length);

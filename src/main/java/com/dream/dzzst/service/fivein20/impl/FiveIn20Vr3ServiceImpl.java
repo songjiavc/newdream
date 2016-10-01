@@ -40,7 +40,7 @@ public class FiveIn20Vr3ServiceImpl implements FiveIn20Vr3Service {
 					int[] missSort = {2,3,11,17,22,12,18,23,13,19,24,15,4,5,16,25,6,14,26,7,27,8,9,10};
 					List<FiveIn20Analysis> allMissList = fiveIn20TMapper.getAllMissAnalysis(paramMap);
 					rtnList = new ArrayList<FiveIn20Analysis>();
-					for(int i = 0;i < missSort.length*n;i++){
+					for(int i = 0;i < missSort.length*n + 3;i++){
 						rtnList.add(new FiveIn20Analysis());
 					}
 					int j = 0;

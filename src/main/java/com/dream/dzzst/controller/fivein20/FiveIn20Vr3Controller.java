@@ -30,7 +30,7 @@ public class FiveIn20Vr3Controller {
 		Map<String,String> paramMap = new HashMap<String,String>();
 		paramMap.put("provinceCode", provinceDm);
 		paramMap.put("lastMissIssueNumber", lastMissIssueNumber);
-        return fiveIn20Vr3Service.getTopNAllMiss(paramMap,2);
+        return fiveIn20Vr3Service.getTopNAllMiss(paramMap,3);
 	}
 	
 	
