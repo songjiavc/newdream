@@ -442,26 +442,26 @@
                    </tr>
                    <tr class="trHead">
                         <td colspan="13"  align="center">顺一最大遗漏</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
                    </tr>
                 </table>
             </div>

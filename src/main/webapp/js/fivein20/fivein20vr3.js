@@ -38,7 +38,6 @@
 	///////////////////////////////////////////
 	function initLayoutHeight(windowHeight){
 		paramObj.clientPix = div(windowHeight,38);
-		debugger;
 		$('.missTable tr').height(paramObj.clientPix);
 		$('#header').height(windowHeight-paramObj.clientPix*36);
 		$('#Content').height(paramObj.clientPix*36);
