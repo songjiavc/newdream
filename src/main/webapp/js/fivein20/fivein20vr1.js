@@ -8,8 +8,6 @@
 	var paramObj = {
 		poolNum : 20,        // 球池数量
 		recordCount : 0,     // 记录条数
-		width : 720,
-		clientPix : 25,
 		
 		//获取数据的时间函数参数
 		intervalCycle : 1000*10,    // 每隔10秒执行一次
@@ -44,7 +42,7 @@
 	 since 2014-10-22 16:21
 	 */
 	function initData(lastDataUrl,provinceDm){
-		initLayoutHeight(window.screen.height);
+		initParamObjValue();
 		var url=lastDataUrl+"getInitData.do";
 		if(paramObj.recordCount == 0){
 			paramObj.recordCount = div($('#Content').height(),paramObj.clientPix);
@@ -67,7 +65,7 @@
 					var tr = insertBeforeLastTr($('#dataTable tr:first'));
 					insertNumTd(tr,data);
 				});
-				$('#dataTable').css('marginTop',-paramObj.clientPix*paramObj.addCount+($('#Content').height() - paramObj.clientPix*paramObj.recordCount-1));
+				$('#dataTable').css('marginTop',-paramObj.clientPix*paramObj.addCount+($('#Content').height() - paramObj.clientPix*paramObj.recordCount)-1);
 				//更新今日出现次数
 				updateBlankIssue(lastIssueNumber);
 				todayTimes = data.todayTimes;
@@ -85,38 +83,111 @@
 				//createMissIntervalFunc("getLastMissValues('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
 				timer();
 	            setInterval("timer()",1000);//1秒一次执行
+	          //  debugInfo();
+	            initLayoutHeight();
 	            layoutControlDiv();
 			}
 		});
-		function div(exp1, exp2)
-		{
-			var n1 = Math.round(exp1); //四舍五入
-			var n2 = Math.round(exp2); //四舍五入
-
-			var rslt = n1 / n2; //除
-
-			if (rslt >= 0)
-			{
-				rslt = Math.floor(rslt); //返回值为小于等于其数值参数的最大整数值。
-			}
-			else
-			{
-				rslt = Math.ceil(rslt); //返回值为大于等于其数字参数的最小整数。
-			}
-
-			return rslt;
-		}
+	
 		//testPrintTdFromLast5();
+	}
+	
+	
+	function div(exp1, exp2)
+	{
+		var n1 = Math.round(exp1); //四舍五入
+		var n2 = Math.round(exp2); //四舍五入
+
+		var rslt = n1 / n2; //除
+
+		if (rslt >= 0)
+		{
+			rslt = Math.floor(rslt); //返回值为小于等于其数值参数的最大整数值。
+		}
+		else
+		{
+			rslt = Math.ceil(rslt); //返回值为大于等于其数字参数的最小整数。
+		}
+
+		return rslt;
+	}
+	
+	function initParamObjValue(){
+		var deviceWidth = window.screen.width;
+		var deviceHeight = window.screen.height;
+		paramObj.clientPix = div(window.screen.width ,28);
+		paramObj.fontSize = getFontSizeByClientPix(paramObj.clientPix);
+		$('.headDiv').height(paramObj.clientPix*2);
+		$('.bottomDiv').height(paramObj.clientPix*5);
+//		alert("clientPix : "+ paramObj.clientPix);
+		$('#Content').height(window.screen.height-paramObj.clientPix*7);
+//		initTdFontSize(paramObj.fontSize);
+	}
+	
+	/**
+	 * 创建响应性字体大小
+	 */
+	function getFontSizeByClientPix(clientPix){
+		if(clientPix <= 10){
+			return "5";
+		}
+		if(clientPix <= 13){
+			return "8";
+		}
+		if(clientPix <=15){
+			return "9";
+		}
+		if(clientPix <=20){
+			return "12";
+		}
+		if(clientPix <=25){
+			return "16";
+		}
+		if(clientPix <=35){
+			return "18";
+		}
+		if(clientPix <=50){
+			return "22";
+		}
 	}
 	
 	///////////////////////////////////////////
 	function initLayoutHeight(windowHeight){
-		$('.headDiv').height(paramObj.clientPix*2);
-		$('.bottomDiv').height(paramObj.clientPix*5);
-		$('#Content').height(window.screen.height-paramObj.clientPix*7);
-		
+		//获取单元格高度
+		/**
+		 * @param height
+		 */
+		//设定所有静态tr的高度
+		initTrHeight(paramObj.clientPix);
+		initTdFontSize(paramObj.fontSize);
+		$('#countDown').width(($('#reference').width()+1)*5-1);
 	}
-
+	
+	function debugInfo(){
+		alert("clientPix : "+ paramObj.clientPix);
+		alert("addCount : "+ paramObj.addCount);
+		alert("recordCount"+paramObj.recordCount);
+	}
+	
+    /**
+     * 初始化所有tr的高度
+     */
+	function initTrHeight(height){
+		var trs = $('tr');
+		$.each($('tr'),function(i,tr){
+			$(tr).height(height);
+		});
+	}
+	
+	function initTdFontSize(fontSize){
+		$.each($('table'),function(i,table){
+			$(table).css("font-size",fontSize);
+		});
+		
+		$.each($('.smallFontSize'),function(j,td){
+			$(td).css("font-size",fontSize-2);
+		});
+	}
 	function updateBlankIssue(lastIssueNumber){
 		var tds =  $("#bottomTable tr").eq(0).find("td");
 		var nextIssueNumber = lastIssueNumber.toString().substring(7,9)*1+1;
@@ -396,9 +467,9 @@
 		if(isAllOdd(data) == "common"){
 			td.innerHTML = issueNum.toString().substring(7,9);
 		}else if(isAllOdd(data) == "AllOdd"){
-			td.innerHTML = "全奇";
+			td.innerHTML = "奇";
 		}else{
-			td.innerHTML = "全偶";
+			td.innerHTML = "偶";
 		}
 		trObj.appendChild(td);
 		if(issueNum%5 == 0){
@@ -631,6 +702,8 @@
 		}else{
 			$(tr).insertBefore(lastTr);
 		}
+		//初始化动态插入单元格tr高度
+		$(tr).height(paramObj.clientPix);
 		return tr;
 	}
 
@@ -646,25 +719,6 @@
 		tempArr.push(e);
 		return tempArr;
 	}
-	/*
-	 *   @desc : 插入底端提示信息内容
-	 *   @author : songj
-	 @date 2014-11-11
-	 */
-	function insertBottomDiv(top,width){
-		var div = document.createElement("div");
-		document.body.appendChild(div);
-		$(div).css('position','absolute');
-		$(div).css('background',"#f49800");
-		$(div).css('text-align','center');
-		$(div).css('vertical-align','middle');
-		$(div).css('line-height',2);
-		$(div).css('top',top);
-		$(div).width(720);
-		$(div).height(window.screen.height-top);
-		$(div).html("本数据仅供参考,开奖号码请以官方数据为准.");
-	}
-	
 	
 
   	//倒计时方法
@@ -677,9 +731,9 @@
    		}
    		if(paramObj.mm >= 0){
 	   		if(paramObj.ss < 10){
-	   			$("#countDown").html("开奖时间:" + "0" + paramObj.mm + ":" + "0" + paramObj.ss);
+	   			$("#countDown").html( "0" + paramObj.mm + ":" + "0" + paramObj.ss);
 	   		}else{
-	   			$("#countDown").html("开奖时间:" + "0" + paramObj.mm + ":" + paramObj.ss);
+	   			$("#countDown").html( "0" + paramObj.mm + ":" + paramObj.ss);
 	   		}
    		}else{
    			$("#countDown").html("开奖中...");

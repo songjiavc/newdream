@@ -40,8 +40,10 @@
     #groupOne .headDiv .headTable .trHead
     {
         font-weight:800;
+        font-size : 12px;
         color: #FFFFFF;
         text-align:center;
+        height : 25px;
     }
 
     #groupOne .bottomDiv .headTable {
@@ -81,11 +83,17 @@
 		text-align:center;
 		position:relative;
         font-family:晴圆;
+        font-size:14pt;
     }
 
+    table tr
+    {
+        height : 25px;
+    }
     table tr td
     {
         font-family:晴圆;
+        font-size:12pt;
         color:Black;
         text-align:center;
         padding : 0px;
@@ -104,25 +112,19 @@
     .tdEvenCls{
         background: #CCE5A3;
     }
-    .tdMissCls{
-    	background: #FFFACD;
-    }
     
     .missTable{
     	table-layout: fixed;
-		width:50%;
-		height: 12%;
+		border-color: #888a85;
+		border : 1;
+		width:100%;
+		height:100%;
 		text-align:center;
-		float : left;
 		position:relative;
 		background-color: #ffffff;
         font-family:晴圆;
-        border-right : Gray 1px solid;
+        font-size:14pt;
     }
-   .missTable th{
-		background: #8B0000;
-		color : white;
-		font-family:晴圆;
-   }
+
 
     
