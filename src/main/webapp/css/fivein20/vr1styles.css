@@ -2,14 +2,13 @@
     #groupOne {
         position:relative;
         background:#3c763d;
-        width : 720px;
+        width : 100%;
         height : 100%;
     }
 
     #groupTwo {
         position: absolute;
         height : 36%;
-        width : 720px;
         opacity: 1;
         display : none;
         z-index: 2;
@@ -40,10 +39,8 @@
     #groupOne .headDiv .headTable .trHead
     {
         font-weight:800;
-        font-size : 12px;
         color: #FFFFFF;
         text-align:center;
-        height : 25px;
     }
 
     #groupOne .bottomDiv .headTable {
@@ -83,17 +80,11 @@
 		text-align:center;
 		position:relative;
         font-family:晴圆;
-        font-size:14pt;
     }
 
-    table tr
-    {
-        height : 25px;
-    }
     table tr td
     {
         font-family:晴圆;
-        font-size:12pt;
         color:Black;
         text-align:center;
         padding : 0px;
@@ -123,7 +114,6 @@
 		position:relative;
 		background-color: #ffffff;
         font-family:晴圆;
-        font-size:14pt;
     }
 
 

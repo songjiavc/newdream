@@ -24,6 +24,7 @@
         <script type="text/javascript" src="js/fivein20/fivein20vr1.js"></script> 
         <link rel="stylesheet" type="text/css" href="css/util/chartControl.css">
         <link rel="stylesheet" type="text/css" href="css/fivein20/vr1styles.css">
+        <link rel="stylesheet" type="text/css" href="css/fivein20/vr1styles.css">
         <link rel="stylesheet" type="text/css" href="css/graph.css">
     </head>
 	<script type="text/javascript">
@@ -53,7 +54,7 @@
                         <td colspan="4"  align="center">指标</td>
                     </tr>
                     <tr>
-                       <td colspan="2"  align="center" >1</td>
+                       <td colspan="2"  id="reference" align="center" >1</td>
                        <td colspan="2"  align="center" >2</td>
                        <td colspan="2"  align="center" >3</td>
                        <td colspan="2"  align="center" >4</td>
@@ -94,7 +95,7 @@
                 <table id="bottomTable"  class = 'headTable' cellpadding="0px" cellspacing="0px" rules="all">
                     <tr >
                        <td colspan="3"  align="center"></td>
-                       <td id = "countDown" style="color:black;" width="124px" colspan="10"  align="center"></td>
+                       <td id = "countDown" style="color:black;" colspan="10"  align="center"></td>
                        <td colspan="2"  align="center" ></td>
                        <td colspan="2"  align="center" ></td>
                        <td colspan="2"  align="center" ></td>
@@ -119,7 +120,7 @@
                         <td colspan="2"  align="center"></td>
                    </tr>
                    <tr >
-                      <td colspan="13"  align="center">出现次数(100期内)</td>
+                      <td colspan="13"  align="center">次/100期</td>
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>
                       <td colspan="2"  align="center" >0</td>
@@ -146,7 +147,7 @@
                   </tr>
                   <tr class="trHead">
                         <td colspan="13"  align="center">任一遗漏</td>
-                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center"  >0</td>
                         <td colspan="2"  align="center" >0</td>
                         <td colspan="2"  align="center" >0</td>
                         <td colspan="2"  align="center" >0</td>
@@ -169,52 +170,52 @@
                    </tr>
                    <tr class="trHead">
                         <td colspan="13"  align="center">顺一遗漏</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
-                        <td colspan="2"  align="center" >0</td>
+                        <td colspan="2"  align="center"  class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"  class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"  class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
                   		 <td colspan="4"  rowspan="2" align="center" onclick="location.href='<%=lastDataUrl %>/initStartPageVr3.do?provinceDm=<%=provinceDm%>' "  onMouseOut="changeCss(this,'move')" onmouseover="changeCss(this,'on')">
                       	整版<br>遗漏
                       </td>
                    </tr>
                    <tr class="trHead">
                         <td colspan="13"  align="center">顺一最大遗漏</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
-                        <td colspan="2" style="font-size:11pt;" align="center" >0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
+                        <td colspan="2"  align="center"class="smallFontSize">0</td>
                    </tr>
                 </table>
             </div>

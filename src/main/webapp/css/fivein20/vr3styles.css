@@ -2,7 +2,7 @@
     #header {
         position:relative;
         background:#3c763d;
-        width : 720px;
+        width : 100%;
     }
     
     #header .top{
@@ -11,7 +11,6 @@
     	text-align:center;
     	color : white;
     	 font-family:晴圆;
-    	 font-size:18pt;
     	 align : center;
     	 background: #8B0000;
     }
@@ -26,7 +25,6 @@
     	height : 100%;
     	line-height:30px;
     	 font-family:晴圆;
-    	 font-size:15pt;
     }
     
     #header .center{
@@ -35,7 +33,6 @@
     	height : 100%;
     	line-height:30px;
     	font-family:晴圆;
-    	font-size:15pt;
     }
     
     #header .right{
@@ -44,10 +41,11 @@
     	height : 100%;
     	text-align:center;
     }
+    
     #content {
         position: absolute;
         background:#3c444d;
-        width : 720px;
+        width : 100%;
     }
     
     .typeGroup {
@@ -68,12 +66,10 @@
 		text-align:center;
 		position:relative;
         font-family:晴圆;
-        font-size:14pt;
     }
 
     table tr td
     {
-        font-size:12pt;
         color:Black;
         text-align:center;
         padding : 0px;
@@ -84,7 +80,6 @@
     .missTable{
     	table-layout: fixed;
 		border-color: #888a85;
-		height : 108px;
 		width : 50%;
 		float : left;
 		text-align:center;
@@ -94,23 +89,19 @@
         border-right : Gray 1px solid;
     }
     .centerwidth{
-    	width : 33%;
+    	width : 40%;
     }
     .rightwidth{
-    	width : 34%;
+    	width : 30%;
     }
     
    .missTable th{
 		background: #FA8072	;
 		color : white;
 		font-family:晴圆;
-		font-size:12pt;
    }
      .missTable tr
     {
      /* height : 28px;    所有高度和宽度都为自适应方式*/
-    }
-    .missTable td {
-       	font-size:15pt;    所有字体大小都为自适应大小
     }
     

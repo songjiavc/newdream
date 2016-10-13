@@ -38,10 +38,63 @@
 	///////////////////////////////////////////
 	function initLayoutHeight(windowHeight){
 		paramObj.clientPix = div(windowHeight,38);
-		$('.missTable tr').height(paramObj.clientPix);
+		paramObj.fontSize = getFontSizeByClientPix(paramObj.clientPix);
+		//debugInfo();
+		initTrHeight(paramObj.clientPix);
+		initTdFontSize(paramObj.fontSize);
 		$('#header').height(windowHeight-paramObj.clientPix*36);
 		$('#Content').height(paramObj.clientPix*36);
 	}
+	function debugInfo(){
+		alert("paramObj.clientPix:" + paramObj.clientPix);
+		alert("paramObj.fontSize:" + paramObj.fontSize);
+		
+	}
+	  /**
+     * 初始化所有tr的高度
+     */
+	function initTrHeight(height){
+		$.each($('tr'),function(i,tr){
+			$(tr).height(height);
+		});
+	}
+	
+	function initTdFontSize(fontSize){
+		$.each($('td'),function(i,table){
+			$(table).css("font-size",fontSize);
+		});
+		$.each($('th'),function(j,th){
+			$(th).css("font-size",fontSize);
+		});
+	}
+	
+	/**
+	 * 创建响应性字体大小
+	 */
+	function getFontSizeByClientPix(clientPix){
+		if(clientPix <= 10){
+			return "5";
+		}
+		if(clientPix <= 13){
+			return "6";
+		}
+		if(clientPix <=15){
+			return "8";
+		}
+		if(clientPix <=20){
+			return "10";
+		}
+		if(clientPix <=25){
+			return "14";
+		}
+		if(clientPix <=35){
+			return "18";
+		}
+		if(clientPix <=50){
+			return "22";
+		}
+	}
+	
 	function div(exp1, exp2)
 	{
 		var n1 = Math.round(exp1); //四舍五入
@@ -78,7 +131,7 @@
 				lastMissIssueNumber = data[0].issueNumber*1;
 				//初始化获取遗漏统计数据
 				createMissIntervalFunc("getLastMissValues('"+lastDataUrl+"','"+provinceDm+"')",paramObj.intervalCycle);
-				timer();
+			    timer();
 				updateMissLayout(data);
 	            setInterval("timer()",1000);//1秒一次执行
 			}
@@ -194,9 +247,8 @@
 	
 	function updateMissLayout(missValues){
 		//更新期号
-		$('#missIssueNumber').html("统计当前期:"+lastMissIssueNumber);
+		$('#missIssueNumber').html("期号:"+lastMissIssueNumber);
 		//获取div下面所有table
-		
 		var tds = $('.typeGroup td');
 		var temp = 0;
 		$.each(tds,function(i,td){
