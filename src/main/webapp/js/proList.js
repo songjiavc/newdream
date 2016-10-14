@@ -8,7 +8,7 @@ $(document).ready(function()
 //获取当前登录站点的所购买的有效站点列表
 function getProductList()
 {
-	var url = contextPath+"/loginController/getProOfSta.do";
+	var url = basePath+"/loginController/getProOfSta.do";
 	$.ajax({
 		async: false,   //设置为同步获取数据形式
         type: "get",
@@ -37,7 +37,7 @@ function getProductList()
         			cpzlName = product.cpzlName;
         			
         			html += ' <div class="menuDivT" ' +
-        					'	onclick="location.href=&quot;'+contextPath+prourl+'?provinceDm='+provinceDm+'&cityDm='+cityDm+'&quot;">'+
+        					'	onclick="location.href=&quot;'+basePath+prourl+'?provinceDm='+provinceDm+'&cityDm='+cityDm+'&quot;">'+
 	        				'   <div class="menuDivTa">'+cpzlName+'</div>' +
 	        				' 	<div class="menuDivTb">'+proName+'</div>' +
 //	        				' 	<div class="menuDivTc">'+proName+'</div>' +

@@ -18,19 +18,21 @@
         <meta name="format-detection" content="telephone=no">
         <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
         <meta http-equiv="description" content="This is my page">
-         <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
-         <script type="text/javascript" src="js/echartUtil.js"></script>
-         <script type="text/javascript" src="js/fivein20/control.js"></script>
-        <script type="text/javascript" src="js/fivein20/fivein20vr1.js"></script> 
+        <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+        <script type="text/javascript" src="js/echartUtil.js"></script>
+        <script type="text/javascript" src="js/fivein20/control.js"></script>
+        <script type="text/javascript" src="js/fivein20/fivein20vr1.js"></script>
+        <script type="text/javascript" src="/js/loginStatus.js"></script>
         <link rel="stylesheet" type="text/css" href="css/util/chartControl.css">
         <link rel="stylesheet" type="text/css" href="css/fivein20/vr1styles.css">
         <link rel="stylesheet" type="text/css" href="css/fivein20/vr1styles.css">
         <link rel="stylesheet" type="text/css" href="css/graph.css">
     </head>
 	<script type="text/javascript">
-		
+		//加载后立马执行扫描登陆状态
+		var basePath = '<%=basePath%>';
 		$(function (){        //初始化内容
-	    	initData('<%=lastDataUrl%>','<%=provinceDm%>');
+			initData('<%=lastDataUrl%>','<%=provinceDm%>');
 	    });
 		
 		function changeCss(obj,event){

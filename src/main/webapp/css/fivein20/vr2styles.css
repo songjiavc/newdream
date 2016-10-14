@@ -105,7 +105,7 @@
         background: #CCE5A3;
     }
     .tdMissCls{
-    	background: #FFFACD;
+    	background: #FFFFE0;
     }
     
     .missTable{
@@ -120,9 +120,22 @@
         border-right : Gray 1px solid;
     }
    .missTable th{
-		background: #8B0000;
-		color : white;
+		background: #EEE5DE	;
+		color : #8B1A1A;
 		font-family:晴圆;
    }
+   
+   .missTableBackGround-REN2 {
+   		background: #F0FFFF;
+   }
+   .missTableBackGround-REN3 {
+   		background: #F0FFF0;
+   }
+   
+   .missTableBackGround-REN4 {
+   		background: #F0F8FF;
+   }
+   
+   
 
     

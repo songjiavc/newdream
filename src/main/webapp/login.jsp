@@ -19,20 +19,16 @@
     <div style="position:absolute;left:165px;top:197px">
     <input type="password" name="password" />
     </div>
-    <div style="position:absolute;left:135px;top:237px" align="center">
-    			<%
-				String loginFail=(String)request.getAttribute("loginFail");
-				if("noUsername".equals(loginFail)){
+    <div style="position:absolute;left:120px;top:237px" align="center">
+		<%
+			String loginFail=(String)request.getAttribute("loginFail");
+			if(loginFail != null){
 				%>
-				请输入用户名
+		<%=loginFail %>
 				<%
-				}
-				if("validateFail".equals(loginFail)){
-				%>
-				验证失败，用户名或密码错误！
-				<%  
-				}
-				%>
+			}
+		%>
+				
     </div>
     
     <div style="position:absolute;left:115px;top:312px;width:230px;height:50px;cursor:hand" onclick="document.forms[0].submit()">

@@ -22,12 +22,14 @@
         <script type="text/javascript" src="js/fast3/fast3verticalvr1.js"></script>
         <script type="text/javascript" src="js/fast3/fast3downline.js"></script>
         <script type="text/javascript" src="js/fast3/control.js"></script>
+        <script type="text/javascript" src="/js/loginStatus.js"></script>
         <script type="text/javascript" src="js/fast3/missanalysis.js"></script>
         <link rel="stylesheet" type="text/css" href="css/fast3/styles2.css">
         <link rel="stylesheet" type="text/css" href="css/util/chartControl.css">
         <link rel="stylesheet" type="text/css" href="css/fast3/baseLayout.css">
     </head>
 	<script type="text/javascript">
+		var basePath = '<%=basePath%>';	
 		$(function (){        //初始化内容
 	    	initData('<%=lastDataUrl%>','<%=provinceDm%>');
 	    });

@@ -2,7 +2,6 @@
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-    String lastDataUrl = basePath+"twelveSelectFiveController/";
 %>
 <html>
 <head>
@@ -14,9 +13,9 @@
 <link rel="stylesheet" type="text/css" href="css/imgdisplay.css">
 <script type="text/javascript" src="js/echartUtil.js"></script>
 <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
-
+ <script type="text/javascript" src="/js/loginStatus.js"></script>
  <script type="text/javascript">
-		 var contextPath = '<%=request.getContextPath() %>';
+		 var basePath = '<%=basePath%>';
 </script>
 <script type="text/javascript" src="js/proList.js"></script>
 
@@ -78,11 +77,7 @@
 </head>
 <body >
 	<div id="context">
-		 <div class="menuDivT" onclick="location.href='<%=request.getContextPath() %>/ln5In11VerticalController/ln5in11vertical.do' ">
-	        <div class="menuDivTa">体彩11选5</div>
-	     	<div class="menuDivTb">综合走势图</div>	
-	     	<div class="menuDivTc">【竖屏-球】</div>
-	    </div>
+		 <span>没有可以使用的产品。</span>
 	</div>
 	
    

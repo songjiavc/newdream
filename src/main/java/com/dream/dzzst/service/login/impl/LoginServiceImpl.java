@@ -30,7 +30,7 @@ public class LoginServiceImpl implements LoginService {
 	public boolean userLogin(HttpServletRequest request) {
 		String username = (String) request.getParameter("username");
 		if ("".equals(username)) {
-			request.setAttribute("loginFail", "noUsername");
+			request.setAttribute("loginFail", "请输入用户名~");
 			return false;
 		}
 		if (username == null) {
@@ -41,12 +41,22 @@ public class LoginServiceImpl implements LoginService {
 		loginInfo.put("password",request.getParameter("password"));
 		List<StationDto> usermsg = loginMapper.getLoginUser(loginInfo);//判断当前登录用户是否存在
 		if (usermsg.size() == 0) {
-			request.setAttribute("loginFail", "validateFail");
+			request.setAttribute("loginFail", "用户名或者密码错误！");
 			return false;
 		} else {
-			StationDto user = usermsg.get(0);
-			request.getSession().setAttribute("currentUser", user);
-			return true;
+			//如果拥有用户信息则判断是否已经登陆
+			String loginStatus = loginMapper.getLoginStatus(loginInfo.get("code"));
+			if("0".equals(loginStatus)){
+				StationDto user = usermsg.get(0);
+				request.getSession().setAttribute("currentUser", user);
+				return true;
+			}else if("1".equals(loginStatus)){
+				request.setAttribute("loginFail", "该用户已经登陆,不允许重复登陆！");
+				return false;
+			}else{
+				request.setAttribute("loginFail", "该用户不存在登陆信息！");
+				return false;
+			}
 		}
 
 	}
@@ -64,6 +74,12 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public ProAndGoods getProAndGoods(String id) {
 		return proOfStaMapper.getProAndGoods(id);
+	}
+	
+	
+	public String loginStatus(String currentCode){
+		loginMapper.loginStatus(currentCode);
+		return "success";
 	}
 	
 }

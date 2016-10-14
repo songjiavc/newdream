@@ -9,4 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public interface LoginMapper {
 	@Autowired
 	List<StationDto> getLoginUser(Map loginInfo);
+	
+	@Autowired
+	void loginStatus(String currentCode);
+	
+	@Autowired
+	String getLoginStatus(String currentCode);
 }

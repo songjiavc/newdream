@@ -22,12 +22,13 @@
          <script type="text/javascript" src="js/echartUtil.js"></script>
          <script type="text/javascript" src="js/fivein20/control.js"></script>
         <script type="text/javascript" src="js/fivein20/fivein20vr2.js"></script> 
+        <script type="text/javascript" src="/js/loginStatus.js"></script>
         <link rel="stylesheet" type="text/css" href="css/util/chartControl.css">
         <link rel="stylesheet" type="text/css" href="css/fivein20/vr2styles.css">
         <link rel="stylesheet" type="text/css" href="css/graph.css">
     </head>
 	<script type="text/javascript">
-		
+		var basePath = '<%=basePath%>';
 		$(function (){        //初始化内容
 	    	initData('<%=lastDataUrl%>','<%=provinceDm%>');
 	    });
@@ -46,10 +47,10 @@
         <div id="groupTwo">
         	<!--    所有的遗漏统计表格将在这里展示 -->
         	<div class="typeGroup" >
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
-        			<th colspan="4">任二</th>
-        			<th>最大</th>
-        			<th>当前</th>
+        		<table  class="missTable missTableBackGround-REN2" cellpadding="0px" cellspacing="0px"  rules="all">
+        			<th colspan="4" >任二</th>
+        			<th >最大</th>
+        			<th >当前</th>
         			<tr >
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
@@ -66,7 +67,7 @@
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable missTableBackGround-REN3"  cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="4">任三</th>
         			<th>最大</th>
         			<th>当前</th>
@@ -86,7 +87,7 @@
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+        		<table class="missTable missTableBackGround-REN2" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="4">任二三码</th>
         			<th>最大</th>
         			<th>当前</th>
@@ -106,7 +107,7 @@
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+        		<table  class="missTable missTableBackGround-REN3" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="4">任三四码</th>
         			<th>最大</th>
         			<th>当前</th>
@@ -126,7 +127,7 @@
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+        		<table  class="missTable missTableBackGround-REN2" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="4">任二四码</th>
         			<th>最大</th>
         			<th>当前</th>
@@ -146,7 +147,7 @@
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
-        	  <table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all">
+        	  <table  class="missTable missTableBackGround-REN3" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="4">任三五码</th>
         				<th>最大</th>
         			<th>当前</th>
@@ -168,7 +169,7 @@
         		</table>
         	</div>
         	<div class="typeGroup" >
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable missTableBackGround-REN4" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="4">任四</th>
         				<th>最大</th>
         			<th>当前</th>
@@ -208,7 +209,7 @@
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px" rules="all" >
+        		<table  class="missTable missTableBackGround-REN4" cellpadding="0px" cellspacing="0px" rules="all" >
         			<th colspan="4">任四五码</th>
         			<th>最大</th>
         			<th>当前</th>
@@ -248,7 +249,7 @@
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable missTableBackGround-REN4" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="4">任四六码</th>
         			<th>最大</th>
         			<th>当前</th>

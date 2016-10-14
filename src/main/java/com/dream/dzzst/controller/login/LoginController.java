@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dream.dzzst.model.login.ProductDto;
 import com.dream.dzzst.model.login.StationAndProduct;
+import com.dream.dzzst.model.login.StationDto;
 import com.dream.dzzst.service.cache.GlobalCacheService;
 import com.dream.dzzst.service.login.LoginService;
 import com.dream.dzzst.util.login.LoginUtils;
@@ -92,5 +93,16 @@ public class LoginController {
 		ProductDto dto = loginservice.getDetailProduct(productId);
 		
 		return dto;
+	}
+	
+	/**
+	 * 更新服务器登陆状态
+	 */
+	@RequestMapping(value = "/loginStatus", method = RequestMethod.POST)
+	public @ResponseBody String loginStatus(HttpSession session,HttpServletRequest request,HttpServletResponse response) {
+		String flag = null;
+		StationDto stationInfo = (StationDto)request.getSession().getAttribute("currentUser");
+		flag = loginservice.loginStatus(stationInfo.getCode());
+		return flag;
 	}
 }

@@ -71,6 +71,7 @@ public class FiveIn20Vr1Controller {
     }
 	@RequestMapping("/initStartPage")
     public String initStartPage(HttpServletRequest request) {
+		//在登陆信息中获取两个参数，一个为省级编码一个为登陆账号，账号在更新登陆状态的时候有效
         request.setAttribute("provinceDm", request.getParameter("provinceDm").toString());
 		return "/fivein20/fivein20vr1";
     }

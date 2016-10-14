@@ -96,8 +96,8 @@
     }
     
    .missTable th{
-		background: #FA8072	;
-		color : white;
+		background: #EEE5DE	;
+		color : #8B1A1A;
 		font-family:晴圆;
    }
      .missTable tr
@@ -105,3 +105,26 @@
      /* height : 28px;    所有高度和宽度都为自适应方式*/
     }
     
+   .missTableBackGround-REN2 {
+   		background: #F0FFFF;
+   }
+   .missTableBackGround-REN3 {
+   		background: #F0FFF0;
+   }
+   
+   .missTableBackGround-REN4 {
+   		background: #F0F8FF;
+   }
+   
+   .missTableBackGround-SHUN {
+   		background: #F7F7F7;
+   }
+   
+   .missTableBackGround-WEI {
+   		background: #F5FFFA;
+   }
+   
+   .missTableBackGround-REN {
+   		background: #F5F5F5;
+   }
+ 

@@ -10,10 +10,22 @@
 		<result column="CODE" property="code" jdbcType="VARCHAR" />
 		<result column="NAME" property="name" jdbcType="VARCHAR" />
 	</resultMap>
+	
 	<select id="getLoginUser" parameterType="map" resultMap="BaseResultMap">
 		SELECT station.ID,station.CODE,station.OWNER,station.NAME ,station.AGENT_ID ,station.PROVINCE_CODE,station.CITY_CODE
 		FROM T_SDF_STATIONS station
-		where station.CODE = #{code} and station.PASSWORD = #{password} 
+		WHERE station.CODE = #{code}
+		AND station.PASSWORD = #{password} 
 		AND IS_DELETED = 1
 	</select>
+	<!-- 获取用户登陆状态，如果用户没有登陆则允许登陆 -->
+	<select id="getLoginStatus" parameterType="String" resultType="String">
+		SELECT IS_LOGIN FROM T_SONG_LOGINSTATUS WHERE STATION_CODE = #{currentCode}
+	</select>
+	
+	<!-- 更新用户登陆状态 -->
+	<update id = "loginStatus" parameterType="String">
+		UPDATE T_SONG_LOGINSTATUS SET IS_LOGIN = '1',UPDATE_TIME=SYSDATE() WHERE STATION_CODE = #{currentCode}
+	</update>
+	
 </mapper>

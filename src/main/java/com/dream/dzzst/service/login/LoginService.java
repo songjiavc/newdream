@@ -16,4 +16,6 @@ public interface LoginService {
 	public ProductDto getDetailProduct(String productId);
 	
 	public ProAndGoods getProAndGoods(String id);
+	
+	public String loginStatus(String userCode);
 }

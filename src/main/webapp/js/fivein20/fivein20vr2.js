@@ -461,12 +461,26 @@
 		var td = document.createElement("td");
 		var issueNum = data.issueNumber;
 		td.colSpan = '3';
-		if(isAllOdd(data) == "common"){
-			td.innerHTML = issueNum.toString().substring(7,9);
-		}else if(isAllOdd(data) == "AllOdd"){
-			td.innerHTML = "全奇";
+		if(isAllOdd(data) == "AllOdd" && isAllBig(data) == "AllBig"){
+			td.innerHTML = "大单";
+		}else if(isAllOdd(data) == "AllEven" && isAllBig(data) == "AllSmall"){
+			td.innerHTML = "小双";
+		}else if(isAllOdd(data) == "AllOdd" && isAllBig(data) == "AllSmall"){
+			td.innerHTML = "小单";
+		}else if(isAllOdd(data) == "AllEven" && isAllBig(data) == "AllBig"){
+			td.innerHTML = "大双";
 		}else{
-			td.innerHTML = "全偶";
+			if(isAllOdd(data) == "AllOdd"){
+				td.innerHTML = "全单";
+			}else if(isAllBig(data) == "AllBig"){
+				td.innerHTML = "全大";
+			}else if(isAllBig(data) == "AllSmall"){
+				td.innerHTML = "全小";
+			}else if(isAllBig(data) == "AllSmall"){
+				td.innerHTML = "全双";
+			}else{
+				td.innerHTML = issueNum.toString().substring(7,9);
+			}
 		}
 		trObj.appendChild(td);
 		if(issueNum%5 == 0){
@@ -495,6 +509,7 @@
 		}
 
 	}
+	
 	function isAllOdd(data){
 		if(data.no1%2==1&&data.no2%2==1&&data.no3%2==1&&data.no4%2==1&&data.no5%2==1){
 			return "AllOdd";
@@ -504,6 +519,16 @@
 			return "common";
 		}
 		
+	}
+	
+	function isAllBig(data){
+		if(data.no1 >= 11 && data.no2 >= 11 && data.no3 >= 11 && data.no4 >= 11 && data.no5 >= 11){
+			return "AllBig";
+		}else if(data.no1 <= 10 && data.no2 <= 10 && data.no3 <= 10 && data.no4 <= 10 && data.no5 <= 10){
+			return "AllSmall";
+		}else{
+			return "common";
+		}
 	}
 	/*
 	 打印开奖号码
@@ -746,7 +771,7 @@
 		}
    		$(div).css('display','inline');
    		i++;
-   		paramObj.showMissDivTimeId = setTimeout('showMissDiv(missDivs[i])',20000);
+   		paramObj.showMissDivTimeId = setTimeout('showMissDiv(missDivs[i])',30000);
    	}
    	
 	/* ***********************定时任务设置区域*********************************** */

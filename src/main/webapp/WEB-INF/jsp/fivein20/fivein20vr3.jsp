@@ -20,11 +20,12 @@
         <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
         <meta http-equiv="description" content="This is my page">
          <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+         <script type="text/javascript" src="/js/loginStatus.js"></script>
         <script type="text/javascript" src="js/fivein20/fivein20vr3.js"></script> 
         <link rel="stylesheet" type="text/css" href="css/fivein20/vr3styles.css">
     </head>
 	<script type="text/javascript">
-		
+		var basePath = '<%=basePath%>';
 		$(function (){        //初始化内容
 	    	initData('<%=lastDataUrl%>','<%=provinceDm%>');
 	    });
@@ -56,7 +57,7 @@
         <div id="content">
         	<!--    所有的遗漏统计表格将在这里展示 -->
         	<div class="typeGroup" >
-        		<table  class="missTable rightwidth" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable rightwidth missTableBackGround-REN2" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="3">任二</th>
         			<th>最</th>
         			<th>当</th>
@@ -70,7 +71,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable centerwidth"  cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable centerwidth missTableBackGround-REN3"  cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="3">任三</th>
         			<th>最</th>
         			<th>当</th>
@@ -84,7 +85,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable rightwidth" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable rightwidth missTableBackGround-SHUN" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="3">顺一</th>
         			<th>最</th>
         			<th>当</th>
@@ -98,7 +99,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable rightwidth" cellpadding="0px" cellspacing="0px" rules="all">
+        		<table  class="missTable rightwidth missTableBackGround-REN2" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="3">任二三码</th>
         			<th>最</th>
         			<th>当</th>
@@ -112,7 +113,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable centerwidth" cellpadding="0px" cellspacing="0px" rules="all">
+        		<table  class="missTable centerwidth missTableBackGround-REN3" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="3">任三四码</th>
         			<th>最</th>
         			<th>当</th>
@@ -126,7 +127,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable rightwidth" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable rightwidth missTableBackGround-SHUN" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="3">顺二</th>
         			<th>最</th>
         			<th>当</th>
@@ -140,7 +141,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable rightwidth" cellpadding="0px" cellspacing="0px" rules="all">
+        		<table  class="missTable rightwidth missTableBackGround-REN2" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="3">任二四码</th>
         			<th>最</th>
         			<th>当</th>
@@ -154,7 +155,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        	  <table  class="missTable centerwidth" cellpadding="0px" cellspacing="0px" rules="all">
+        	  <table  class="missTable centerwidth missTableBackGround-REN3" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="3">任三五码</th>
         				<th>最</th>
         			    <th>当</th>
@@ -168,7 +169,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        			<table  class="missTable rightwidth" cellpadding="0px" cellspacing="0px"  rules="all">
+        			<table  class="missTable rightwidth missTableBackGround-SHUN" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="3">顺三</th>
         			<th>最</th>
         			<th>当</th>
@@ -182,7 +183,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable rightwidth" cellpadding="0px" cellspacing="0px" rules="all">
+        		<table  class="missTable rightwidth missTableBackGround-REN2" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="3">任二五码</th>
         			<th>最</th>
         			<th>当</th>
@@ -196,7 +197,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable centerwidth" cellpadding="0px" cellspacing="0px" rules="all">
+        		<table  class="missTable centerwidth missTableBackGround-REN3" cellpadding="0px" cellspacing="0px" rules="all">
         			<th colspan="3">任三六码</th>
         			<th>最</th>
         			<th>当</th>
@@ -210,7 +211,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable rightwidth" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable rightwidth missTableBackGround-WEI" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="3">围二</th>
         			<th>最</th>
         			<th>当</th>
@@ -225,7 +226,7 @@
         			</tr>
         		</table>
         		
-        		<table  class="missTable rightwidth" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable rightwidth missTableBackGround-REN4" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="3">任四</th>
         				<th>最</th>
         			<th>当</th>
@@ -254,7 +255,7 @@
         			</tr>
         		</table>
         		
-        		<table  class="missTable rightwidth" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable rightwidth missTableBackGround-WEI" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="3">围三</th>
         			<th>最</th>
         			<th>当</th>
@@ -268,7 +269,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable rightwidth" cellpadding="0px" cellspacing="0px" rules="all" >
+        		<table  class="missTable rightwidth missTableBackGround-REN4" cellpadding="0px" cellspacing="0px" rules="all" >
         			<th colspan="3">任四五码</th>
         			<th>最</th>
         			<th>当</th>
@@ -296,7 +297,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable rightwidth" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable rightwidth missTableBackGround-WEI" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="3">围四</th>
         			<th>最</th>
         			<th>当</th>
@@ -310,7 +311,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable missTableBackGround-REN4" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="3">任四六码</th>
         			<th>最</th>
         			<th>当</th>
@@ -324,7 +325,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable missTableBackGround-REN" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="4">任七</th>
         			<th>最</th>
         			<th>当</th>
@@ -338,7 +339,7 @@
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable missTableBackGround-REN4" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="3">任四七码</th>
         			<th>最</th>
         			<th>当</th>
@@ -352,7 +353,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable missTableBackGround-REN" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="4">任八</th>
         			<th>最</th>
         			<th>当</th>
@@ -366,7 +367,7 @@
         				<td colspan="4"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable missTableBackGround-REN" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="3">任九</th>
         			<th>最</th>
         			<th>当</th>
@@ -380,7 +381,7 @@
         				<td colspan="3"></td><td></td><td></td>
         			</tr>
         		</table>
-        		<table  class="missTable" cellpadding="0px" cellspacing="0px"  rules="all">
+        		<table  class="missTable missTableBackGround-REN" cellpadding="0px" cellspacing="0px"  rules="all">
         			<th colspan="5">任十</th>
         			<th>最</th>
         			<th>当</th>
